@@ -27,20 +27,17 @@ void Numero::pideleAlUsuarioTusDatos(void){
 	this->verificaDatos();
 }
 void Numero::calculaBinario(void){
-	
 	for(int i=0;i<=30;i++){
 		if(a&b){
 			c[i] = 1;
 			cont=i;
-			}
+		}
 		else
 			c[i] = 0;
-			
 		b = b<<1;
 	}
 }
 void Numero::imprimeBinario(void){
-	
 	for(int i=cont;i>=0;i--)
 		cout << c[i];
 }
