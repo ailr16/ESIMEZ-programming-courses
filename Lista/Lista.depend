@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1536683222 source:c:\users\computación básica\desktop\lista\src\listas.cpp
+	"ListaS.h"
+
+1536685615 c:\users\computación básica\desktop\lista\include\listas.h
+	"NODO.H"
+	<iostream>
+
+1536018124 c:\users\computación básica\desktop\lista\include\nodo.h
+	<iostream>
+
+1536685211 source:c:\users\computación básica\desktop\lista\main.cpp
+	<iostream>
+	"ListaS.h"
+
+1536685212 source:f:\estructuras y bases de datos\lista\main.cpp
+	<iostream>
+	"ListaS.h"
+
+1536799598 f:\estructuras y bases de datos\lista\include\listas.h
+	"NODO.H"
+	<iostream>
+
+1536018124 f:\estructuras y bases de datos\lista\include\nodo.h
+	<iostream>
+
+1536683224 source:f:\estructuras y bases de datos\lista\src\listas.cpp
+	"ListaS.h"
+
