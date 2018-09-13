@@ -31,29 +31,29 @@ class ListaS
         }
 
         void inserta(int v){
-            if(laListaEstaVacia()){         //Inserta un dato SI LA LISTA ESTA VACIA
-                inicio = new Nodo(v);
+            if(!laListaEstaVacia()){
+                if(v < inicio->dameTuValor()){  //Inserta un dato al INICIO de la lista
+                    inicio = new Nodo(v, inicio);
+                }
+                if(v > fin->dameTuValor()){     //Inserta un dato al FINAL de la lista
+                    fin->modificaTuSiguiente(new Nodo(v));
+                    fin = fin->dameTuSiguiente();
+                }
+                if(v > inicio->dameTuValor() && v < fin->dameTuValor()){
+                    Nodo* aux2;
+                    Nodo* aux1 = inicio;
+                    while(v > aux1->dameTuValor()){
+                        aux2 = aux1;
+                        aux1 = aux1->dameTuSiguiente();
+                    }
+                    aux2->modificaTuSiguiente(new Nodo(v,aux1));
+                    }
             }
-
-            if(v < inicio->dameTuValor()){
-                inicio = new Nodo(v, inicio);
+            else{
+                inicio = new Nodo(v);       //Inserta un dato SI LA LISTA ESTA VACIA
+                fin = inicio;
             }
-
-            /*Nodo* aux2;
-            Nodo* aux1 = inicio;
-            while(v > aux1->dameTuValor()){
-                aux2 = aux1;
-                aux1 = aux1->dameTuSiguiente();
-            }
-            aux2->modificaTuSiguiente(new Nodo(v,aux1));
-
-            if(v > fin->dameTuValor()){
-                fin->modificaTuSiguiente(new Nodo(v));
-                fin = fin->dameTuSiguiente();
-            }
-            */
         }
-
 };
 
 
