@@ -27,3 +27,17 @@
 1536683224 source:f:\estructuras y bases de datos\lista\src\listas.cpp
 	"ListaS.h"
 
+1536683224 source:c:\users\angel\documents\github\estructurasybasesdedatos\lista\src\listas.cpp
+	"ListaS.h"
+
+1536805956 c:\users\angel\documents\github\estructurasybasesdedatos\lista\include\listas.h
+	"NODO.H"
+	<iostream>
+
+1536018124 c:\users\angel\documents\github\estructurasybasesdedatos\lista\include\nodo.h
+	<iostream>
+
+1536805935 source:c:\users\angel\documents\github\estructurasybasesdedatos\lista\main.cpp
+	<iostream>
+	"ListaS.h"
+

@@ -21,7 +21,7 @@ class ListaS
             Nodo* aux;
             aux = inicio;
             while(aux!= NULL){
-                cout << aux->dameTuValor();
+                cout << aux->dameTuValor() << " ";
                 aux = aux->dameTuSiguiente();
             }
         }
@@ -31,20 +31,27 @@ class ListaS
         }
 
         void inserta(int v){
-            Nodo* aux2;
+            if(laListaEstaVacia()){         //Inserta un dato SI LA LISTA ESTA VACIA
+                inicio = new Nodo(v);
+            }
+
+            if(v < inicio->dameTuValor()){
+                inicio = new Nodo(v, inicio);
+            }
+
+            /*Nodo* aux2;
             Nodo* aux1 = inicio;
             while(v > aux1->dameTuValor()){
                 aux2 = aux1;
                 aux1 = aux1->dameTuSiguiente();
             }
             aux2->modificaTuSiguiente(new Nodo(v,aux1));
-            if(v < inicio->dameTuValor()){
-                inicio = new Nodo(v, inicio);
-            }
+
             if(v > fin->dameTuValor()){
                 fin->modificaTuSiguiente(new Nodo(v));
                 fin = fin->dameTuSiguiente();
             }
+            */
         }
 
 };
