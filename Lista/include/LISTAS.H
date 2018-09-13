@@ -9,7 +9,7 @@ using namespace std;
 class ListaS
 {
     private:
-        Nodo*  inicio;
+        Nodo* inicio;
         Nodo* fin;
 
     public:
@@ -32,7 +32,7 @@ class ListaS
 
         void inserta(int v){
             if(!laListaEstaVacia()){
-                if(v < inicio->dameTuValor()){  //Inserta un dato al INICIO de la lista
+                if(v <= inicio->dameTuValor()){  //Inserta un dato al INICIO de la lista
                     inicio = new Nodo(v, inicio);
                 }
                 else{
@@ -56,30 +56,37 @@ class ListaS
                 fin = inicio;
             }
         }
+
         void borra(int v){
             Nodo* aux;
-            if(v == inicio->dameTuValor()){                     //Elimina un dato de la lista si está al INICIO
-                inicio = inicio->dameTuSiguiente();
-                delete(aux);
-            }
-            else{
-                Nodo* aux1;
-                Nodo* aux2;
-                aux1 = inicio;
-                while(aux1 != NULL && aux1->dameTuValor()<v){
-                    aux2 = aux1;
-                    aux1 = aux1->dameTuSiguiente();
-                }
-                if(aux1->dameTuValor() == v){
-                    aux2->modificaTuSiguiente(aux1->dameTuSiguiente());
-                    if(aux1 == fin){
-                        fin = aux2;
-                    }
-                    delete(aux1);
+
+            if(v <= fin->dameTuValor()){
+                if(v == inicio->dameTuValor()){                     //Elimina un dato de la lista si está al INICIO
+                    inicio = inicio->dameTuSiguiente();
+                    delete(aux);
                 }
                 else{
-                    cout << "El valor  no esta en la lista: " << v << endl;
+                    Nodo* aux1;
+                    Nodo* aux2;
+                    aux1 = inicio;
+                    while(aux1 != NULL && aux1->dameTuValor()<v){
+                        aux2 = aux1;
+                        aux1 = aux1->dameTuSiguiente();
+                    }
+                    if(aux1->dameTuValor() == v){
+                        aux2->modificaTuSiguiente(aux1->dameTuSiguiente());
+                        if(aux1 == fin){
+                            fin = aux2;
+                        }
+                        delete(aux1);
+                    }
+                    else{
+                        cout << "El valor  no esta en la lista: " << v << endl;
+                    }
                 }
+            }
+            else{
+                cout << "El valor  no esta en la lista: " << v << endl;
             }
         }
 

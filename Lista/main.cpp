@@ -37,5 +37,7 @@ int main()
     cout << endl;
     A.borra(5);
 
+
+    A.muestraTusDatos();
     return 0;
 }
