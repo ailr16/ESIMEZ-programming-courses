@@ -13,11 +13,11 @@
 	<iostream>
 	"ListaS.h"
 
-1536685212 source:f:\estructuras y bases de datos\lista\main.cpp
+1536809560 source:f:\estructuras y bases de datos\lista\main.cpp
 	<iostream>
 	"ListaS.h"
 
-1536799598 f:\estructuras y bases de datos\lista\include\listas.h
+1536809466 f:\estructuras y bases de datos\lista\include\listas.h
 	"NODO.H"
 	<iostream>
 
@@ -39,5 +39,19 @@
 
 1536809483 source:c:\users\angel\documents\github\estructurasybasesdedatos\lista\main.cpp
 	<iostream>
+	"ListaS.h"
+
+1536859048 source:d:\estructuras y bases de datos\lista\main.cpp
+	<iostream>
+	"ListaS.h"
+
+1536859746 d:\estructuras y bases de datos\lista\include\listas.h
+	"NODO.H"
+	<iostream>
+
+1536018124 d:\estructuras y bases de datos\lista\include\nodo.h
+	<iostream>
+
+1536683224 source:d:\estructuras y bases de datos\lista\src\listas.cpp
 	"ListaS.h"
 
