@@ -55,10 +55,60 @@ void Hora::modificaTuS(int s){
     this->verificaHora();
 }
 
+//Sobrecargas
+bool operator<(Hora Izq, Hora Der){
+    if(Izq.dameTuH()<Der.dameTuH()){
+        return true;
+    }
+    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()<Der.dameTuM()){
+        return true;
+    }
+    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()==Der.dameTuM()&&Izq.dameTuS()<Der.dameTuS()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
+bool operator<=(Hora Izq, Hora Der){
+    if(Izq.dameTuH()<=Der.dameTuH()){
+        return true;
+    }
+    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()<=Der.dameTuM()){
+        return true;
+    }
+    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()==Der.dameTuM()&&Izq.dameTuS()<=Der.dameTuS()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
+bool operator>(Hora Izq, Hora Der){
+    if(Izq.dameTuH()>Der.dameTuH()){
+        return true;
+    }
+    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()>Der.dameTuM()){
+        return true;
+    }
+    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()==Der.dameTuM()&&Izq.dameTuS()>Der.dameTuS()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
+bool operator==(Hora Izq,Hora Der){
+    return (Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()==Der.dameTuM()&&Izq.dameTuS()==Der.dameTuS());
+}
 
+ostream& operator<<(ostream& Izq, Hora Der){
+    Der.muestraTusDatos();
+    return Izq;
+}
 
 
 

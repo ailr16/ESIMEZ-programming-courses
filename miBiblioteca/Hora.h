@@ -21,4 +21,10 @@ public:
     void modificaTuS(int s);
 };
 
+bool operator<(Hora izq, Hora der);
+bool operator<=(Hora izq, Hora der);
+bool operator==(Hora Izq,Hora Der);
+bool operator>(Hora Izq,Hora Der);
+ostream& operator<<(ostream& Izq, Hora Der);
+
 #endif // HORA_H
