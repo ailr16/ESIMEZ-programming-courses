@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1536943330 source:c:\users\angel_000\documents\github\estructurasybasesdedatos\mibiblioteca\hora.cpp
+	"Hora.h"
+
+1536943330 c:\users\angel_000\documents\github\estructurasybasesdedatos\mibiblioteca\hora.h
+	<iostream>
+
+1537039998 source:c:\users\angel_000\documents\github\estructurasybasesdedatos\practica4\main.cpp
+	<iostream>
+	"ListaST.h"
+	"Hora.h"
+
