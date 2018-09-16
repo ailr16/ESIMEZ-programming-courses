@@ -72,13 +72,13 @@ bool operator<(Hora Izq, Hora Der){
 }
 
 bool operator<=(Hora Izq, Hora Der){
-    if(Izq.dameTuH()<=Der.dameTuH()){
+    if(Izq.dameTuH() <= Der.dameTuH()){
         return true;
     }
-    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()<=Der.dameTuM()){
+    else if( (Izq.dameTuH() == Der.dameTuH()) && (Izq.dameTuM() <= Der.dameTuM()) ){
         return true;
     }
-    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()==Der.dameTuM()&&Izq.dameTuS()<=Der.dameTuS()){
+    else if( (Izq.dameTuH() == Der.dameTuH()) && (Izq.dameTuM() == Der.dameTuM()) && (Izq.dameTuS() <= Der.dameTuS()) ){
         return true;
     }
     else{
@@ -87,13 +87,13 @@ bool operator<=(Hora Izq, Hora Der){
 }
 
 bool operator>(Hora Izq, Hora Der){
-    if(Izq.dameTuH()>Der.dameTuH()){
+    if(Izq.dameTuH() > Der.dameTuH()){
         return true;
     }
-    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()>Der.dameTuM()){
+    else if( (Izq.dameTuH() == Der.dameTuH()) && (Izq.dameTuM() > Der.dameTuM()) ){
         return true;
     }
-    else if(Izq.dameTuH()==Der.dameTuH()&&Izq.dameTuM()==Der.dameTuM()&&Izq.dameTuS()>Der.dameTuS()){
+    else if( (Izq.dameTuH() == Der.dameTuH()) && (Izq.dameTuM()==Der.dameTuM()) && (Izq.dameTuS()>Der.dameTuS()) ){
         return true;
     }
     else{

@@ -20,6 +20,8 @@ class ListaST
         void muestraTusDatos(void){
             NodoT<T>* aux;
             aux = inicio;
+            if(laListaEstaVacia())
+                cout << "La lista esta vacia" << endl;
             while(aux!= NULL){
                 cout << aux->dameTuValor();
                 aux = aux->dameTuSiguiente();
@@ -89,15 +91,21 @@ class ListaST
                 cout << "El valor  no esta en la lista: " << v << endl;
             }
         }
-        ListaST<T> compara(T v, ListaST<T>& LR){
-            NodoT<T>* aux1;
-            aux1 = inicio;
+        ListaST<T> compara(T v, ListaST<T>& LR){        //  Compara la una lista con un valor dado por el usuario
+            NodoT<T>* aux1;                             //  los valores que cumplan la condición son guardados en
+            aux1 = inicio;                              //  una nueva lista, que es regresada.
             while(aux1 != fin){
                 if(aux1->dameTuValor() < v){
                     LR.inserta(aux1->dameTuValor());
                 }
                 aux1 = aux1->dameTuSiguiente();
             }
+            if(aux1 == fin){
+                if(aux1->dameTuValor() < v){
+                    LR.inserta(aux1->dameTuValor());
+                }
+            }
+
             return LR;
         }
 };
