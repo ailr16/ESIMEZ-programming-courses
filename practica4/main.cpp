@@ -31,6 +31,7 @@ int main()
     cout << endl << "Lista Original:" << endl;
     A.muestraTusDatos();
 
+    A.compara(horaUsuario, B);
     cout << endl << "Lista resultante:" << endl;
     B.muestraTusDatos();
 

@@ -89,7 +89,18 @@ class ListaST
                 cout << "El valor  no esta en la lista: " << v << endl;
             }
         }
-
+        ListaST<T> compara(T v, ListaST<T>& LR){
+            NodoT<T>* aux1;
+            aux1 = inicio;
+            while(aux1 != fin){
+                if(aux1->dameTuValor() < v){
+                    LR.inserta(aux1->dameTuValor());
+                }
+                aux1 = aux1->dameTuSiguiente();
+            }
+            return LR;
+        }
 };
+
 
 #endif // LISTAST_H
