@@ -21,6 +21,11 @@ int main(){
         cin >> seleccion;
     }while(seleccion);
 
+    for(int i=0;i<n;i++){
+        B = C.elimina();
+        if(B < fechaLimite)
+            P.push(B);
+    }
 
     return 0;
 }

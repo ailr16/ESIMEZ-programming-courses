@@ -23,5 +23,6 @@ public:
 };
 
 ostream& operator<<(ostream &Izq,Fecha C);
+bool operator<(Fecha izq, Fecha der);
 
 #endif // FECHA_H

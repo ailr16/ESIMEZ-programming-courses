@@ -58,3 +58,13 @@ ostream& operator<<(ostream &Izq,Fecha C){
 	C.muestraTusDatos();
 	return Izq;
 }
+bool operator<(Fecha izq, Fecha der){
+    if(izq.dameTuA() < der.dameTuA())
+        return true;
+    else if((izq.dameTuA() == der.dameTuA()) && (izq.dameTuM() < der.dameTuM()))
+        return true;
+    else if( (izq.dameTuA() == der.dameTuA()) && (izq.dameTuM() == der.dameTuM()) && (izq.dameTuD() < der.dameTuD()) )
+        return true;
+    else
+        return false;
+}
