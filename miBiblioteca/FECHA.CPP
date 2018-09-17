@@ -54,7 +54,7 @@ void Fecha::modificaTuA(int a){
     this->verificaFecha();
 }
 
-ostream& operator<<(ostream& Izq,Fecha& C){
+ostream& operator<<(ostream &Izq,Fecha C){
 	C.muestraTusDatos();
 	return Izq;
 }

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1537145138 source:c:\users\angel\documents\github\estructurasybasesdedatos\mibiblioteca\fecha.cpp
+	"Fecha.h"
+
+1537145139 c:\users\angel\documents\github\estructurasybasesdedatos\mibiblioteca\fecha.h
+	<iostream>
+
+1537146891 source:c:\users\angel\documents\github\estructurasybasesdedatos\practica3\main.cpp
+	<iostream>
+	"Fecha.h"
+	"ColaT.h"
+	"PilaT.h"
+

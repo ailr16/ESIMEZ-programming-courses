@@ -22,7 +22,7 @@ class PilaT
         T cima(void){
             return tope->dameTuValor();
         }
-        T laPilaEstaVacia(void){
+        bool laPilaEstaVacia(void){
             return tope == NULL;
         }
         T pop(void){

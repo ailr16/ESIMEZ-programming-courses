@@ -22,6 +22,6 @@ public:
     void modificaTuA(int a);
 };
 
-ostream& operator<<(ostream& Izq,Fecha& C);
+ostream& operator<<(ostream &Izq,Fecha C);
 
 #endif // FECHA_H
