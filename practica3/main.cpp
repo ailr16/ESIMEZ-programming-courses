@@ -8,7 +8,7 @@ using namespace std;
 int main(){
     ColaT<Fecha> C;
     PilaT<Fecha> P;
-    Fecha fechaLimite(5,6,2000),A;
+    Fecha fechaLimite(5,6,2000),A,B;
     int seleccion = 1,n = 0;
 
     do{
@@ -21,7 +21,6 @@ int main(){
         cin >> seleccion;
     }while(seleccion);
 
-    cout << n << endl;
 
     return 0;
 }
