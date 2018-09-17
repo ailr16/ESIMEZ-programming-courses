@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../miBiblioteca/ColaT.h" />
+		<Unit filename="../miBiblioteca/FECHA.CPP" />
+		<Unit filename="../miBiblioteca/FECHA.H" />
+		<Unit filename="../miBiblioteca/PilaT.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

@@ -91,7 +91,7 @@ class ListaST
                 cout << "El valor  no esta en la lista: " << v << endl;
             }
         }
-        ListaST<T> compara(T v, ListaST<T>& LR){        //  Compara la una lista con un valor dado por el usuario
+        void compara(T v, ListaST<T>& LR){        //  Compara la una lista con un valor dado por el usuario
             NodoT<T>* aux1;                             //  los valores que cumplan la condición son guardados en
             aux1 = inicio;                              //  una nueva lista, que es regresada.
             while(aux1 != fin){
@@ -105,8 +105,6 @@ class ListaST
                     LR.inserta(aux1->dameTuValor());
                 }
             }
-
-            return LR;
         }
 };
 
