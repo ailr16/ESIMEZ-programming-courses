@@ -1,0 +1,81 @@
+/*
+ Lozano Ramirez Angel Ivan    1CM3    PE18041900
+ Elaborar un programa que contenga las opciones para calcular el seno,
+ coseno y tangente de X.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <math.h>
+
+#define pi 3.1416
+
+void funciones(void);
+float leer(void);
+
+void main(void)
+  {
+   clrscr();
+   funciones();
+   getch();
+  }
+
+void funciones(void)
+  {
+   float x,xr,y;
+   char opcion;
+   while(1)
+   {
+     printf("\n\n\t\tIngrese el angulo en grados:\n\n\t\t\t\t");
+     x=leer();
+     xr=x*pi/180;
+     printf("\n\n\t\t\t A. Sen(X) \n\t\t\t B. Cos(X) \n\t\t\t C. Tan(X)");
+     printf("\n\t\t\t D. Salir \n");
+     opcion=getch();
+       switch(opcion)
+	 {
+	  case 'A':
+	  case 'a':
+	    y=sin(xr);
+	    printf("\n\n\t\t Sen(%.2f) = %f",x,y);
+	    getch();
+	    clrscr();
+	    break;
+
+	  case 'B':
+	  case 'b':
+	    y=cos(xr);
+	    printf("\n\n\t\t Cos(%.2f) = %f",x,y);
+	    getch();
+	    clrscr();
+	    break;
+
+	  case 'C':
+	  case 'c':
+	    y=tan(xr);
+	    printf("\n\n\t\t Tan(%.2f) = %f",x,y);
+	    getch();
+	    clrscr();
+	    break;
+
+	  case 'D':
+	  case 'd':
+	    printf("\n\n\t\t\t Fin del programa");
+	    getch();
+	    exit(0);
+
+	  default:
+	    printf("\n\n\t\t\tOpcion no valida");
+	    getch();
+	    clrscr();
+	 }
+     }
+  }
+
+float leer(void)
+  {
+   float r;
+   scanf("%f",&r);
+   return(r);
+  }

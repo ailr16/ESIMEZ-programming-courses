@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+#include <e:\include\portada.H>
+
+void tabla(void);
+float calcy(float);
+void imprimir(float,float);
+
+void main(void)
+  {
+   clrscr();
+   caratula();
+   getch();
+   clrscr();
+   tabla();
+   getch();
+  }
+
+float calcy(float x)
+  {
+   float y;
+   y=exp(sin(x));
+   return(y);
+  }
+
+void imprimir(float x,float y)
+  {
+   printf("\t\t\t %.0f \t %f \n\n",x,y);
+  }
+
+void tabla(void)
+  {
+   float x,y,z;
+   x=-5;
+   printf("\n\n\t\t\t X \t Y\n\n");
+   while(x<=10)
+     {
+     y=calcy(x);
+     imprimir(x,y);
+     x++;
+     }
+  }
