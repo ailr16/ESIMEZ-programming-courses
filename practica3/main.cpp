@@ -17,8 +17,15 @@ int main(){
         C.suma(A);
         n++;
         cout << "Ingresar otra fecha?" << endl
-             << "\tCualquier valor - SI" << "\t0 - NO" << endl;
+             << "\t1 - SI" << "\t0 - NO" << endl;
         cin >> seleccion;
+        while(seleccion < 0 || seleccion > 1){
+            cout << "Seleccion incorrecta" << endl;
+            cout << "Ingresar otra fecha?" << endl
+             << "\t1 - SI" << "\t0 - NO" << endl;
+            cin >> seleccion;
+        }
+
     }while(seleccion);
 
     for(int i=0;i<n;i++){
