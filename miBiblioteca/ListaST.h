@@ -82,7 +82,7 @@ class ListaST
                         }
                         delete(aux1);
                     }
-                    else {
+                    else{
                         cout << "El valor  no esta en la lista: " << v << endl;
                     }
                 }

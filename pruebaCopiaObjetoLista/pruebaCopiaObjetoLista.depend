@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1537486466 source:c:\users\angel\documents\github\estructurasybasesdedatos\pruebacopiaobjetolista\main.cpp
+	<iostream>
+	"ListaST.h"
+
