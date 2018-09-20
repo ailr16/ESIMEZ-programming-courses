@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1537486021 source:c:\users\angel\documents\github\estructurasybasesdedatos\examenpilascolas\main.cpp
+	<iostream>
+	"Pila.h"
+	"Cola.h"
+	<stdlib.h>
+

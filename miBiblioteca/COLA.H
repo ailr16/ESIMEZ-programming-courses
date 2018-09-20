@@ -19,6 +19,7 @@ class Cola
             extremo = NULL;
         }
         ~Cola(){
+            cout << "Destructor cola" << endl;
             while(!laColaEstaVacia()){
                 cout << elimina() << endl;
             }

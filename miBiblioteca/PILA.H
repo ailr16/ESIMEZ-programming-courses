@@ -41,6 +41,7 @@ class Pila
             }
         }
         ~Pila(){
+            cout << "Destructor Pila" << endl;
             while(!laPilaEstaVacia()){
                 cout << pop() << endl;
             }
