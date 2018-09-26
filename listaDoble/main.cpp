@@ -17,11 +17,19 @@ int main()
     A.muestraTusDatos();
     cout <<endl;
 
-    A.inserta(1);
+    A.inserta(6);
     A.muestraTusDatos();
     cout <<endl;
 
-    A.inserta(4);v
+    A.inserta(4);
+    A.muestraTusDatos();
+    cout <<endl;
+
+    A.inserta(5);
+    A.muestraTusDatos();
+    cout <<endl;
+
+    A.inserta(4);
     A.muestraTusDatos();
     cout <<endl;
 
