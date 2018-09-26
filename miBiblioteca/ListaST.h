@@ -93,7 +93,7 @@ class ListaST
         }
         void compara(T v, ListaST<T>& LR){        //  Compara la una lista con un valor dado por el usuario
             NodoT<T>* aux1;                             //  los valores que cumplan la condición son guardados en
-            aux1 = inicio;                              //  una nueva lista, que es regresada.
+            aux1 = inicio;                              //  una la lista que se pasa como referencia.
             while(aux1 != fin){
                 if(aux1->dameTuValor() < v){
                     LR.inserta(aux1->dameTuValor());

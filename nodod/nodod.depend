@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1537896143 source:c:\users\computación básica\desktop\nodod\main.cpp
+	<iostream>
+	"NodoD.h"
+	"ListaD.h"
+
+1537894934 d:\estructurasybasesdedatos\mibiblioteca\nodod.h
+	<iostream>
+
+1537896094 source:c:\users\computación básica\desktop\nodod\src\listad.cpp
+	"ListaD.h"
+
+1537896516 d:\estructurasybasesdedatos\mibiblioteca\listad.h
+	<iostream>
+	"NodoD.h"
+

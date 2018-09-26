@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1537936142 source:c:\users\angel\documents\github\estructurasybasesdedatos\listadoble\main.cpp
+	<iostream>
+	"ListaD.h"
+	"NodoD.h"
+
