@@ -39,19 +39,19 @@ class ListaD
                 if(v <= inicio->dameTuValor()){          //  Inserta un nodo al inicio de la lista
                     inicio = new NodoD(v,NULL,inicio);
                 }
-
-                if(v > fin->dameTuValor()){             //  Inserta un nodo al final de la lista
-                    fin->modificaTuSiguiente(new NodoD(v,fin,NULL));
-                    fin = fin->dameTuSiguiente();
-                }
-
-                if(v > inicio->dameTuValor() && v < fin->dameTuValor()){
-                    NodoD* aux;
-                    aux = inicio;
-                    while(v > aux->dameTuValor()){
-                        aux = aux->dameTuSiguiente();
+                else{
+                    if(v > fin->dameTuValor()){             //  Inserta un nodo al final de la lista
+                        fin->modificaTuSiguiente(new NodoD(v,fin,NULL));
+                        fin = fin->dameTuSiguiente();
                     }
-                    aux->dameTuAnterior()->modificaTuSiguiente(new NodoD(v,aux->dameTuAnterior(),aux));
+                    else{
+                        NodoD* aux = inicio;
+                        while(v > aux->dameTuValor()){
+                            aux = aux->dameTuSiguiente();
+                        }
+                        aux->dameTuAnterior()->modificaTuSiguiente(new NodoD(v,aux->dameTuAnterior(),aux));
+                        aux->modificaTuAnterior(aux->dameTuAnterior()->dameTuSiguiente());
+                    }
                 }
             }
             else{
