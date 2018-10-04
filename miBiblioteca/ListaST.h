@@ -106,6 +106,18 @@ class ListaST
                 }
             }
         }
+        float promedio(void){
+            NodoT<int>* aux;
+            int i = 0;
+            float suma = 0;
+            aux = inicio;
+            while(aux != NULL){
+                suma = suma + aux->dameTuValor();
+                i++;
+                aux = aux->dameTuSiguiente();
+            }
+            return suma/i;
+        }
 };
 
 

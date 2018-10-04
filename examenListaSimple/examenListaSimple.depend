@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1538691769 source:c:\users\angel\documents\github\estructurasybasesdedatos\examenlistasimple\main.cpp
+	<iostream>
+	"ListaST.h"
+	"stdlib.h"
+
