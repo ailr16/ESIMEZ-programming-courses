@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1539117497 source:c:\users\angel\documents\github\estructurasybasesdedatos\practica5\main.cpp
+	<iostream>
+	"TerminoA.h"
+	"ListaDT.h"
+
