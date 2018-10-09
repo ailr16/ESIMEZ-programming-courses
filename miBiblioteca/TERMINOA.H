@@ -69,14 +69,31 @@ void TerminoA::modificaTuLiteral(char l){
 }
 
 void TerminoA::muestraTusDatos(void){
-    if(coeficiente == 0)
-        cout << "0" ;
-    else if(exponente == 0)
-        cout << coeficiente;
-    else if(coeficiente == 1)
-        cout << literal << "^" << exponente;
-    else
-        cout << coeficiente << literal << "^" << exponente;
+    if(coeficiente > 0){
+        if(exponente == 0)
+            cout << "+ " << coeficiente;
+        else if(exponente == 1)
+            cout << "+ " << coeficiente << literal;
+        else if(coeficiente == 1)
+            cout << "+ " << literal << "^" << exponente;
+        else if(coeficiente == 0)
+            cout << "0" ;
+        else
+            cout << "+ " << coeficiente << literal << "^" << exponente;
+    }
+    else{
+        if(exponente == 0)
+            cout << coeficiente;
+        else if(exponente == 1)
+            cout << coeficiente << literal;
+        else if(coeficiente == 1)
+            cout << literal << "^" << exponente;
+        else if(coeficiente == 0)
+            cout << "0" ;
+        else
+            cout << coeficiente << literal << "^" << exponente;
+    }
+
 }
 
 ostream& operator<<(ostream &Izq,TerminoA C){

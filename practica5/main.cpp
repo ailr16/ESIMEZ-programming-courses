@@ -8,15 +8,17 @@ int main()
 {
     ListaDT<TerminoA> A,B;
     TerminoA m;
-    int seleccion = 1, e;
+    int seleccion = 1, e,f;
     do{
         cout << "Ingrese coeficiente del termino: ";
         cin >> e;
-        m.modificaTuCoeficiente(e);
         cout << "Ingrese exponente del termino: ";
-        cin >> e;
-        m.modificaTuExponente(e);
-        A.inserta(m);
+        cin >> f;
+        if(e != 0){
+            m.modificaTuCoeficiente(e);
+            m.modificaTuExponente(f);
+            A.inserta(m);
+        }
 
         cout << "Ingresar otro termino? \t 1- SI \t 0 - NO:   ";
         cin >> seleccion;
@@ -29,6 +31,10 @@ int main()
     }while(seleccion);
 
     A.muestraTusDatos();
+
+    A.derivada(B);
+
+    B.muestraTusDatos();
 
     return 0;
 }

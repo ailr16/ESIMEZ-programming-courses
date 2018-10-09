@@ -27,7 +27,7 @@ class ListaDT
                 cout << "La lista esta vacia" << endl;
             }
             while(aux != NULL){
-                cout << aux->dameTuValor() << " + ";        //Se agrego signo +
+                cout << aux->dameTuValor() << " ";        //Se agrego signo +
                 aux = aux->dameTuSiguiente();
             }
             cout<<endl<<endl;
@@ -39,7 +39,7 @@ class ListaDT
                 cout << "La lista esta vacia" << endl;
             }
             while(aux != NULL){
-                cout << aux->dameTuValor() << " + ";        //Se agrego signo +
+                cout << aux->dameTuValor() << " ";        //Se agrego signo +
                 aux = aux->dameTuAnterior();
             }
             cout<<endl<<endl;
@@ -115,9 +115,6 @@ class ListaDT
     }
 
     void derivada(ListaDT<T> &L){
-        TerminoA m,aux;
-        aux = inicio;
-
     }
 
         /*~ListaD(){

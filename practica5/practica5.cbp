@@ -32,6 +32,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../miBiblioteca/LISTADT.H" />
+		<Unit filename="../miBiblioteca/NODODT.H" />
+		<Unit filename="../miBiblioteca/TERMINOA.H" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
