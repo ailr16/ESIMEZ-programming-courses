@@ -30,11 +30,11 @@ int main()
         }
     }while(seleccion);
 
-    A.muestraTusDatos();
+    A.muestraTusDatosLD();
 
     A.derivada(B);
 
-    B.muestraTusDatos();
+    B.muestraTusDatosLD();
 
     return 0;
 }

@@ -115,6 +115,16 @@ class ListaDT
     }
 
     void derivada(ListaDT<T> &L){
+        TerminoA v;
+        NodoDT<TerminoA> *aux;
+        aux = inicio;
+        while(aux){
+            v.modificaTuCoeficiente(aux->dameTuValor().dameTuCoeficiente()*aux->dameTuValor().dameTuExponente());
+            v.modificaTuExponente(aux->dameTuValor().dameTuExponente() - 1);
+            if(v.dameTuCoeficiente() != 0)
+                L.inserta(v);
+            aux = aux->dameTuSiguiente();
+        }
     }
 
         /*~ListaD(){
