@@ -26,6 +26,16 @@ class ListaS
             }
         }
 
+
+        void muestraTusDatos(Nodo* a){
+            static Nodo* aux = inicio;
+            if(aux != NULL){
+                cout << aux->dameTuValor() << " ";
+                aux = aux->dameTuSiguiente();
+                muestraTusDatos(aux);
+            }
+        }
+
         bool laListaEstaVacia(void){
             return inicio==NULL;
         }

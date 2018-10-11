@@ -7,6 +7,7 @@ int main()
 {
     ListaS A;
 
+    A.inserta(25);
     A.inserta(1);
     A.inserta(10);
     A.inserta(0);
@@ -37,7 +38,7 @@ int main()
     cout << endl;
     A.borra(5);
 
-
     A.muestraTusDatos();
+
     return 0;
 }
