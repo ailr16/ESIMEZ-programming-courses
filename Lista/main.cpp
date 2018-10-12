@@ -7,7 +7,6 @@ int main()
 {
     ListaS A;
 
-    A.inserta(25);
     A.inserta(1);
     A.inserta(10);
     A.inserta(0);

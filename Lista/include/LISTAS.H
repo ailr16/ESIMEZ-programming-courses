@@ -26,9 +26,8 @@ class ListaS
             }
         }
 
-
         void muestraTusDatos(Nodo* a){
-            static Nodo* aux = inicio;
+            static Nodo* aux = a;
             if(aux != NULL){
                 cout << aux->dameTuValor() << " ";
                 aux = aux->dameTuSiguiente();
