@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1539710762 source:d:\estructurasybasesdedatos\arbolbinario\main.cpp
+	<iostream>
+	"NodoABB.h"
+	"ABB.h"
+
+1540262163 source:c:\users\angel\documents\github\estructurasybasesdedatos\arbolbinario\main.cpp
+	<iostream>
+	"NodoABB.h"
+	"ABB.h"
+
