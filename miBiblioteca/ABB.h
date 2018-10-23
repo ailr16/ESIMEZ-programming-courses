@@ -7,12 +7,13 @@ class ABB
 {
     private:
         NodoABB *raiz;
+        int i = 0;
         void entreorden(NodoABB* aux);
         void postorden(NodoABB* aux);
         void preorden(NodoABB* aux);
         void inserta(int v, NodoABB *&raiz);
         void destructor(NodoABB* aux);
-        int numeroNodos(NodoABB* raiz);
+        void numeroNodos(NodoABB* raiz);
 
     public:
         ABB(void);
@@ -73,15 +74,17 @@ void ABB::inserta(int v, NodoABB *&raiz){
         inserta(v,(raiz->dameTuDerecha()));
 }
 
-int ABB::numeroNodos(NodoABB* raiz){
-    int i = 0;
-    if(raiz->dameTuIzquierda() != NULL && raiz->dameTuIzquierda() != NULL)
+void ABB::numeroNodos(NodoABB* raiz){
+    if(raiz != NULL){
+        if((raiz->dameTuIzquierda() != NULL) && (raiz->dameTuDerecha() == NULL) || (raiz->dameTuIzquierda() == NULL) && (raiz->dameTuDerecha() != NULL)){
+            i++;
+        }
         numeroNodos(raiz->dameTuIzquierda());
-        i++;
-    return i;
+        numeroNodos(raiz->dameTuDerecha());
+    }
 }
 int ABB::numeroNodos(void){
-    int i = numeroNodos(raiz);
+    numeroNodos(raiz);
     return i;
 }
 
@@ -94,7 +97,7 @@ void ABB::destructor(NodoABB* aux){
     }
 }
 ABB::~ABB(){
-    cout << "Destructor:" << endl;
+    cout << endl << endl << "Destructor:" << endl;
     destructor(raiz);
 }
 #endif // ABB_H

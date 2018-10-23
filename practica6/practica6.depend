@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1540336431 source:c:\users\angel\documents\github\estructurasybasesdedatos\practica6\main.cpp
+	<iostream>
+	"ABB.h"
+	"NodoABB.h"
+
