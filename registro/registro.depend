@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1540698547 source:c:\users\angel_000\documents\github\estructurasybasesdedatos\registro\main.cpp
+	<iostream>
+	"registro.h"
+	"Hora.h"
+
+1540699049 source:c:\users\angel_000\documents\github\estructurasybasesdedatos\mibiblioteca\fecha.cpp
+	"Fecha.h"
+
+1540699061 c:\users\angel_000\documents\github\estructurasybasesdedatos\mibiblioteca\fecha.h
+	<iostream>
+
+1540699037 source:c:\users\angel_000\documents\github\estructurasybasesdedatos\mibiblioteca\hora.cpp
+	"Hora.h"
+
+1540699037 c:\users\angel_000\documents\github\estructurasybasesdedatos\mibiblioteca\hora.h
+	<iostream>
+

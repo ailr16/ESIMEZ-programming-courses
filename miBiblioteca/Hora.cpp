@@ -22,7 +22,7 @@ Hora::Hora(int h, int m, int s){
 Hora::~Hora(){
 }
 void Hora::muestraTusDatos(void){
-    cout<<h<<":"<<m<<":"<<s<<endl;
+    cout<<h<<":"<<m<<":"<<s;
 }
 void Hora::pideleAlUsuarioTusDatos(void){
     cout<<"Dame mi h ";
@@ -109,34 +109,7 @@ ostream& operator<<(ostream& Izq, Hora Der){
     Der.muestraTusDatos();
     return Izq;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+istream& operator>>(istream& Izq, Hora& Der){
+    Der.pideleAlUsuarioTusDatos();
+    return Izq;
+}

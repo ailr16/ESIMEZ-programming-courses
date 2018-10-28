@@ -21,7 +21,7 @@ Fecha::Fecha(int d, int m, int a){
 Fecha::~Fecha(){
 }
 void Fecha::muestraTusDatos(void){
-    cout<<d<<"/"<<m<<"/"<<a<<endl;
+    cout<<d<<"/"<<m<<"/"<<a;
 }
 void Fecha::pideleAlUsuarioTusDatos(void){
     cout<<"Dame mi d ";
@@ -67,4 +67,8 @@ bool operator<(Fecha izq, Fecha der){
         return true;
     else
         return false;
+}
+istream& operator>>(istream &Izq,Fecha& C){
+	C.pideleAlUsuarioTusDatos();
+	return Izq;
 }
