@@ -1,0 +1,32 @@
+# Project: RectanguloP
+# Makefile created by Dev-C++ 5.2.0.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = ../../miLibreria/miBiblioteca/main.o rectangulop.o $(RES)
+LINKOBJ  = ../../miLibreria/miBiblioteca/main.o rectangulop.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc  
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"  -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" 
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"  -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include"  -I"F:/C++/miLibreria/miBiblioteca" 
+BIN      = RectanguloP.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS   = $(INCS)  
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before RectanguloP.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "RectanguloP.exe" $(LIBS)
+
+../../miLibreria/miBiblioteca/main.o: ../../miLibreria/miBiblioteca/main.cpp
+	$(CPP) -c ../../miLibreria/miBiblioteca/main.cpp -o ../../miLibreria/miBiblioteca/main.o $(CXXFLAGS)
+
+rectangulop.o: rectangulop.cpp
+	$(CPP) -c rectangulop.cpp -o rectangulop.o $(CXXFLAGS)
