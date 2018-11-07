@@ -1,6 +1,7 @@
 #ifndef REGISTRO_H
 #define REGISTRO_H
 
+#include <stdlib.h>
 #include <fstream>
 #include <sstream>
 
@@ -36,6 +37,7 @@ class Registro
         void modificaTuFechaUTC(Fecha f1);
         void modificaTuReferencia(string r);
         void modificaTuEstatus(string e);
+        void leeDatos(void);
 };
 
 Registro::Registro(void){
@@ -109,5 +111,62 @@ void Registro::modificaTuReferencia(string r){
 }
 void Registro::modificaTuEstatus(string e){
     this->estatus = e;
+}
+void Registro::leeDatos(void){
+    Fecha x;
+    Hora y;
+
+    ifstream archivo("SSNMX_catalogo_20181001_20181026.csv");
+
+        stringstream datosRegistro;
+        string datos, dato, dato2, dato3;
+
+        getline(archivo, datos);
+        datosRegistro.str(datos);
+
+        getline(datosRegistro,dato,'-');
+        x.modificaTuA(atoi(dato.c_str()));
+        getline(datosRegistro,dato,'-');
+        x.modificaTuM(atoi(dato.c_str()));
+        getline(datosRegistro,dato,',');
+        x.modificaTuD(atoi(dato.c_str()));
+        modificaTuFecha(x);
+        getline(datosRegistro,dato,':');
+        y.modificaTuH(atoi(dato.c_str()));
+        getline(datosRegistro,dato,':');
+        y.modificaTuM(atoi(dato.c_str()));
+        getline(datosRegistro,dato,',');
+        y.modificaTuS(atoi(dato.c_str()));
+        modificaTuHora(y);
+        getline(datosRegistro,dato,',');
+        modificaTuMagnitud(atof(dato.c_str()));
+        getline(datosRegistro,dato,',');
+        modificaTuLatitud(atof(dato.c_str()));
+        getline(datosRegistro,dato,',');
+        modificaTuLongitud(atof(dato.c_str()));
+        getline(datosRegistro,dato,',');
+        modificaTuProfundidad(atof(dato.c_str()));
+        getline(datosRegistro,dato,',');
+        getline(datosRegistro,dato2,',');
+        dato3 = dato+","+dato2;
+        modificaTuReferencia(dato3);
+        getline(datosRegistro,dato,'-');
+        x.modificaTuA(atof(dato.c_str()));
+        getline(datosRegistro,dato,'-');
+        x.modificaTuM(atof(dato.c_str()));
+        getline(datosRegistro,dato,',');
+        x.modificaTuD(atof(dato.c_str()));
+        modificaTuFechaUTC(x);
+        getline(datosRegistro,dato,':');
+        y.modificaTuH(atof(dato.c_str()));
+        getline(datosRegistro,dato,':');
+        y.modificaTuM(atof(dato.c_str()));
+        getline(datosRegistro,dato,',');
+        y.modificaTuS(atof(dato.c_str()));
+        modificaTuHoraUTC(y);
+        getline(datosRegistro,dato,',');
+        modificaTuEstatus(dato);
+
+    archivo.close();
 }
 #endif // REGISTRO_H
