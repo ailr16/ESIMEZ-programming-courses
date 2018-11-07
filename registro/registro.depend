@@ -16,3 +16,23 @@
 1540699037 c:\users\angel_000\documents\github\estructurasybasesdedatos\mibiblioteca\hora.h
 	<iostream>
 
+1541629629 source:c:\users\angel\documents\github\estructurasybasesdedatos\mibiblioteca\fecha.cpp
+	"Fecha.h"
+
+1541629629 c:\users\angel\documents\github\estructurasybasesdedatos\mibiblioteca\fecha.h
+	<iostream>
+
+1541629629 source:c:\users\angel\documents\github\estructurasybasesdedatos\mibiblioteca\hora.cpp
+	"Hora.h"
+
+1541629629 c:\users\angel\documents\github\estructurasybasesdedatos\mibiblioteca\hora.h
+	<iostream>
+
+1541632030 source:c:\users\angel\documents\github\estructurasybasesdedatos\registro\main.cpp
+	<iostream>
+	"registro.h"
+	"Hora.h"
+	"stdlib.h"
+	<fstream>
+	<sstream>
+

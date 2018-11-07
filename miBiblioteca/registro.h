@@ -1,6 +1,9 @@
 #ifndef REGISTRO_H
 #define REGISTRO_H
 
+#include <fstream>
+#include <sstream>
+
 #include "Hora.h"
 #include "Fecha.h"
 
