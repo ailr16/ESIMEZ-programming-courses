@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1542072139 source:c:\users\angel\documents\github\estructurasybasesdedatos\prueba12nov\main.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<iomanip>
+	<time.h>
+	<math.h>
+
