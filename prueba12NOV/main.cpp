@@ -5,6 +5,8 @@
 #include<time.h>
 #include<math.h>
 #define MAXLARGO 21
+
+#define TOTALNUM 100        //Total de numeros que genera
 using namespace std;
 
 int main()
