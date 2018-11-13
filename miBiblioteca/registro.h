@@ -23,6 +23,7 @@ class Registro
         string referenciaDeLocalizacion,
                estatus;
 
+
     public:
         Registro(void);
         void muestraTusDatos(void);
@@ -113,60 +114,88 @@ void Registro::modificaTuEstatus(string e){
     this->estatus = e;
 }
 void Registro::leeDatos(void){
-    Fecha x;
-    Hora y;
-
-    ifstream archivo("SSNMX_catalogo_20181001_20181026.csv");
+    Fecha fx;
+    Hora hx;
+    int entero;
+    char car;
+    float flotante;
+    string cadena;
+    ifstream archivo_in;
 
         stringstream datosRegistro;
         string datos, dato, dato2, dato3;
 
-        getline(archivo, datos);
+        archivo_in.open("SSNMX_catalogo_20181001_20181026.csv");
         datosRegistro.str(datos);
 
-        getline(datosRegistro,dato,'-');
-        x.modificaTuA(atoi(dato.c_str()));
-        getline(datosRegistro,dato,'-');
-        x.modificaTuM(atoi(dato.c_str()));
-        getline(datosRegistro,dato,',');
-        x.modificaTuD(atoi(dato.c_str()));
-        modificaTuFecha(x);
-        getline(datosRegistro,dato,':');
-        y.modificaTuH(atoi(dato.c_str()));
-        getline(datosRegistro,dato,':');
-        y.modificaTuM(atoi(dato.c_str()));
-        getline(datosRegistro,dato,',');
-        y.modificaTuS(atoi(dato.c_str()));
-        modificaTuHora(y);
-        getline(datosRegistro,dato,',');
-        modificaTuMagnitud(atof(dato.c_str()));
-        getline(datosRegistro,dato,',');
-        modificaTuLatitud(atof(dato.c_str()));
-        getline(datosRegistro,dato,',');
-        modificaTuLongitud(atof(dato.c_str()));
-        getline(datosRegistro,dato,',');
-        modificaTuProfundidad(atof(dato.c_str()));
-        getline(datosRegistro,dato,',');
-        getline(datosRegistro,dato2,',');
-        dato3 = dato+","+dato2;
-        modificaTuReferencia(dato3);
-        getline(datosRegistro,dato,'-');
-        x.modificaTuA(atof(dato.c_str()));
-        getline(datosRegistro,dato,'-');
-        x.modificaTuM(atof(dato.c_str()));
-        getline(datosRegistro,dato,',');
-        x.modificaTuD(atof(dato.c_str()));
-        modificaTuFechaUTC(x);
-        getline(datosRegistro,dato,':');
-        y.modificaTuH(atof(dato.c_str()));
-        getline(datosRegistro,dato,':');
-        y.modificaTuM(atof(dato.c_str()));
-        getline(datosRegistro,dato,',');
-        y.modificaTuS(atof(dato.c_str()));
-        modificaTuHoraUTC(y);
-        getline(datosRegistro,dato,',');
-        modificaTuEstatus(dato);
+        //Secuencia para leer fecha
+            archivo_in >> entero;
+            fx.modificaTuA(entero);
+                archivo_in >> car;
+            archivo_in >> entero;
+            fx.modificaTuM(entero);
+                archivo_in >> car;
+            archivo_in >> entero;
+            fx.modificaTuD(entero);
+                archivo_in >> car;
+            f = fx;
+        //Secuencia para leer hora
+            archivo_in >> entero;
+            hx.modificaTuH(entero);
+                archivo_in >> car;
+            archivo_in >> entero;
+            hx.modificaTuM(entero);
+                archivo_in >> car;
+            archivo_in >> entero;
+            hx.modificaTuS(entero);
+                archivo_in >> car;
+            h = hx;
+        //Secuencia para otros datos
+            archivo_in >> flotante;
+            magnitud = flotante;
+                archivo_in >> car;
+            archivo_in >> flotante;
+            latitud = flotante;
+                archivo_in >> car;
+            archivo_in >> flotante;
+            longitud = flotante;
+                archivo_in >> car;
+            archivo_in >> flotante;
+            profundidad = flotante;
+                archivo_in >> car;
+                archivo_in >> car;
+        //Leer cadena (referencia)
+            getline(archivo_in,dato,',');
+            getline(archivo_in,dato2,'"');
+            referenciaDeLocalizacion = dato + "," + dato2;
+            archivo_in >> car;
+        //Secuencia para leer fecha
+            archivo_in >> entero;
+            fx.modificaTuA(entero);
+                archivo_in >> car;
+            archivo_in >> entero;
+            fx.modificaTuM(entero);
+                archivo_in >> car;
+            archivo_in >> entero;
+            fx.modificaTuD(entero);
+                archivo_in >> car;
+            fUTC = fx;
+        //Secuencia para leer hora
+            archivo_in >> entero;
+            hx.modificaTuH(entero);
+                archivo_in >> car;
+            archivo_in >> entero;
+            hx.modificaTuM(entero);
+                archivo_in >> car;
+            archivo_in >> entero;
+            hx.modificaTuS(entero);
+                archivo_in >> car;
+            hUTC = hx;
+        //Secuencia para leer estatus
+            archivo_in >> cadena;
+            estatus = cadena;
+                archivo_in >> car;
 
-    archivo.close();
+    archivo_in.close();
 }
 #endif // REGISTRO_H
