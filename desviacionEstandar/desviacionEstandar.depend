@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1542071024 source:c:\users\angel\documents\github\estructurasybasesdedatos\desviacionestandar\main.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<iomanip>
+	<time.h>
+	<math.h>
+
