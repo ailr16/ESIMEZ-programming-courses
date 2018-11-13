@@ -7,8 +7,6 @@
 #define MAXLARGO 21
 using namespace std;
 
-using namespace std;
-
 int main()
 {
     int i, x;
@@ -34,7 +32,6 @@ int main()
     }
     archivo_out.close();
 
-
     ifstream archivo_in;
     archivo_in.open(nombrearchivo);
     if(archivo_in.fail())
@@ -42,7 +39,6 @@ int main()
         cout<<"Error al abrir el archivo";
         exit(1);
     }
-
     int long desplazamiento, ultimo;
     archivo_in.seekg(0L, ios::beg);
     ultimo=archivo_in.tellg();
@@ -54,7 +50,5 @@ int main()
     media=suma/100;
     archivo_in.close();
     cout<<media;
-
-
     return 0;
 }
