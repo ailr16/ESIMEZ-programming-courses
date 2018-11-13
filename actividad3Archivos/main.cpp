@@ -50,5 +50,31 @@ int main()
     media=suma/100;
     archivo_in.close();
     cout<<media;
+
+    ofstream archivo_out2;
+    char nombrearchivo2[MAXLARGO] = "mayoresMedia.txt";
+    archivo_out2.open(nombrearchivo2);
+    if(archivo_out2.fail()){
+        cout << "El archivo no se abrio con exito";
+        exit(1);
+    }
+    cout << setiosflags(ios::fixed)
+         << setiosflags(ios::showpoint)
+         << setprecision(4);
+
+    archivo_in.open(nombrearchivo);
+    if(archivo_in.fail()){
+        cout<<"El archivo no se abrio con exito";
+        exit(1);
+    }
+    archivo_in.seekg(0L, ios::beg);
+    while(!archivo_in.eof()){
+        archivo_in >> x;
+        if(x>media)
+            archivo_out2<<x<<endl;
+    }
+
+    archivo_in.close();
+    archivo_out2.close();
     return 0;
 }
