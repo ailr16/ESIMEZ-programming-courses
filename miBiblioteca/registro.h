@@ -165,9 +165,10 @@ void Registro::leeDatos(void){
                 archivo_in >> car;
                 archivo_in >> car;
         //Leer cadena (referencia)
-            getline(archivo_in,dato,',');
+            //getline(archivo_in,dato,',');
             getline(archivo_in,dato2,'"');
-            referenciaDeLocalizacion = dato + "," + dato2;
+            //referenciaDeLocalizacion = dato + "," + dato2;
+            referenciaDeLocalizacion = dato2;
             archivo_in >> car;
         //Secuencia para leer fecha
             archivo_in >> entero;

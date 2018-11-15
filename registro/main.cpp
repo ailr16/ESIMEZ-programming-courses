@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-    Registro A,B,C[4];
+    Registro A,B;
 
     A.leeDatos();
     A.muestraTusDatos();
