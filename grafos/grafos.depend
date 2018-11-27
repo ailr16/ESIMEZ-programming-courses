@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
-1542926917 source:c:\users\angel\documents\github\estructurasybasesdedatos\grafos\main.cpp
+1543297127 source:c:\users\angel\documents\github\estructurasybasesdedatos\grafos\main.cpp
 	<iostream>
-	"stdlib.h"
+	<stdlib.h>
 
 1543294748 source:f:\estructurasybasesdedatos-master\grafos\main.cpp
 	<iostream>

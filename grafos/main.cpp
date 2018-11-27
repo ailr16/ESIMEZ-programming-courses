@@ -50,7 +50,7 @@ int main()
     //Genera matriz Q de recorridos
     for(i=0; i<m; i++){
         for(j=0; j<m; j++){
-            if(W[i][j] != 0){
+            if(Q[i][j] < 2147483647){
                 if(i == 0)
                     Qrec[i][j] = Qrec[i][j] + "R";
                 if(i == 1)
@@ -59,15 +59,19 @@ int main()
                     Qrec[i][j] = Qrec[i][j] + "T";
                 if(i == 3)
                     Qrec[i][j] = Qrec[i][j] + "U";
+                if(j == 0)
+                    Qrec[i][j] = Qrec[i][j] + "R";
+                if(j == 1)
+                    Qrec[i][j] = Qrec[i][j] + "S";
+                if(j == 2)
+                    Qrec[i][j] = Qrec[i][j] + "T";
+                if(j == 3)
+                    Qrec[i][j] = Qrec[i][j] + "U";
             }
             else
                 Qrec[i][j] = Qrec[i][j] + "";
         }
     }
-
-    //Imprime matriz Q de recorridos
-    cout << endl << "Matriz Q de recorridos:" << endl;
-    imprimeMatrizStr(Qrec,m);
 
     //Imprime matriz Q
     cout << endl << endl << "Matriz Q_0=" << endl;
@@ -76,14 +80,16 @@ int main()
     //Comparaciones
     for(k=0; k<m; k++){
         for(i=0; i<m; i++){
-            for(j=0; j<m; j++){
-                if(min(Q[i][j], Q[i][k]+Q[k][j]) )
+            for(j=0; j<m; j++)
                 Q[i][j] = min(Q[i][j], Q[i][k]+Q[k][j]);
-            }
         }
         cout << endl << "Matriz Q_" << k+1 << "=" << endl;
             imprimeMatriz(Q,m);
     }
+
+    //Imprime matriz Q de recorridos
+        cout << endl << "Matriz Q de recorridos:" << endl;
+        imprimeMatrizStr(Qrec,m);
 
 }
 
@@ -112,7 +118,10 @@ void imprimeMatriz(unsigned int W[MAXF][MAXC], unsigned int m){
 void imprimeMatrizStr(string W[MAXF][MAXC], unsigned int m){
     for(unsigned int i=0; i<m; i++){
         for(unsigned int j=0; j<m; j++){
-            cout << "\t" << W[i][j] << "\t";
+            if(W[i][j] != "")
+                cout << "\t" << W[i][j] << "\t";
+            else
+                cout << "\t" << "-" << "\t";
         }
         cout << endl;
     }
