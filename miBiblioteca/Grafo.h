@@ -11,21 +11,24 @@ class Grafo
     private:
         int m;
         int **W;             //Matriz W
-        int **A;             //Matriz A
-        int **Q;            //Matriz Q
+        int **Q;             //Matriz Q
 
     public:
         Grafo(void);
         void pideleAlUsuarioTuMatriz(void);
         void muestraTuMatrizDePesos(void);
-        void generaMatrizA(void);
-        void muestraTuMatrizA(void);
+        void generaMatrizQ(void);
+        void muestraTuMatrizQ(void);
 };
 
 Grafo::Grafo(void){
     W = new int*[m];
     for(int i=0; i<m ; i++){
         W[i] = new int[m];
+    }
+    Q = new int*[m];
+    for(int i=0; i<m ; i++){
+        Q[i] = new int[m];
     }
 
 }
@@ -50,25 +53,33 @@ void Grafo::muestraTuMatrizDePesos(void){
         cout << endl;
     }
 }
-void Grafo::generaMatrizA(void){
-	int i,j;
-	for(i=0; i<m; i++){
-		for(j=0; j<m; j++){
-			if(*(*(W+i)+j) > 0)
-				*(*(A+i)+j) = 1;
-			else
-				*(*(A+i)+j) = 0;
-		}
-	}
-}
-void Grafo::muestraTuMatrizA(void){
-	int i,j;
+void Grafo::muestraTuMatrizQ(void){
+    int i,j;
     cout << endl << "Matriz A:" << endl;
     for(i=0; i<m; i++){
         for(j=0; j<m; j++)
-            cout << "\t" << *(*(A+i)+j);
+            cout << "\t" << *(*(Q+i)+j);
         cout << endl;
     }
 }
+void Grafo::generaMatrizQ(void){
+	int i,j,k;
+	for(i=0;i<m;i++){
+        for(j=0;j<m;j++){
+            if((*(*(W+i)+j)) == 0)
+                (*(*(Q+i)+j)) = INF;
+            else
+                (*(*(Q+i)+j)) = (*(*(W+i)+j));
+        }
+	}
+	for(k=0; k<m; k++){
+		for(i=0; i<m; i++){
+            for(j=0; j<m; j++){
+                (*(*(Q+i)+j)) = min((*(*(Q+i)+j)),(*(*(Q+i)+k))+(*(*(Q+k)+j)));
+            }
+		}
+	}
+}
+
 
 #endif // GRAFO_H
