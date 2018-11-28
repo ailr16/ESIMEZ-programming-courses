@@ -27,12 +27,13 @@ int main()
     imprimeMatriz(W,m);
     generaMatrizQ(W,Q,m);
     generaMatrizA(W,A,m);
+    generaMatrizQR(A,QR,m);
     cout << "Matriz Q_0=";
     imprimeMatriz(Q,m);
     cout << "Matriz A_0=";
     imprimeMatriz(A,m);
-    comparaElementos(Q,A,QR,m);
-    cout << "Matriz QR=";
+    cout << "Matriz QR_0=";
     imprimeMatrizCadena(QR,m);
+    comparaElementos(Q,A,QR,m);
     return 0;
 }

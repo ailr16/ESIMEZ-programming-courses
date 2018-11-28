@@ -52,6 +52,9 @@ void imprimeMatrizCadena(string QR[MF][MC], int m){
     cout << endl;
     for(int i=0; i<m; i++){
         for(int j=0; j<m; j++){
+            if(QR[i][j] == "")
+                cout << "\t-";
+            else
             cout << "\t" << QR[i][j];
         }
         cout << endl;
@@ -84,22 +87,54 @@ void generaMatrizQR(int A[MF][MC], string QR[MF][MC], int m){
     for(int i=0; i<m; i++){
         for(int j=0; j<m; j++){
             if(A[i][j] == 1){
-                if(i == 0 || j == 0)
+                if(i == 0){
                     QR[i][j] += "R";
-                else
+                }
+                else{
                     QR[i][j] += "";
-                if(i == 1 || j == 1)
+                }
+                if(i == 1){
                     QR[i][j] += "S";
-                else
+                }
+                else{
                     QR[i][j] += "";
-                if(i == 2 || j == 2)
+                }
+                if(i == 2){
                     QR[i][j] += "T";
-                else
+                }
+                else{
                     QR[i][j] += "";
-                if(i == 3 || j == 3)
+                }
+                if(i == 3){
                     QR[i][j] += "U";
-                else
+                }
+                else{
                     QR[i][j] += "";
+                }
+                if(j == 0){
+                    QR[i][j] += "R";
+                }
+                else{
+                    QR[i][j] += "";
+                }
+                if(j == 1){
+                    QR[i][j] += "S";
+                }
+                else{
+                    QR[i][j] += "";
+                }
+                if(j == 2){
+                    QR[i][j] += "T";
+                }
+                else{
+                    QR[i][j] += "";
+                }
+                if(j == 3){
+                    QR[i][j] += "U";
+                }
+                else{
+                    QR[i][j] += "";
+                }
             }
             else{
                 if(i == 0 || j == 0)
@@ -127,5 +162,7 @@ void comparaElementos(int Q[MF][MC], int A[MF][MC], string QR[MF][MC], int m){
         imprimeMatriz(Q,m);
         cout << endl << "Matriz A_" << k+1 << "=";
         imprimeMatriz(A,m);
+        cout << endl << "Matriz QR_" << k+1 << "=";
+        imprimeMatrizCadena(QR,m);
     }
 }
