@@ -1,9 +1,16 @@
 #include <iostream>
+#include "Grafo.h"
+#include <stdlib.h>
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    Grafo A;
+    A.pideleAlUsuarioTuMatriz();
+    system("cls");
+    A.muestraTuMatrizDePesos();
+
+
     return 0;
 }

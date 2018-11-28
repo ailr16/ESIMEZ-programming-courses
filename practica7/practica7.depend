@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1543431238 source:c:\users\angel\documents\github\estructurasybasesdedatos\practica7\main.cpp
+	<iostream>
+	"Grafo.h"
+	<stdlib.h>
+
