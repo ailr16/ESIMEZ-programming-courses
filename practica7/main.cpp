@@ -23,6 +23,7 @@ int main()
     imprimeMatriz(W,m);
     generaMatrizQ(W,Q,m);
     cout << "Matriz Q=";
+    comparaElementos(Q,A,m);
     imprimeMatriz(Q,m);
     return 0;
 }

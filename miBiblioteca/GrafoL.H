@@ -6,19 +6,14 @@
 
 using namespace std;
 
-/*
-    Prototipos
-                */
 
 void leeMatriz(int[MF][MC], int m);                 // leeMatriz(mat en la que se guardara, num elementos)
 void imprimeMatriz(int[MF][MC],int m);              // imprimeMatriz(mat a imprimir, num elementos)
-//void generaMatrizA(int[MF][MC], int[MF][MC] int m); // generaMatrizA(mat a "leer", mat adyacencia donde se guardara, num elementos)
+void generaMatrizA(int[MF][MC], int[MF][MC], int m); // generaMatrizA(mat a "leer", mat adyacencia donde se guardara, num elementos)
 void generaMatrizQ(int[MF][MC], int[MF][MC], int m);    //generaMatrizQ(mat a "leer", mat donde se guardara, num elementos)
-void comparaElementos(int[MF][MC], int m);          // comparaElementos(mat a "leer", num elementos)
+void comparaElementos(int[MF][MC], int[MF][MC], int m);          // comparaElementos(mat a "leer", mat adyacencia, num elementos)
 
-/*
-    Implementaciones
-                        */
+/*  Implementaciones    */
 
 void leeMatriz(int W[MF][MC], int m){
     for(int i=0; i<m; i++){
@@ -53,6 +48,22 @@ void generaMatrizQ(int W[MF][MC], int Q[MF][MC], int m){
     }
 }
 
-void comparaElementos(int Q[MF][MC], int m){
+void generaMatrizA(int Q[MF][MC], int A[MF][MC], int m){
+    for(int i=0; i<m; i++){
+        for(int j=0; j<m; j++){
+            if(Q[i][j] >= INF || Q[i][j] == 0)
+                A[i][j] = 0;
+            else
+                A[i][j] = 1;
+        }
+    }
+}
 
+void comparaElementos(int Q[MF][MC], int A[MF][MC], int m){
+    for(int k=0; k<m; k++){
+        for(int i=0; i<m; i++){
+            for(int j=0; j<m; j++)
+                Q[i][j] = min(Q[i][j], Q[i][k]+Q[k][j]);
+        }
+    }
 }
