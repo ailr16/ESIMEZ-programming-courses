@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1543452324 source:c:\users\angel\documents\github\estructurasybasesdedatos\grafos2\grafos.cpp
+	"Grafos.hpp"
+
+1543458466 c:\users\angel\documents\github\estructurasybasesdedatos\grafos2\grafos.hpp
+	<stdio.h>
+	<iostream>
+
+1543458380 source:c:\users\angel\documents\github\estructurasybasesdedatos\grafos2\main.cpp
+	<iostream>
+	"Grafos.hpp"
+	<stdlib.h>
+
