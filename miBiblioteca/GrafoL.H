@@ -6,6 +6,9 @@
 
 using namespace std;
 
+string str1, str2;
+int tam;
+char c = 82, c2;
 
 void leeMatriz(int[MF][MC], int m);                 // leeMatriz(mat en la que se guardara, num elementos)
 void imprimeMatriz(int[MF][MC],int m);              // imprimeMatriz(mat a imprimir, num elementos)
@@ -14,7 +17,9 @@ void generaMatrizA(int[MF][MC], int[MF][MC], int m); // generaMatrizA(mat a "lee
 void generaMatrizQ(int[MF][MC], int[MF][MC], int m);    //generaMatrizQ(mat a "leer", mat donde se guardara, num elementos)
 void comparaElementos(int[MF][MC], int[MF][MC], string[MF][MC], int m);          // comparaElementos(mat a "leer", mat adyacencia, mat string, num elementos)
 void generaMatrizQR(int[MF][MC], string[MF][MC], int m);            // generaMatrizQR(mat adyacencia a "leer", mat donde se guardara num elementos)
-void inicializaMatrizQR(string[MF][MC], int m);
+void generaMatrizQR0(int[MF][MC], string[MF][MC], int m);
+void inicializaMatrizQR(string[MF][MC], int m);     //inicializaMatrizQR(mat string, num elementos)
+char leeUltimoCaracter(string);
 
 /*  Implementaciones    */
 
@@ -84,67 +89,48 @@ void generaMatrizA(int Q[MF][MC], int A[MF][MC], int m){
 }
 
 void generaMatrizQR(int A[MF][MC], string QR[MF][MC], int m){
+    //for(int k=0; k<m; k++){
+        for(int i=0; i<m; i++){
+            for(int j=0; j<m; j++){
+                if(A[i][j]){
+                    str1 = QR[i][j];
+                    c2 = str1[str1.size()-1];
+                    if(c2 != c)
+                        QR[i][j] += (c+i);
+                }
+            //}
+        }
+    }
+}
+
+void generaMatrizQR0(int A[MF][MC], string QR[MF][MC], int m){
     for(int i=0; i<m; i++){
         for(int j=0; j<m; j++){
             if(A[i][j] == 1){
                 if(i == 0){
-                    QR[i][j] += "R";
-                }
-                else{
-                    QR[i][j] += "";
+                    QR[i][j] += (c+i);
                 }
                 if(i == 1){
-                    QR[i][j] += "S";
-                }
-                else{
-                    QR[i][j] += "";
+                    QR[i][j] += (c+i);
                 }
                 if(i == 2){
-                    QR[i][j] += "T";
-                }
-                else{
-                    QR[i][j] += "";
+                    QR[i][j] += (c+i);
                 }
                 if(i == 3){
-                    QR[i][j] += "U";
-                }
-                else{
-                    QR[i][j] += "";
+                    QR[i][j] += (c+i);
                 }
                 if(j == 0){
-                    QR[i][j] += "R";
-                }
-                else{
-                    QR[i][j] += "";
+                    QR[i][j] += (c+j);
                 }
                 if(j == 1){
-                    QR[i][j] += "S";
-                }
-                else{
-                    QR[i][j] += "";
+                    QR[i][j] += (c+j);
                 }
                 if(j == 2){
-                    QR[i][j] += "T";
-                }
-                else{
-                    QR[i][j] += "";
+                    QR[i][j] += (c+j);
                 }
                 if(j == 3){
-                    QR[i][j] += "U";
+                    QR[i][j] += (c+j);
                 }
-                else{
-                    QR[i][j] += "";
-                }
-            }
-            else{
-                if(i == 0 || j == 0)
-                    QR[i][j] += "";
-                if(i == 1 || j == 1)
-                    QR[i][j] += "";
-                if(i == 2 || j == 2)
-                    QR[i][j] += "";
-                if(i == 3 || j == 3)
-                    QR[i][j] += "";
             }
         }
     }

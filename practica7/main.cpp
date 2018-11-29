@@ -16,6 +16,11 @@ int main()
 
     string QR[MF][MC];
 
+    /*string str1 = "perro", str2;
+    char c;
+    c = str1.at(str1.size()-2);
+    cout << c;
+    */
 
     cout << "Ingresa la dimension de la matriz de pesos (mxm)= ";
     cin >> m;
@@ -27,7 +32,7 @@ int main()
     imprimeMatriz(W,m);
     generaMatrizQ(W,Q,m);
     generaMatrizA(W,A,m);
-    generaMatrizQR(A,QR,m);
+    generaMatrizQR0(A,QR,m);
     cout << "Matriz Q_0=";
     imprimeMatriz(Q,m);
     cout << "Matriz A_0=";
@@ -35,5 +40,6 @@ int main()
     cout << "Matriz QR_0=";
     imprimeMatrizCadena(QR,m);
     comparaElementos(Q,A,QR,m);
+
     return 0;
 }
