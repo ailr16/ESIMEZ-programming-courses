@@ -31,6 +31,8 @@ class Grafo
 void Grafo::muestraTuDatos(void){
     generaMatrizQ0();
     imprimeMatrizW();
+    cout << endl << "Matriz Q_0=";
+    imprimeMatrizQ();
     optimizaRecorrido();
     compruebaTusDatos();
     cout << endl << "Matriz QR=";
@@ -78,10 +80,10 @@ void Grafo::compruebaTusDatos(void){
             for(k=0; k<=tam-1; k++){
                 a = QR[i][j].substr(k,1);
                 if( i==j && tam==2)
-                    a2 = a2 + a;
+                    a2 += a;
                 else{
                     if(a != a1)
-                    a2 = a2+a;
+                    a2 +=a;
                 }
                 a1 = a;
             }
@@ -116,7 +118,7 @@ void Grafo::generaMatrizQ0(void){
                 QR[i][j] = "}";
             else{
                 if(i == j)
-                    QR[i][j] = QR[j][i] + QR[i][j] ;
+                    QR[i][j] += QR[j][i];
                 else
                     QR[i][j] = c + QR[i][j] ;
             }
