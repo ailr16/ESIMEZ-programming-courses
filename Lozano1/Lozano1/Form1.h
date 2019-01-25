@@ -36,6 +36,11 @@ namespace CppCLR_WinformsProjekt {
 		}
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
+
+
+
+
+
 	protected:
 
 	private:
@@ -51,7 +56,6 @@ namespace CppCLR_WinformsProjekt {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Form1::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -59,43 +63,37 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			// label1
 			// 
-			this->label1->Location = System::Drawing::Point(5, 10);
+			this->label1->Location = System::Drawing::Point(12, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(189, 82);
+			this->label1->Size = System::Drawing::Size(263, 82);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Nombre: Lozano Ramírez Angel Iván\r\nBoleta: 2018\r\nGrupo: 4CM11\r\nEscuela: ESIME Zac"
-				L"atenco\r\nCarrera: ICE\r\nOtros:";
-			this->label1->Click += gcnew System::EventHandler(this, &Form1::label1_Click);
+			this->label1->Text = L"Nombre: Lozano Ramírez Angel Iván\r\nBoleta: 2018302071\r\nGrupo: 4CM11\r\nEscuela: ESI"
+				L"ME Zacatenco\r\nCarrera: Ingeniería en Comunicaciones y Electrónica\r\nOtros:";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(38, 95);
+			this->pictureBox1->ImageLocation = L"C:\\Users\\angel\\Documents\\GitHub\\AnalisisNumerico\\Lozano1\\MiAvatar2.png";
+			this->pictureBox1->Location = System::Drawing::Point(61, 94);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(100, 106);
+			this->pictureBox1->Size = System::Drawing::Size(160, 160);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 1;
 			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &Form1::pictureBox1_Click);
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(193, 213);
+			this->ClientSize = System::Drawing::Size(279, 266);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
 			this->Name = L"Form1";
-			this->Text = L"Form1";
+			this->Text = L"Practica C";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
-	private: System::Void pictureBox1_Click(System::Object^  sender, System::EventArgs^  e) {
-		
-		Close();
-	}
 	};
 }
