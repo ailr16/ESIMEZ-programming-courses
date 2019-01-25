@@ -63,7 +63,7 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			// label1
 			// 
-			this->label1->Location = System::Drawing::Point(12, 9);
+			this->label1->Location = System::Drawing::Point(2, 2);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(263, 82);
 			this->label1->TabIndex = 0;
@@ -74,7 +74,7 @@ namespace CppCLR_WinformsProjekt {
 			// pictureBox1
 			// 
 			this->pictureBox1->ImageLocation = L"C:\\Users\\angel\\Documents\\GitHub\\AnalisisNumerico\\Lozano1\\MiAvatar2.png";
-			this->pictureBox1->Location = System::Drawing::Point(61, 94);
+			this->pictureBox1->Location = System::Drawing::Point(51, 87);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(160, 160);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -85,9 +85,11 @@ namespace CppCLR_WinformsProjekt {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(279, 266);
+			this->ClientSize = System::Drawing::Size(269, 266);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->MaximizeBox = false;
 			this->Name = L"Form1";
 			this->Text = L"Practica C";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
