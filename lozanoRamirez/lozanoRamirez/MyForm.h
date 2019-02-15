@@ -67,15 +67,16 @@ namespace lozanoRamirez {
 			this->label1->Size = System::Drawing::Size(311, 90);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Nombre: Lozano Ramírez Angel Iván\r\nBoleta: 2018302071\r\nGrupo: 4CM11\r\nEscuela: ESI"
-				L"ME Zacatenco\r\nCarrera: Ingeniería en Comunicaciones y Electrónica\r\nOtros:";
+				L"ME Zacatenco\r\nCarrera: Ingeniería en Comunicaciones y Electrónica\r\nNumero de Lis"
+				L"ta: 16";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(104, 97);
+			this->pictureBox1->Location = System::Drawing::Point(107, 96);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(101, 113);
+			this->pictureBox1->Size = System::Drawing::Size(98, 113);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 1;
 			this->pictureBox1->TabStop = false;
@@ -88,7 +89,9 @@ namespace lozanoRamirez {
 			this->ClientSize = System::Drawing::Size(314, 216);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->Name = L"MyForm";
 			this->Text = L"Lozano Ramirez";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
