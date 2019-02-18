@@ -50,7 +50,7 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			 //Variables para tabular y graficar
 	private: double xi, xf, n, p, ti, tf;
 	private: double *x, *y;
-	private: int cf, ff, yi, yf, w, h;
+	private: int cf, ff, yi, yf, w, h, sel;
 	private: int *xn, *yn;
 
 
@@ -68,14 +68,20 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::TextBox^  cajaFuncion;
-	private: System::Windows::Forms::RadioButton^  seleccionPolar;
-	private: System::Windows::Forms::RadioButton^  seleccionRectangular;
+
+
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::TextBox^  cajaPolar;
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::TextBox^  cajaTf;
 	private: System::Windows::Forms::TextBox^  cajaTi;
+	private: System::Windows::Forms::RadioButton^  seleccionPolar;
+
+	private: System::Windows::Forms::RadioButton^  seleccionRectangular;
+
+
+
 
 
 	private:
@@ -93,6 +99,14 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->seleccionPolar = (gcnew System::Windows::Forms::RadioButton());
+			this->seleccionRectangular = (gcnew System::Windows::Forms::RadioButton());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->cajaTf = (gcnew System::Windows::Forms::TextBox());
+			this->cajaTi = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->cajaPolar = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->cajaFuncion = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -107,14 +121,6 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->tabla = (gcnew System::Windows::Forms::ListBox());
-			this->seleccionRectangular = (gcnew System::Windows::Forms::RadioButton());
-			this->seleccionPolar = (gcnew System::Windows::Forms::RadioButton());
-			this->cajaPolar = (gcnew System::Windows::Forms::TextBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->cajaTi = (gcnew System::Windows::Forms::TextBox());
-			this->cajaTf = (gcnew System::Windows::Forms::TextBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -123,14 +129,14 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->seleccionPolar);
+			this->groupBox1->Controls->Add(this->seleccionRectangular);
 			this->groupBox1->Controls->Add(this->label8);
 			this->groupBox1->Controls->Add(this->label7);
 			this->groupBox1->Controls->Add(this->cajaTf);
 			this->groupBox1->Controls->Add(this->cajaTi);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->cajaPolar);
-			this->groupBox1->Controls->Add(this->seleccionPolar);
-			this->groupBox1->Controls->Add(this->seleccionRectangular);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->cajaFuncion);
 			this->groupBox1->Controls->Add(this->label2);
@@ -140,6 +146,51 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			resources->ApplyResources(this->groupBox1, L"groupBox1");
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->TabStop = false;
+			// 
+			// seleccionPolar
+			// 
+			resources->ApplyResources(this->seleccionPolar, L"seleccionPolar");
+			this->seleccionPolar->Name = L"seleccionPolar";
+			this->seleccionPolar->TabStop = true;
+			this->seleccionPolar->UseVisualStyleBackColor = true;
+			// 
+			// seleccionRectangular
+			// 
+			resources->ApplyResources(this->seleccionRectangular, L"seleccionRectangular");
+			this->seleccionRectangular->Name = L"seleccionRectangular";
+			this->seleccionRectangular->TabStop = true;
+			this->seleccionRectangular->UseVisualStyleBackColor = true;
+			this->seleccionRectangular->CheckedChanged += gcnew System::EventHandler(this, &MyForm::seleccionRectangular_CheckedChanged);
+			// 
+			// label8
+			// 
+			resources->ApplyResources(this->label8, L"label8");
+			this->label8->Name = L"label8";
+			// 
+			// label7
+			// 
+			resources->ApplyResources(this->label7, L"label7");
+			this->label7->Name = L"label7";
+			// 
+			// cajaTf
+			// 
+			resources->ApplyResources(this->cajaTf, L"cajaTf");
+			this->cajaTf->Name = L"cajaTf";
+			// 
+			// cajaTi
+			// 
+			resources->ApplyResources(this->cajaTi, L"cajaTi");
+			this->cajaTi->Name = L"cajaTi";
+			// 
+			// label6
+			// 
+			resources->ApplyResources(this->label6, L"label6");
+			this->label6->Name = L"label6";
+			// 
+			// cajaPolar
+			// 
+			resources->ApplyResources(this->cajaPolar, L"cajaPolar");
+			this->cajaPolar->Name = L"cajaPolar";
 			// 
 			// label3
 			// 
@@ -227,50 +278,6 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			resources->ApplyResources(this->tabla, L"tabla");
 			this->tabla->Name = L"tabla";
 			// 
-			// seleccionRectangular
-			// 
-			resources->ApplyResources(this->seleccionRectangular, L"seleccionRectangular");
-			this->seleccionRectangular->Name = L"seleccionRectangular";
-			this->seleccionRectangular->TabStop = true;
-			this->seleccionRectangular->UseVisualStyleBackColor = true;
-			// 
-			// seleccionPolar
-			// 
-			resources->ApplyResources(this->seleccionPolar, L"seleccionPolar");
-			this->seleccionPolar->Name = L"seleccionPolar";
-			this->seleccionPolar->TabStop = true;
-			this->seleccionPolar->UseVisualStyleBackColor = true;
-			// 
-			// cajaPolar
-			// 
-			resources->ApplyResources(this->cajaPolar, L"cajaPolar");
-			this->cajaPolar->Name = L"cajaPolar";
-			// 
-			// label6
-			// 
-			resources->ApplyResources(this->label6, L"label6");
-			this->label6->Name = L"label6";
-			// 
-			// cajaTi
-			// 
-			resources->ApplyResources(this->cajaTi, L"cajaTi");
-			this->cajaTi->Name = L"cajaTi";
-			// 
-			// cajaTf
-			// 
-			resources->ApplyResources(this->cajaTf, L"cajaTf");
-			this->cajaTf->Name = L"cajaTf";
-			// 
-			// label7
-			// 
-			resources->ApplyResources(this->label7, L"label7");
-			this->label7->Name = L"label7";
-			// 
-			// label8
-			// 
-			resources->ApplyResources(this->label8, L"label8");
-			this->label8->Name = L"label8";
-			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
@@ -300,11 +307,15 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 		cajaXi->Text = "";
 		cajaXf->Text = "";
 		cajaFuncion->Text = "";
+		cajaTi->Text = "";
+		cajaTf->Text = "";
+		cajaPolar->Text = "";
 		tabla->Items->Clear();
 
 		g->Clear(System::Drawing::Color::White);
 	}
 
+	
 	private: System::Void botonGraficar_Click(System::Object^  sender, System::EventArgs^  e) {
 		Graphics^ g;
 		g = pictureBox1->CreateGraphics();
@@ -321,49 +332,88 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 		double divisionHorizontal, divisionVertical;
 
 		try {
-			if (cajaXi->Text != "" && cajaXf->Text != "" && cajaFuncion->Text != "") {
-				n = cf - ci;
-				GraficadorFx obj(n);
-				xi = Convert::ToDouble(cajaXi->Text);
-				xf = Convert::ToDouble(cajaXf->Text);
-				//ti = Convert::ToDouble(cajaTi->Text);
-				//tf = Convert::ToDouble(cajaTf->Text);
+			if (sel == 1) {
+				if (cajaXi->Text != "" && cajaXf->Text != "" && cajaFuncion->Text != "") {
+					n = cf - ci;
+					GraficadorFx obj(n);
+					xi = Convert::ToDouble(cajaXi->Text);
+					xf = Convert::ToDouble(cajaXf->Text);
 
+					obj.GraficaXY(xi, xf, cf, ff, cajaFuncion->Text);
+					int j = 1;
+					for (int k = 0; k < n - 1; k++) {
+						tabla->Items->Add("x= " + obj.X[k] + "\ty= " + obj.Y[k]);
+						g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
+						j++;
+					}
 
-				obj.GraficaXY(xi, xf, cf, ff, cajaFuncion->Text);
-				int j = 1;
-				for (int k = 0; k < n - 1; k++) {
-					tabla->Items->Add("x= " + obj.X[k] + "\ty= " + obj.Y[k]);
-					g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
-					j++;
+					divisionVertical = (int)(cf / abs(xf - xi));
+					divisionHorizontal = (int)(ff / abs(obj.yf - obj.yi));
+
+					if ((obj.Fun(xi)*obj.Fun(xf) < 0) || (obj.yi <= 0 && obj.yf >= 0)) {
+						obj.y0 = 0;
+						obj.f0 = obj.Fil(obj.y0);
+						g->DrawLine(plumaNegra, 0, obj.f0, cf, obj.f0);
+					}
+					if (xi <= 0 && xf >= 0) {
+						obj.x0 = 0;
+						obj.c0 = obj.Col(obj.x0);
+						g->DrawLine(plumaNegra, obj.c0, 0, obj.c0, ff);
+					}
+					for (int k = 0; k < cf; k += divisionVertical) g->DrawLine(plumaGris, k, 0, k, ff);
+					for (int k = 0; k < ff; k += divisionHorizontal) g->DrawLine(plumaGris, 0, k, cf, k);
 				}
-
-				divisionVertical = (int)(cf / abs(xf - xi));
-				divisionHorizontal = (int)(ff / abs(obj.yf - obj.yi));
-
-				if ((obj.Fun(xi)*obj.Fun(xf) < 0) || (obj.yi <= 0 && obj.yf >= 0)) {
-					obj.y0 = 0;
-					obj.f0 = obj.Fil(obj.y0);
-					g->DrawLine(plumaNegra, 0, obj.f0, cf, obj.f0);
-				}
-				if (xi <= 0 && xf >= 0) {
-					obj.x0 = 0;
-					obj.c0 = obj.Col(obj.x0);
-					g->DrawLine(plumaNegra, obj.c0, 0, obj.c0, ff);
-				}
-				for (int k = 0; k < cf; k += divisionVertical) g->DrawLine(plumaGris, k, 0, k, ff);
-				for (int k = 0; k < ff; k += divisionHorizontal) g->DrawLine(plumaGris, 0, k, cf, k);
+				else tabla->Items->Add("Error");
 			}
-			else tabla->Items->Add("Error");
+
+			if (sel == 2) {
+				if (cajaTi->Text != "" && cajaTf->Text != "" && cajaPolar->Text != "") {
+					n = cf - ci;
+					GraficadorFx obj(n);
+					ti = Convert::ToDouble(cajaTi->Text);
+					tf = Convert::ToDouble(cajaTf->Text);
+
+					obj.GraficaPolar(ti, tf, cf, ff, cajaPolar->Text);
+					int j = 1;
+					for (int k = 0; k < n - 1; k++) {
+						tabla->Items->Add("t= " + obj.T[k] + "\tr= " + obj.R[k]);
+						g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
+						j++;
+					}
+				}
+				else tabla->Items->Add("Error");
+			}				
 		}
 		catch (FormatException^ e) {
 			tabla->Items->Add("Error");
 		}
-		
 	}
+
 	private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 		Graphics^ g = e->Graphics;
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
 	}
+
+private: System::Void seleccionRectangular_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (seleccionRectangular->Checked) {
+		cajaPolar->Enabled = false;
+		cajaTi->Enabled = false;
+		cajaTf->Enabled = false;
+		cajaFuncion->Enabled = !false;
+		cajaXi->Enabled = !false;
+		cajaXf->Enabled = !false;
+		sel = 1;
+
+	}
+	if (seleccionPolar->Checked) {
+		cajaFuncion->Enabled = false;
+		cajaXi->Enabled = false;
+		cajaXf->Enabled = false;
+		cajaPolar->Enabled = !false;
+		cajaTi->Enabled = !false;
+		cajaTf->Enabled = !false;
+		sel = 2;
+	}
+}
 };
 }
