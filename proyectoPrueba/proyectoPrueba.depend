@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1549736825 source:c:\users\angel\documents\github\analisisnumerico\proyectoprueba\main.cpp
+	<iostream>
+	<stdio.h>
+	"claseApuntadores.h"
+

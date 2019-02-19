@@ -4,6 +4,7 @@
 #include "pch.h"
 #include <iostream>
 #include "lozano.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -11,6 +12,6 @@ int main()
 {
 	Practica1 A;
 	A.Nombre();
-	cout << "Hello World!\n";
+	system("pause");
 	return 0;
 }

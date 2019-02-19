@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="botonInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 311</value>
+  </data>
+  <data name="botonInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 23</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="botonInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="botonInfo.Text" xml:space="preserve">
+    <value>Informacion</value>
+  </data>
+  <data name="&gt;&gt;botonInfo.Name" xml:space="preserve">
+    <value>botonInfo</value>
+  </data>
+  <data name="&gt;&gt;botonInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;botonInfo.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;botonInfo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="seleccionPolar.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="seleccionPolar.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 150</value>
   </data>
@@ -144,7 +168,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;seleccionPolar.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="seleccionRectangular.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -171,7 +195,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;seleccionRectangular.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -198,7 +222,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -225,7 +249,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="cajaTf.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 200</value>
@@ -246,7 +270,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cajaTf.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="cajaTi.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 173</value>
@@ -267,7 +291,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cajaTi.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -298,7 +322,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="cajaPolar.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 226</value>
@@ -319,7 +343,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cajaPolar.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -346,7 +370,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="cajaFuncion.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 105</value>
@@ -367,7 +391,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cajaFuncion.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -394,7 +418,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -421,7 +445,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="cajaXf.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 78</value>
@@ -442,7 +466,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cajaXf.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="cajaXi.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 51</value>
@@ -463,7 +487,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cajaXi.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 13</value>

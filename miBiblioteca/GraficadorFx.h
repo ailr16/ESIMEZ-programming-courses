@@ -7,12 +7,13 @@ using info::lundin::math::ExpressionParser;
 
 class GraficadorFx {
 	private:
-		double xi, xf, x, y, t, r;
+		double x, y, t, r;
 		int c, f, n;
 
 	public:
-		double yi, yf, y0, x0, ti, tf;
+		double yi, yf, xi, xf, y0, x0, ti, tf;
 		double *Y, *X;
+		double *R, *T;
 		int ci = 1, cf, fi, ff, f0, c0;
 		int *C;
 		int *F;
@@ -23,6 +24,8 @@ class GraficadorFx {
 			delete F;
 			delete Y;
 			delete X;
+			delete R;
+			delete T;
 		}
 	public:
 		GraficadorFx(int n) {
@@ -31,6 +34,8 @@ class GraficadorFx {
 			F = new int[n];
 			Y = new double[n];
 			X = new double[n];
+			R = new double[n];
+			T = new double[n];
 		}
 		~GraficadorFx() {
 			liberarMemoria();
@@ -51,6 +56,10 @@ class GraficadorFx {
 			ExpressionParser^ par = gcnew ExpressionParser();
 			par->Values->Add("x", x);
 			return par->Parse(fn);
+		}
+		double FunT(double t) {
+			r = 3;				//Funcion
+			return r;
 		}
 		double FunT(double t, System::String^ fn) {
 			ExpressionParser^ par = gcnew ExpressionParser();
@@ -113,24 +122,30 @@ class GraficadorFx {
 				F[k] = Fil(Y[k]);
 			}
 		}
-		void GraficaPolar(double ti, double tf, System::String^ fn){
+		void GraficaPolar(double ti, double tf, int cf, int ff){
 			this->ti = ti;
 			this->tf = tf;
+			this->cf = cf;
+			this->ff = ff;
 			double h = (tf - ti) / n;
 			for (int k = 0; k < n; k++) {
 				t = ti + k * h;
-				r = FunT(t, fn);
-				x = r * cos(t);
-				y = r * sin(t);
-				X[k] = x;
-				Y[k] = y;
+				r = FunT(t);
+				T[k] = t;
+				R[k] = r;
+				X[k] = r * cos(t);
+				Y[k] = r * sin(t);
 			}
 
-			yi = 0;
+			yi = Y[0];
+			xi = X[0];
 			yf = Y[0];
+			xf = X[0];
 			for (int k = 0; k < n; k++) {
-				if (Y[k] > yi) yi = Y[k];
-				if (Y[k] < yf) yf = Y[k];
+				if (Y[k] < yi) yi = Y[k];
+				if (Y[k] > yf) yf = Y[k];
+				if (X[k] < xi) xi = X[k];
+				if (X[k] > yf) xf = X[k];
 			}
 
 			for (int k = 0; k < n; k++) {
@@ -138,5 +153,35 @@ class GraficadorFx {
 				F[k] = Fil(Y[k]);
 			}
 		}
+		void GraficaPolar(double ti, double tf, int cf, int ff, System::String^ fn) {
+			this->ti = ti;
+			this->tf = tf;
+			this->cf = cf;
+			this->ff = ff;
+			double h = (tf - ti) / n;
+			for (int k = 0; k < n; k++) {
+				t = ti + k * h;
+				r = FunT(t, fn);
+				T[k] = t;
+				R[k] = r;
+				X[k] = r * cos(t);
+				Y[k] = r * sin(t);
+			}
 
+			yi = Y[0];
+			xi = X[0];
+			yf = Y[0];
+			xf = X[0];
+			for (int k = 0; k < n; k++) {
+				if (Y[k] < yi) yi = Y[k];
+				if (Y[k] > yf) yf = Y[k];
+				if (X[k] < xi) xi = X[k];
+				if (X[k] > yf) xf = X[k];
+			}
+
+			for (int k = 0; k < n; k++) {
+				C[k] = Col(X[k]);
+				F[k] = Fil(Y[k]);
+			}
+		}
 };

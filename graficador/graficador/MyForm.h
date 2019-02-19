@@ -79,6 +79,7 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::RadioButton^  seleccionPolar;
 
 	private: System::Windows::Forms::RadioButton^  seleccionRectangular;
+	private: System::Windows::Forms::Button^  botonInfo;
 
 
 
@@ -121,6 +122,7 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->tabla = (gcnew System::Windows::Forms::ListBox());
+			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -129,6 +131,7 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->botonInfo);
 			this->groupBox1->Controls->Add(this->seleccionPolar);
 			this->groupBox1->Controls->Add(this->seleccionRectangular);
 			this->groupBox1->Controls->Add(this->label8);
@@ -278,6 +281,13 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			resources->ApplyResources(this->tabla, L"tabla");
 			this->tabla->Name = L"tabla";
 			// 
+			// botonInfo
+			// 
+			resources->ApplyResources(this->botonInfo, L"botonInfo");
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
+			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
@@ -414,6 +424,9 @@ private: System::Void seleccionRectangular_CheckedChanged(System::Object^  sende
 		cajaTf->Enabled = !false;
 		sel = 2;
 	}
+}
+private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
+	System::Diagnostics::Process::Start("lozanoRamirez.exe");
 }
 };
 }

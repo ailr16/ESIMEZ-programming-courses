@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1548802288 source:c:\users\angel\documents\github\analisisnumerico\pruebastruncamiento\main.cpp
+	<iostream>
+	<stdio.h>
+
