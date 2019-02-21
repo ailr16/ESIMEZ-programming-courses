@@ -100,6 +100,7 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->seleccionPolar = (gcnew System::Windows::Forms::RadioButton());
 			this->seleccionRectangular = (gcnew System::Windows::Forms::RadioButton());
 			this->label8 = (gcnew System::Windows::Forms::Label());
@@ -122,7 +123,6 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->tabla = (gcnew System::Windows::Forms::ListBox());
-			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -149,6 +149,13 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			resources->ApplyResources(this->groupBox1, L"groupBox1");
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->TabStop = false;
+			// 
+			// botonInfo
+			// 
+			resources->ApplyResources(this->botonInfo, L"botonInfo");
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
 			// 
 			// seleccionPolar
 			// 
@@ -281,13 +288,6 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 			resources->ApplyResources(this->tabla, L"tabla");
 			this->tabla->Name = L"tabla";
 			// 
-			// botonInfo
-			// 
-			resources->ApplyResources(this->botonInfo, L"botonInfo");
-			this->botonInfo->Name = L"botonInfo";
-			this->botonInfo->UseVisualStyleBackColor = true;
-			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
-			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
@@ -370,8 +370,8 @@ namespace graficador {				//Cambiar CLRWindowsForms por nombre del proyecto
 						obj.c0 = obj.Col(obj.x0);
 						g->DrawLine(plumaNegra, obj.c0, 0, obj.c0, ff);
 					}
-					for (int k = 0; k < cf; k += divisionVertical) g->DrawLine(plumaGris, k, 0, k, ff);
-					for (int k = 0; k < ff; k += divisionHorizontal) g->DrawLine(plumaGris, 0, k, cf, k);
+					//for (int k = 0; k < cf; k += divisionVertical) g->DrawLine(plumaGris, k, 0, k, ff);
+					//for (int k = 0; k < ff; k += divisionHorizontal) g->DrawLine(plumaGris, 0, k, cf, k);
 				}
 				else tabla->Items->Add("Error");
 			}

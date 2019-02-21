@@ -126,7 +126,7 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="botonInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>11</value>
   </data>
   <data name="botonInfo.Text" xml:space="preserve">
     <value>Informacion</value>
@@ -153,7 +153,7 @@
     <value>107, 17</value>
   </data>
   <data name="seleccionPolar.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>5</value>
   </data>
   <data name="seleccionPolar.Text" xml:space="preserve">
     <value>Funcion polar g(t)</value>
@@ -180,7 +180,7 @@
     <value>136, 17</value>
   </data>
   <data name="seleccionRectangular.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>0</value>
   </data>
   <data name="seleccionRectangular.Text" xml:space="preserve">
     <value>Funcion rectangular f(x)</value>
@@ -258,7 +258,7 @@
     <value>139, 20</value>
   </data>
   <data name="cajaTf.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;cajaTf.Name" xml:space="preserve">
     <value>cajaTf</value>
@@ -279,7 +279,7 @@
     <value>139, 20</value>
   </data>
   <data name="cajaTi.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;cajaTi.Name" xml:space="preserve">
     <value>cajaTi</value>
@@ -379,7 +379,7 @@
     <value>139, 20</value>
   </data>
   <data name="cajaFuncion.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;cajaFuncion.Name" xml:space="preserve">
     <value>cajaFuncion</value>
@@ -454,7 +454,7 @@
     <value>139, 20</value>
   </data>
   <data name="cajaXf.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;cajaXf.Name" xml:space="preserve">
     <value>cajaXf</value>
@@ -475,7 +475,7 @@
     <value>139, 20</value>
   </data>
   <data name="cajaXi.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cajaXi.Name" xml:space="preserve">
     <value>cajaXi</value>
@@ -520,7 +520,7 @@
     <value>163, 49</value>
   </data>
   <data name="botonGraficar.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="botonGraficar.Text" xml:space="preserve">
     <value>Graficar</value>
@@ -544,7 +544,7 @@
     <value>162, 49</value>
   </data>
   <data name="botonLimpiar.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>10</value>
   </data>
   <data name="botonLimpiar.Text" xml:space="preserve">
     <value>Limpiar</value>
@@ -667,7 +667,7 @@
     <value>271, 290</value>
   </data>
   <data name="tabla.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>12</value>
   </data>
   <data name="&gt;&gt;tabla.Name" xml:space="preserve">
     <value>tabla</value>
