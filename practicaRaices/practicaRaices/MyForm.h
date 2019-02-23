@@ -49,14 +49,19 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::Button^  botonGraficar;
 	private: System::Windows::Forms::GroupBox^  groupBox3;
-	private: System::Windows::Forms::Label^  label5;
+
 	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::TextBox^  cajaResultado;
+
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::Button^  botonResolver;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::TextBox^  cajaIteraciones;
 	private: System::Windows::Forms::Button^  botonLimpiar;
+	private: System::Windows::Forms::Button^  botonReglaFalsa;
+	private: System::Windows::Forms::Button^  botonSecante;
+	private: System::Windows::Forms::Button^  botonTangente;
+	private: System::Windows::Forms::ListBox^  listaResultado;
+	private: System::Windows::Forms::Button^  botonInfo;
 
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -80,14 +85,17 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->cajaXf = (gcnew System::Windows::Forms::TextBox());
 			this->cajaXi = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->botonSecante = (gcnew System::Windows::Forms::Button());
+			this->botonTangente = (gcnew System::Windows::Forms::Button());
+			this->botonReglaFalsa = (gcnew System::Windows::Forms::Button());
+			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
 			this->botonResolver = (gcnew System::Windows::Forms::Button());
 			this->botonGraficar = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->listaResultado = (gcnew System::Windows::Forms::ListBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->cajaResultado = (gcnew System::Windows::Forms::TextBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
+			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -96,6 +104,7 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->botonInfo);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->cajaIteraciones);
 			this->groupBox1->Controls->Add(this->label3);
@@ -177,6 +186,9 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->botonSecante);
+			this->groupBox2->Controls->Add(this->botonTangente);
+			this->groupBox2->Controls->Add(this->botonReglaFalsa);
 			this->groupBox2->Controls->Add(this->botonLimpiar);
 			this->groupBox2->Controls->Add(this->botonResolver);
 			this->groupBox2->Controls->Add(this->botonGraficar);
@@ -186,6 +198,46 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
+			// 
+			// botonSecante
+			// 
+			this->botonSecante->Location = System::Drawing::Point(7, 138);
+			this->botonSecante->Name = L"botonSecante";
+			this->botonSecante->Size = System::Drawing::Size(164, 23);
+			this->botonSecante->TabIndex = 5;
+			this->botonSecante->Text = L"Resolver por Secante";
+			this->botonSecante->UseVisualStyleBackColor = true;
+			this->botonSecante->Click += gcnew System::EventHandler(this, &MyForm::botonSecante_Click);
+			// 
+			// botonTangente
+			// 
+			this->botonTangente->Location = System::Drawing::Point(6, 108);
+			this->botonTangente->Name = L"botonTangente";
+			this->botonTangente->Size = System::Drawing::Size(165, 23);
+			this->botonTangente->TabIndex = 4;
+			this->botonTangente->Text = L"Resolver por Tangente";
+			this->botonTangente->UseVisualStyleBackColor = true;
+			this->botonTangente->Click += gcnew System::EventHandler(this, &MyForm::botonTangente_Click);
+			// 
+			// botonReglaFalsa
+			// 
+			this->botonReglaFalsa->Location = System::Drawing::Point(6, 79);
+			this->botonReglaFalsa->Name = L"botonReglaFalsa";
+			this->botonReglaFalsa->Size = System::Drawing::Size(165, 23);
+			this->botonReglaFalsa->TabIndex = 3;
+			this->botonReglaFalsa->Text = L"Resolver por Regla Falsa";
+			this->botonReglaFalsa->UseVisualStyleBackColor = true;
+			this->botonReglaFalsa->Click += gcnew System::EventHandler(this, &MyForm::botonReglaFalsa_Click);
+			// 
+			// botonLimpiar
+			// 
+			this->botonLimpiar->Location = System::Drawing::Point(7, 288);
+			this->botonLimpiar->Name = L"botonLimpiar";
+			this->botonLimpiar->Size = System::Drawing::Size(164, 44);
+			this->botonLimpiar->TabIndex = 2;
+			this->botonLimpiar->Text = L"Limpiar";
+			this->botonLimpiar->UseVisualStyleBackColor = true;
+			this->botonLimpiar->Click += gcnew System::EventHandler(this, &MyForm::botonLimpiar_Click);
 			// 
 			// botonResolver
 			// 
@@ -209,9 +261,8 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox3
 			// 
-			this->groupBox3->Controls->Add(this->label5);
+			this->groupBox3->Controls->Add(this->listaResultado);
 			this->groupBox3->Controls->Add(this->label4);
-			this->groupBox3->Controls->Add(this->cajaResultado);
 			this->groupBox3->Controls->Add(this->pictureBox1);
 			this->groupBox3->Location = System::Drawing::Point(409, 13);
 			this->groupBox3->Name = L"groupBox3";
@@ -220,14 +271,13 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
 			// 
-			// label5
+			// listaResultado
 			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(334, 44);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(21, 13);
-			this->label5->TabIndex = 3;
-			this->label5->Text = L"x =";
+			this->listaResultado->FormattingEnabled = true;
+			this->listaResultado->Location = System::Drawing::Point(337, 39);
+			this->listaResultado->Name = L"listaResultado";
+			this->listaResultado->Size = System::Drawing::Size(155, 290);
+			this->listaResultado->TabIndex = 3;
 			// 
 			// label4
 			// 
@@ -238,14 +288,6 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->label4->TabIndex = 2;
 			this->label4->Text = L"Resultado";
 			// 
-			// cajaResultado
-			// 
-			this->cajaResultado->Enabled = false;
-			this->cajaResultado->Location = System::Drawing::Point(361, 41);
-			this->cajaResultado->Name = L"cajaResultado";
-			this->cajaResultado->Size = System::Drawing::Size(129, 20);
-			this->cajaResultado->TabIndex = 1;
-			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Location = System::Drawing::Point(6, 22);
@@ -255,15 +297,15 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBox1_Paint);
 			// 
-			// botonLimpiar
+			// botonInfo
 			// 
-			this->botonLimpiar->Location = System::Drawing::Point(7, 288);
-			this->botonLimpiar->Name = L"botonLimpiar";
-			this->botonLimpiar->Size = System::Drawing::Size(164, 44);
-			this->botonLimpiar->TabIndex = 2;
-			this->botonLimpiar->Text = L"Limpiar";
-			this->botonLimpiar->UseVisualStyleBackColor = true;
-			this->botonLimpiar->Click += gcnew System::EventHandler(this, &MyForm::botonLimpiar_Click);
+			this->botonInfo->Location = System::Drawing::Point(15, 306);
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->Size = System::Drawing::Size(179, 23);
+			this->botonInfo->TabIndex = 8;
+			this->botonInfo->Text = L"Informacion";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
 			// 
 			// MyForm
 			// 
@@ -327,7 +369,7 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			}
 		}
 		catch (FormatException^ e) {
-			cajaResultado->Text = "Error";
+			listaResultado->Items->Add("Error");
 		}
 	}
 	private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
@@ -350,10 +392,10 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 			senl obj(n);
 			obj.biseccion(xi, xf, 0.00001, xr, cajaFuncion->Text);
 
-			cajaResultado->Text = Convert::ToString(xr);
+			listaResultado->Items->Add(xr);
 		}
 		catch (FormatException^ e) {
-			cajaResultado->Text = "Error";
+			listaResultado->Items->Add("Error");
 		}
 	}
 	private: System::Void botonLimpiar_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -365,7 +407,52 @@ namespace CLRWindowsForms {				//Cambiar CLRWindowsForms por nombre del proyecto
 		cajaXf->Clear();
 		cajaFuncion->Clear();
 		cajaIteraciones->Clear();
-		cajaResultado->Clear();
+		listaResultado->Items->Clear();
+	}
+	private: System::Void botonReglaFalsa_Click(System::Object^  sender, System::EventArgs^  e) {
+		double xi, xf;
+		int n;
+		double xr = 0;
+
+		try {
+			xi = Convert::ToDouble(cajaXi->Text);
+			xf = Convert::ToDouble(cajaXf->Text);
+			n = Convert::ToDouble(cajaIteraciones->Text);
+
+			senl obj(n);
+			obj.reglaFalsa(xi, xf, 0.00001, xr, cajaFuncion->Text);
+
+			listaResultado->Items->Add(xr);
+		}
+		catch (FormatException^ e) {
+			listaResultado->Items->Add("Error");
+		}
+	}
+	private: System::Void botonSecante_Click(System::Object^  sender, System::EventArgs^  e) {
+		double xi, xf;
+		int n;
+		double xr = 0;
+
+		try {
+			xi = Convert::ToDouble(cajaXi->Text);
+			xf = Convert::ToDouble(cajaXf->Text);
+			n = Convert::ToDouble(cajaIteraciones->Text);
+
+			senl obj(n);
+			obj.reglaFalsa(xi, xf, 0.00001, xr, cajaFuncion->Text);
+
+			listaResultado->Items->Add(xr);
+		}
+		catch (FormatException^ e) {
+			listaResultado->Items->Add("Error");
+		}
+	}
+	private: System::Void botonTangente_Click(System::Object^  sender, System::EventArgs^  e) {
+		listaResultado->Items->Add("Algoritmo en desarrollo");
+		listaResultado->Items->Add("Trabajando en la derivada");
+	}
+	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
+		System::Diagnostics::Process::Start("lozanoRamirez.exe");
 	}
 };
 }

@@ -75,6 +75,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\angel\Documents\GitHub\AnalisisNumerico\practicaRaices\symbolic\src;C:\Users\angel\Documents\GitHub\AnalisisNumerico\practicaRaices\symbolic\include;C:\Users\angel\Documents\GitHub\AnalisisNumerico\practicaRaices\symbolic;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -139,6 +140,7 @@
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\symbolic\include\symbolicc++.h" />
     <ClInclude Include="GraficadorFx.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
