@@ -69,8 +69,8 @@ namespace practica2Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
 			this->botonGraficar = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->pictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->botonInfo = (gcnew System::Windows::Forms::Button());
+			this->pictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -146,15 +146,6 @@ namespace practica2Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
 			// 
-			// pictureBox
-			// 
-			this->pictureBox->Location = System::Drawing::Point(6, 19);
-			this->pictureBox->Name = L"pictureBox";
-			this->pictureBox->Size = System::Drawing::Size(490, 275);
-			this->pictureBox->TabIndex = 0;
-			this->pictureBox->TabStop = false;
-			this->pictureBox->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBox_Paint);
-			// 
 			// botonInfo
 			// 
 			this->botonInfo->Location = System::Drawing::Point(192, 301);
@@ -165,6 +156,15 @@ namespace practica2Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonInfo->UseVisualStyleBackColor = true;
 			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
 			// 
+			// pictureBox
+			// 
+			this->pictureBox->Location = System::Drawing::Point(6, 19);
+			this->pictureBox->Name = L"pictureBox";
+			this->pictureBox->Size = System::Drawing::Size(490, 275);
+			this->pictureBox->TabIndex = 0;
+			this->pictureBox->TabStop = false;
+			this->pictureBox->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBox_Paint);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -174,7 +174,7 @@ namespace practica2Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"practica2Num16";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -196,6 +196,7 @@ namespace practica2Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 		Pen^ plumaAzul = gcnew Pen(Color::DarkBlue, 1.0f);
 		Pen^ plumaGris = gcnew Pen(Color::Gray, 1.0f);
 		g->Clear(System::Drawing::Color::White);
+		cajaEntrada->Clear();
 	}
 	private: System::Void botonGraficar_Click(System::Object^  sender, System::EventArgs^  e) {
 		Graphics^ g;
@@ -224,7 +225,6 @@ namespace practica2Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			}
 		}
 		catch (FormatException^e) {
-
 		}
 
 	}
