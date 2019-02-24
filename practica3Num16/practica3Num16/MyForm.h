@@ -50,6 +50,8 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::TextBox^  cajaXi;
 	private: System::Windows::Forms::Button^  botonInfo;
 
+	private: System::Windows::Forms::ListBox^  tabla;
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -68,13 +70,14 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
 			this->botonGraficar = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->tabla = (gcnew System::Windows::Forms::ListBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->cajaXf = (gcnew System::Windows::Forms::TextBox());
 			this->cajaXi = (gcnew System::Windows::Forms::TextBox());
-			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -88,7 +91,7 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox2->Controls->Add(this->botonGraficar);
 			this->groupBox2->Location = System::Drawing::Point(360, 13);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(379, 67);
+			this->groupBox2->Size = System::Drawing::Size(586, 67);
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
@@ -96,7 +99,7 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(250, 23);
+			this->label1->Location = System::Drawing::Point(463, 23);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(117, 26);
 			this->label1->TabIndex = 2;
@@ -124,19 +127,28 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->tabla);
 			this->groupBox1->Controls->Add(this->pictureBox1);
 			this->groupBox1->Location = System::Drawing::Point(12, 86);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(733, 273);
+			this->groupBox1->Size = System::Drawing::Size(934, 273);
 			this->groupBox1->TabIndex = 2;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Salida";
+			// 
+			// tabla
+			// 
+			this->tabla->FormattingEnabled = true;
+			this->tabla->Location = System::Drawing::Point(684, 20);
+			this->tabla->Name = L"tabla";
+			this->tabla->Size = System::Drawing::Size(244, 238);
+			this->tabla->TabIndex = 1;
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Location = System::Drawing::Point(7, 20);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(720, 247);
+			this->pictureBox1->Size = System::Drawing::Size(671, 247);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
 			this->pictureBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBox1_Paint);
@@ -154,6 +166,16 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox3->TabIndex = 3;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Entrada";
+			// 
+			// botonInfo
+			// 
+			this->botonInfo->Location = System::Drawing::Point(252, 20);
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->Size = System::Drawing::Size(75, 35);
+			this->botonInfo->TabIndex = 4;
+			this->botonInfo->Text = L"Informacion";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
 			// 
 			// label3
 			// 
@@ -187,26 +209,16 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->cajaXi->Size = System::Drawing::Size(170, 20);
 			this->cajaXi->TabIndex = 0;
 			// 
-			// botonInfo
-			// 
-			this->botonInfo->Location = System::Drawing::Point(252, 20);
-			this->botonInfo->Name = L"botonInfo";
-			this->botonInfo->Size = System::Drawing::Size(75, 35);
-			this->botonInfo->TabIndex = 4;
-			this->botonInfo->Text = L"Informacion";
-			this->botonInfo->UseVisualStyleBackColor = true;
-			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(757, 371);
+			this->ClientSize = System::Drawing::Size(958, 371);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->groupBox2);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"practica3Num16";
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
@@ -225,6 +237,9 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 		Graphics^ g;
 		g = pictureBox1->CreateGraphics();
 		g->Clear(System::Drawing::Color::White);
+		cajaXi->Clear();
+		cajaXf->Clear();
+		tabla->Items->Clear();
 	}
 	private: System::Void botonGraficar_Click(System::Object^  sender, System::EventArgs^  e) {
 		Graphics^ g;
@@ -233,31 +248,38 @@ namespace practica3Num16{				//Cambiar CLRWindowsForms por nombre del proyecto
 		Pen^ plumaAzul = gcnew Pen(Color::DarkBlue, 1.0f);
 		Pen^ plumaGris = gcnew Pen(Color::Gray, 1.0f);
 		g->Clear(System::Drawing::Color::White);
+		tabla->Items->Clear();
 		
 		int cf = pictureBox1->Width;
 		int ff = pictureBox1->Height;
 		int ci = 1;
 
 		int n = cf - ci;
-		GraficadorFx obj(n);
-		double xi = Convert::ToDouble(cajaXi->Text);
-		double xf = Convert::ToDouble(cajaXf->Text);
+		try {
+			GraficadorFx obj(n);
+			double xi = Convert::ToDouble(cajaXi->Text);
+			double xf = Convert::ToDouble(cajaXf->Text);
 
-		obj.GraficaXY(xi, xf, cf, ff);
-		int j = 1;
-		for (int k = 0; k < n - 1; k++) {
-			g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
-			j++;
+			obj.GraficaXY(xi, xf, cf, ff);
+			int j = 1;
+			for (int k = 0; k < n - 1; k++) {
+				tabla->Items->Add("x= " + obj.X[k] + "\ty= " + obj.Y[k]);
+				g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
+				j++;
+			}
+			if ((obj.Fun(xi)*obj.Fun(xf) < 0) || (obj.yi <= 0 && obj.yf >= 0)) {
+				obj.y0 = 0;
+				obj.f0 = obj.Fil(obj.y0);
+				g->DrawLine(plumaNegra, 0, obj.f0, cf, obj.f0);
+			}
+			if (xi <= 0 && xf >= 0) {
+				obj.x0 = 0;
+				obj.c0 = obj.Col(obj.x0);
+				g->DrawLine(plumaNegra, obj.c0, 0, obj.c0, ff);
+			}
 		}
-		if ((obj.Fun(xi)*obj.Fun(xf) < 0) || (obj.yi <= 0 && obj.yf >= 0)) {
-			obj.y0 = 0;
-			obj.f0 = obj.Fil(obj.y0);
-			g->DrawLine(plumaNegra, 0, obj.f0, cf, obj.f0);
-		}
-		if (xi <= 0 && xf >= 0) {
-			obj.x0 = 0;
-			obj.c0 = obj.Col(obj.x0);
-			g->DrawLine(plumaNegra, obj.c0, 0, obj.c0, ff);
+		catch (FormatException^ e) {
+			tabla->Items->Add("Error");
 		}
 	}
 	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
