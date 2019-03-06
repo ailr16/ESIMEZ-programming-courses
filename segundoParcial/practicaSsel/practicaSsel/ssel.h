@@ -1,5 +1,6 @@
 #pragma once
 
+#include <math.h>
 #include <iostream>
 #include <complex>
 
@@ -91,6 +92,32 @@ class ssel {
 			}
 			for (int i = 0; i < m; i++) {
 				z[i] = a[i][n-1];
+			}
+		}
+		void Jacobi(int mi, double Er) {
+			double b;
+			double *q = new double[m];
+			double s;
+			for (int i = 0; i < m; i++) {
+				z[i] = 0;
+			}
+			for (int k = 0; k < mi; k++) {
+				b = 0;
+				for (int i = 0; i < m; k++) {
+					q[i] = z[i];
+					s = 0;
+					for (int l = 0; l < m; l++) {
+						if (i != l) {
+							s = s + a[i][l] * q[l];
+						}
+					}
+					if (a[i][i] != 0) {
+						z[i] = (a[i][n - 1] - s) / a[i][i];
+						if (fabs(z[i] - q[i]) < Er) {
+							b = b + 1;
+						}
+					}
+				}
 			}
 		}
 };

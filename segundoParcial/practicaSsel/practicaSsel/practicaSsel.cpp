@@ -15,7 +15,7 @@ int main()
 	mat.leeMat();
 	cout << "Matriz ingresada: " << endl;
 	mat.impMat();
-	mat.GaussJordan();
+	mat.Jacobi(4, 0.01);
 	cout << "Resultados: " << endl;
 	mat.impMatResultados();
 }
