@@ -72,5 +72,25 @@ class ssel {
 				z[i] = a[i][n-1] - s;
 			}
 		}
-
+		void GaussJordan() {
+			double pivote;
+			double cero;
+			for (int i = 0; i < m; i++) {
+				pivote = a[i][i];
+				for(int j = 0; j < n; j++) {
+					a[i][j] = a[i][j] / pivote;
+				}
+				for (int k = 0; k < m; k++) {
+					if (k != i) {
+						cero = a[k][i];
+						for (int j = 0; j < n; j++) {
+							a[k][j] = a[k][j] - cero * a[i][j];
+						}
+					}
+				}
+			}
+			for (int i = 0; i < m; i++) {
+				z[i] = a[i][n-1];
+			}
+		}
 };
