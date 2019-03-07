@@ -11,11 +11,11 @@ int main()
 	int numEcuaciones;
 	cout << "Ingrese numero de ecuaciones: ";
 	cin >> numEcuaciones;
-	ssel mat(numEcuaciones);
+	ssel<complex<double>> mat(numEcuaciones);
 	mat.leeMat();
 	cout << "Matriz ingresada: " << endl;
 	mat.impMat();
-	mat.Jacobi(4, 0.01);
+	mat.GaussJordan();
 	cout << "Resultados: " << endl;
 	mat.impMatResultados();
 }
