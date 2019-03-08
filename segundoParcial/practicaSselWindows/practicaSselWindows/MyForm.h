@@ -1,3 +1,4 @@
+#include <complex>
 #include "ssel.h"
 
 #pragma once
@@ -55,8 +56,8 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 	private: System::Windows::Forms::ListBox^  listaResultados;
 
 	public: int m, n;
-			double** a;
-			double *z;
+			std::complex<double> **a;
+			std::complex<double> *z;
 	private: System::Windows::Forms::Button^  botonGJ;
 	public:
 	private: System::Windows::Forms::Button^  botonGauss;
@@ -104,7 +105,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox1->Controls->Add(this->matriz);
 			this->groupBox1->Location = System::Drawing::Point(13, 13);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(454, 335);
+			this->groupBox1->Size = System::Drawing::Size(421, 335);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
@@ -147,7 +148,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->matriz->Location = System::Drawing::Point(7, 20);
 			this->matriz->Name = L"matriz";
 			this->matriz->RowHeadersWidth = 24;
-			this->matriz->Size = System::Drawing::Size(436, 264);
+			this->matriz->Size = System::Drawing::Size(400, 264);
 			this->matriz->TabIndex = 2;
 			// 
 			// groupBox2
@@ -156,7 +157,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox2->Controls->Add(this->botonGauss);
 			this->groupBox2->Controls->Add(this->botonLimpiar);
 			this->groupBox2->Controls->Add(this->botonLee);
-			this->groupBox2->Location = System::Drawing::Point(473, 13);
+			this->groupBox2->Location = System::Drawing::Point(440, 13);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(161, 335);
 			this->groupBox2->TabIndex = 1;
@@ -209,9 +210,9 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox3->Controls->Add(this->label2);
 			this->groupBox3->Controls->Add(this->matriz2);
 			this->groupBox3->Controls->Add(this->listaResultados);
-			this->groupBox3->Location = System::Drawing::Point(641, 13);
+			this->groupBox3->Location = System::Drawing::Point(607, 13);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(389, 335);
+			this->groupBox3->Size = System::Drawing::Size(525, 335);
 			this->groupBox3->TabIndex = 2;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
@@ -252,14 +253,14 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->listaResultados->FormattingEnabled = true;
 			this->listaResultados->Location = System::Drawing::Point(253, 72);
 			this->listaResultados->Name = L"listaResultados";
-			this->listaResultados->Size = System::Drawing::Size(130, 212);
+			this->listaResultados->Size = System::Drawing::Size(266, 212);
 			this->listaResultados->TabIndex = 0;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1042, 360);
+			this->ClientSize = System::Drawing::Size(1144, 360);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
@@ -282,10 +283,10 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			m = Convert::ToInt32(cajaN->Text);
 			n = m + 1;
 
-			z = new double[m];
-			a = new double*[m];
+			z = new std::complex<double>[m];
+			a = new std::complex<double>*[m];
 			for (int i = 0; i < m; i++) {
-				a[i] = new double[n];
+				a[i] = new std::complex<double>[n];
 			}
 
 			matriz->Columns->Clear();
@@ -305,12 +306,32 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		catch (FormatException^ e) {}
 	}
 	private: System::Void botonLee_Click(System::Object^  sender, System::EventArgs^  e) {
-		double lec;
-		
+		double lec, r, im;
+		String^ s;
+		String^ real;
+		String^ imaginario;
+
 		for (int i = 0; i < m; i++) {				//Lee matriz y la guarda en un arreglo
 			for (int j = 0; j < n; j++) {
-				lec = Convert::ToDouble(matriz->Rows[i]->Cells[j]->Value);
-				a[i][j] = lec;
+				s = Convert::ToString(matriz->Rows[i]->Cells[j]->Value);
+
+				if (s->Contains(",")) {				//Si se escribe un par ordenado
+					array<wchar_t> ^id = { ',',2 };
+					array<String^> ^lectura;
+					lectura = s->Split(id);
+					real = lectura[0];
+					imaginario = lectura[1];
+					r = Convert::ToDouble(real);
+					im = Convert::ToDouble(imaginario);
+					std::complex<double> zk(r, im);
+					a[i][j] = zk;
+				}
+				else {								//Si solo se ingresa un valor
+					real = s;
+					r = Convert::ToDouble(real);
+					std::complex<double> zk(r, 0);
+					a[i][j] = zk;
+				}
 			}
 		}
 
@@ -329,8 +350,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		
 		for (int i = 0; i < m; i++) {				//Imprime los valores en la segunda matriz
 			for (int j = 0; j < n; j++) {
-				//System::String^ sr;
-				matriz2->Rows[i]->Cells[j]->Value = a[i][j];
+				matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(Convert::ToString(a[i][j].real()) + " + " + Convert::ToString(a[i][j].imag()) + "i");
 			}
 		}
 	}
@@ -347,23 +367,23 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		else botonMatriz->Enabled = false;
 	}
 	private: System::Void botonGauss_Click(System::Object^  sender, System::EventArgs^  e) {
-		ssel<double> sistema(m, a, z);
-		listaResultados->Items->Clear();
+		ssel sistema(m, a, z);
+		listaResultados->Items->Add("Metodo de Gauss");
 		try {
 			sistema.Gauss();
 			for (int i = 0; i < m; i++) {
-				listaResultados->Items->Add("Z" + i + "= " + z[i]);
+				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
 			}
 		}
 		catch(FormatException ^e){}
 	}
 	private: System::Void botonGJ_Click(System::Object^  sender, System::EventArgs^  e) {
-		ssel<double> sistema(m, a, z);
-		listaResultados->Items->Clear();
+		ssel sistema(m, a, z);
+		listaResultados->Items->Add("Metodo de Gauss-Jordan");
 		try {
 			sistema.GaussJordan();
 			for (int i = 0; i < m; i++) {
-				listaResultados->Items->Add("Z[" + i + "]= " + z[i]);
+				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag())+ "i");
 			}
 		}
 		catch(FormatException^ e){}

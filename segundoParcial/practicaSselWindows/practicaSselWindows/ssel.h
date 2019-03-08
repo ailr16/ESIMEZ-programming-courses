@@ -1,26 +1,28 @@
-#pragma once
-
-#include <math.h>
-//#include <iostream>
 #include <complex>
+#include <math.h>
+
+#pragma once
+//#include <iostream>
+
 
 //using namespace std;
 
-template <typename T>
+//template <typename T>
 class ssel {
 	private:
 		int m, n;
-		T **a, *z;
+		std::complex<double> **a;
+		std::complex<double> *z;
 
 	public:
 		ssel(int m){
 			this->m = m;
 			n = m + 1;
-			z = new T[m];
-			a = new T*[m];
-			for (int i = 0; i < m; i++)		a[i] = new T[n];
+			z = new std::complex<double>[m];
+			a = new std::complex<double>*[m];
+			for (int i = 0; i < m; i++)		a[i] = new std::complex<double>[n];
 		}
-		ssel(int m, T **a, T*z) {
+		ssel(int m, std::complex<double> **a, std::complex<double>*z) {
 			this->m = m;
 			n = m + 1;
 			
@@ -50,9 +52,9 @@ class ssel {
 		}*/
 		void Gauss() {
 			int n = m + 1;
-			T pivote;
-			T cero;
-			T s;
+			std::complex<double> pivote;
+			std::complex<double> cero;
+			std::complex<double> s;
 			for (int i = 0; i < m; i++) {
 				pivote = a[i][i];
 				for (int j = 0; j < n; j++) {
@@ -77,8 +79,8 @@ class ssel {
 			}
 		}
 		void GaussJordan() {
-			T pivote;
-			T cero;
+			std::complex<double> pivote;
+			std::complex<double> cero;
 			for (int i = 0; i < m; i++) {
 				pivote = a[i][i];
 				for(int j = 0; j < n; j++) {
