@@ -39,6 +39,9 @@ namespace pruebaString {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::ListBox^  listBox2;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Button^  Limpiar;
+	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::TextBox^  textBox2;
+	private: System::Windows::Forms::Button^  button2;
 	protected:
 
 	private:
@@ -59,6 +62,10 @@ namespace pruebaString {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->listBox2 = (gcnew System::Windows::Forms::ListBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->Limpiar = (gcnew System::Windows::Forms::Button());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -71,7 +78,7 @@ namespace pruebaString {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// listBox1
 			// 
 			this->listBox1->FormattingEnabled = true;
-			this->listBox1->Location = System::Drawing::Point(13, 89);
+			this->listBox1->Location = System::Drawing::Point(12, 115);
 			this->listBox1->Name = L"listBox1";
 			this->listBox1->Size = System::Drawing::Size(108, 95);
 			this->listBox1->TabIndex = 1;
@@ -79,7 +86,7 @@ namespace pruebaString {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// listBox2
 			// 
 			this->listBox2->FormattingEnabled = true;
-			this->listBox2->Location = System::Drawing::Point(152, 89);
+			this->listBox2->Location = System::Drawing::Point(152, 115);
 			this->listBox2->Name = L"listBox2";
 			this->listBox2->Size = System::Drawing::Size(120, 95);
 			this->listBox2->TabIndex = 2;
@@ -104,11 +111,41 @@ namespace pruebaString {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Limpiar->UseVisualStyleBackColor = true;
 			this->Limpiar->Click += gcnew System::EventHandler(this, &MyForm::Limpiar_Click);
 			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Location = System::Drawing::Point(297, 12);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(457, 237);
+			this->dataGridView1->TabIndex = 5;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(13, 79);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(118, 20);
+			this->textBox2->TabIndex = 6;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(137, 76);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(135, 23);
+			this->button2->TabIndex = 7;
+			this->button2->Text = L"Dibujar tabla";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(283, 261);
+			this->ClientSize = System::Drawing::Size(766, 261);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->Limpiar);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->listBox2);
@@ -116,6 +153,7 @@ namespace pruebaString {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Controls->Add(this->textBox1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -146,6 +184,16 @@ namespace pruebaString {				//Cambiar CLRWindowsForms por nombre del proyecto
 			real = s;
 			listBox1->Items->Add(real);
 		}
+	}
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		dataGridView1->Columns->Clear();
+		dataGridView1->Rows->Clear();
+		int m, n;
+		m = Convert::ToInt32(textBox2->Text);
+		n = m + 1;
+		for (int i = 1; i <= n; i++) dataGridView1->Columns->Add("Column", "Test");
+		for(int i = 1; i <= m; i++)	dataGridView1->Rows->Add();
+
 	}
 };
 }
