@@ -11,12 +11,13 @@ int main()
 	int numEcuaciones;
 	cout << "Ingrese numero de ecuaciones: ";
 	cin >> numEcuaciones;
-	ssel<complex<double>> mat(numEcuaciones);
+	ssel<double> mat(numEcuaciones);
 	mat.leeMat();
 	cout << "Matriz ingresada: " << endl;
 	mat.impMat();
-	mat.GaussJordan();
+	mat.ordenarReal();
 	cout << "Resultados: " << endl;
 	mat.impMatResultados();
+	system("pause");
 }
 
