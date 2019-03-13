@@ -9,6 +9,7 @@
 
 //template <typename T>
 bool menorComplejo(std::complex<double> a, std::complex<double> b);
+double magnitudComplejo(std::complex<double> a);
 
 class ssel {
 	private:
@@ -32,27 +33,6 @@ class ssel {
 			this->a = a;
 			this->z = z;
 		}
-		/*void leeMat(void) {
-			for (int i = 0; i < m; i++) {
-				for (int j = 0; j < n; j++) {
-					cout << "Ingrese [" << i << "][" << j << "]";
-					cin >> a[i][j];
-				}
-			}
-		}
-		void impMat(void) {
-			for (int k = 0; k < m; k++) {
-				for (int i = 0; i < n; i++) {
-					cout << a[k][i] << "\t";
-				}
-				cout << endl;
-			}
-		}
-		void impMatResultados(void) {
-			for (int i = 0; i < m; i++) {
-				cout << "z[" << i+1 << "] = " << z[i] << endl;
-			}
-		}*/
 		void Gauss() {
 			int n = m + 1;
 			std::complex<double> pivote;
@@ -164,9 +144,57 @@ class ssel {
 				}
 			}
 		}
+		void ordenar(int seleccion) {		//seleccion = 0 recorrido a la izquierda	seleccion = 1 recorrido hacia la derecha
+			std::complex<double> aux, aux2;
+			int indiceAux;
+
+			//Recorrido hacia la izquierda
+			if (seleccion == 0) {
+				for (int k = 1; k <= m; k++) {
+					indiceAux = 0;
+					aux.real(a[0][n - 1 - k].real());
+					aux.imag(a[0][n - 1 - k].imag());
+					for (int i = 0; i < m + 1 - k; i++) {
+						if (magnitudComplejo(a[i][n - 1 - k]) > magnitudComplejo(aux)) {				//1. Encontrar maximo de ultima columna (de la matriz cuadrada)
+							aux = a[i][n - 1 - k];
+							indiceAux = i;
+						}
+					}
+
+					for (int i = 0; i < n; i++) {				//2. Cambiar ultima fila por fila encontrada en el paso anterior
+						aux2 = a[m - k][i];
+						a[m - k][i] = a[indiceAux][i];
+						a[indiceAux][i] = aux2;
+					}
+				}
+			}
+			//Recorrido hacia la derecha
+			else if (seleccion == 1) {
+				for (int k = 0; k < m; k++) {
+					indiceAux = 0;
+					aux.real(a[0][k].real());
+					aux.imag(a[0][k].imag());
+					for (int i = 0; i < m; i++) {
+						if (magnitudComplejo(a[i][k]) > magnitudComplejo(aux)) {				//1. Encontrar maximo de ultima columna (de la matriz cuadrada)
+							aux = a[i][k];
+							indiceAux = i;
+						}
+					}
+
+					for (int i = 0; i < n; i++) {				//2. Cambiar ultima fila por fila encontrada en el paso anterior
+						aux2 = a[k][i];
+						a[k][i] = a[indiceAux][i];
+						a[indiceAux][i] = aux2;
+					}
+				}
+			}
+		}
 };
 
 bool menorComplejo(std::complex<double> a, std::complex<double> b){
 	if (a.real() < b.real() && a.imag() < b.imag())	return true;
 	else   return false;
+}
+double magnitudComplejo(std::complex<double> a) {
+	return sqrt(pow(a.real(), 2) + pow(a.imag(), 2));
 }
