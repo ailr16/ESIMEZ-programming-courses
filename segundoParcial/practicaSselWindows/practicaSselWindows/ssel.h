@@ -8,11 +8,14 @@
 //using namespace std;
 
 //template <typename T>
+bool menorComplejo(std::complex<double> a, std::complex<double> b);
+
 class ssel {
 	private:
 		int m, n;
 		std::complex<double> **a;
 		std::complex<double> *z;
+		std::complex<double> *q;
 
 	public:
 		ssel(int m){
@@ -99,7 +102,71 @@ class ssel {
 				z[i] = a[i][n-1];
 			}
 		}
-		void Jacobi(int mi, double Er) {
-
+		void Jacobi(double error, int iteraciones) {
+			q = new std::complex<double>[m];
+			std::complex<double> zCero(0,0);
+			std::complex<double> Er(error, error);
+			std::complex<double> s;
+			int b;
+			int mi = iteraciones;
+			for (int i = 0; i < m; i++) {
+				z[i] = 0;
+			}
+			for (int k = 1; k <= mi; k++) {
+				b = 0;
+				for (int l = 0; l < m; l++)
+					q[l] = z[l];
+				for (int i = 0; i < m; i++) {
+					s.real(0);
+					s.imag(0);
+					for (int k = 0; k < m; k++) {
+						if (i != k) {
+							s = s + a[i][k] * q[k];
+						}
+					}
+					if (a[i][i] != zCero) {
+						z[i] = (a[i][n - 1] - s) / a[i][i];
+						if (menorComplejo(z[i] - q[i], Er)) {
+							b = b + 1;
+						}
+					}
+				}
+			}
+		}
+		void GaussSeidel(double error) {
+			q = new std::complex<double>[m];
+			std::complex<double> zCero(0, 0);
+			std::complex<double> Er(error, error);
+			std::complex<double> s;
+			int b;
+			int mi = 16;
+			for (int i = 0; i < m; i++) {
+				z[i] = 0;
+			}
+			for (int k = 1; k <= mi; k++) {
+				b = 0;
+				for (int l = 0; l < m; l++)
+					q[l] = z[l];
+				for (int i = 0; i < m; i++) {
+					s.real(0);
+					s.imag(0);
+					for (int k = 0; k < m; k++) {
+						if (i != k) {
+							s = s + a[i][k] * q[k];
+						}
+					}
+					if (a[i][i] != zCero) {
+						z[i] = (a[i][n - 1] - s) / a[i][i];
+						if (menorComplejo(z[i] - q[i], Er)) {
+							b = b + 1;
+						}
+					}
+				}
+			}
 		}
 };
+
+bool menorComplejo(std::complex<double> a, std::complex<double> b){
+	if (a.real() < b.real() && a.imag() < b.imag())	return true;
+	else   return false;
+}

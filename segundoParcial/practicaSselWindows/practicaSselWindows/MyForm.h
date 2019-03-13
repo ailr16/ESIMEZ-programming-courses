@@ -61,6 +61,12 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 	private: System::Windows::Forms::Button^  botonGJ;
 	public:
 	private: System::Windows::Forms::Button^  botonGauss;
+	private: System::Windows::Forms::Button^  botonJacobi;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::TextBox^  cajaError;
+	private: System::Windows::Forms::Button^  botonGS;
+	private: System::Windows::Forms::Label^  label5;
+	private: System::Windows::Forms::TextBox^  cajaIteraciones;
 
 	private:
 		/// <summary>
@@ -76,11 +82,15 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->cajaError = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->cajaN = (gcnew System::Windows::Forms::TextBox());
 			this->botonMatriz = (gcnew System::Windows::Forms::Button());
 			this->matriz = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->botonGS = (gcnew System::Windows::Forms::Button());
+			this->botonJacobi = (gcnew System::Windows::Forms::Button());
 			this->botonGJ = (gcnew System::Windows::Forms::Button());
 			this->botonGauss = (gcnew System::Windows::Forms::Button());
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
@@ -90,6 +100,8 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->matriz2 = (gcnew System::Windows::Forms::DataGridView());
 			this->listaResultados = (gcnew System::Windows::Forms::ListBox());
+			this->cajaIteraciones = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -99,6 +111,10 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label5);
+			this->groupBox1->Controls->Add(this->cajaIteraciones);
+			this->groupBox1->Controls->Add(this->label4);
+			this->groupBox1->Controls->Add(this->cajaError);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->cajaN);
 			this->groupBox1->Controls->Add(this->botonMatriz);
@@ -110,10 +126,27 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
 			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(211, 312);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(29, 13);
+			this->label4->TabIndex = 5;
+			this->label4->Text = L"Error";
+			// 
+			// cajaError
+			// 
+			this->cajaError->Location = System::Drawing::Point(246, 309);
+			this->cajaError->Name = L"cajaError";
+			this->cajaError->Size = System::Drawing::Size(66, 20);
+			this->cajaError->TabIndex = 4;
+			this->cajaError->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaError_TextChanged);
+			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(87, 303);
+			this->label1->Location = System::Drawing::Point(75, 271);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(117, 13);
 			this->label1->TabIndex = 3;
@@ -121,7 +154,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// cajaN
 			// 
-			this->cajaN->Location = System::Drawing::Point(210, 300);
+			this->cajaN->Location = System::Drawing::Point(198, 268);
 			this->cajaN->Name = L"cajaN";
 			this->cajaN->Size = System::Drawing::Size(66, 20);
 			this->cajaN->TabIndex = 0;
@@ -130,7 +163,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// botonMatriz
 			// 
-			this->botonMatriz->Location = System::Drawing::Point(282, 290);
+			this->botonMatriz->Location = System::Drawing::Point(270, 258);
 			this->botonMatriz->Name = L"botonMatriz";
 			this->botonMatriz->Size = System::Drawing::Size(75, 38);
 			this->botonMatriz->TabIndex = 1;
@@ -148,11 +181,13 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->matriz->Location = System::Drawing::Point(7, 20);
 			this->matriz->Name = L"matriz";
 			this->matriz->RowHeadersWidth = 24;
-			this->matriz->Size = System::Drawing::Size(400, 264);
+			this->matriz->Size = System::Drawing::Size(400, 234);
 			this->matriz->TabIndex = 2;
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->botonGS);
+			this->groupBox2->Controls->Add(this->botonJacobi);
 			this->groupBox2->Controls->Add(this->botonGJ);
 			this->groupBox2->Controls->Add(this->botonGauss);
 			this->groupBox2->Controls->Add(this->botonLimpiar);
@@ -163,6 +198,26 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
+			// 
+			// botonGS
+			// 
+			this->botonGS->Location = System::Drawing::Point(7, 161);
+			this->botonGS->Name = L"botonGS";
+			this->botonGS->Size = System::Drawing::Size(146, 23);
+			this->botonGS->TabIndex = 5;
+			this->botonGS->Text = L"Metodo de Gauss-Seidel";
+			this->botonGS->UseVisualStyleBackColor = true;
+			this->botonGS->Click += gcnew System::EventHandler(this, &MyForm::botonGS_Click);
+			// 
+			// botonJacobi
+			// 
+			this->botonJacobi->Location = System::Drawing::Point(7, 131);
+			this->botonJacobi->Name = L"botonJacobi";
+			this->botonJacobi->Size = System::Drawing::Size(146, 23);
+			this->botonJacobi->TabIndex = 4;
+			this->botonJacobi->Text = L"Metodo de Jacobi";
+			this->botonJacobi->UseVisualStyleBackColor = true;
+			this->botonJacobi->Click += gcnew System::EventHandler(this, &MyForm::botonJacobi_Click);
 			// 
 			// botonGJ
 			// 
@@ -256,6 +311,23 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->listaResultados->Size = System::Drawing::Size(266, 212);
 			this->listaResultados->TabIndex = 0;
 			// 
+			// cajaIteraciones
+			// 
+			this->cajaIteraciones->Location = System::Drawing::Point(139, 309);
+			this->cajaIteraciones->Name = L"cajaIteraciones";
+			this->cajaIteraciones->Size = System::Drawing::Size(66, 20);
+			this->cajaIteraciones->TabIndex = 6;
+			this->cajaIteraciones->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaIteraciones_TextChanged);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(74, 313);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(59, 13);
+			this->label5->TabIndex = 7;
+			this->label5->Text = L"Iteraciones";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -282,6 +354,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 
 	private: System::Void botonMatriz_Click(System::Object^  sender, System::EventArgs^  e) {
 		try {
+			comprobarBotones();
 			m = Convert::ToInt32(cajaN->Text);
 			n = m + 1;
 
@@ -308,6 +381,61 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		catch (FormatException^ e) {}
 	}
 	private: System::Void botonLee_Click(System::Object^  sender, System::EventArgs^  e) {
+		leer();
+	}
+	private: System::Void botonLimpiar_Click(System::Object^  sender, System::EventArgs^  e) {
+		cajaN->Clear();
+		matriz->Columns->Clear();
+		matriz->Rows->Clear();
+		listaResultados->Items->Clear();
+		matriz2->Rows->Clear();
+		matriz2->Columns->Clear();
+		comprobarBotones();
+	}
+	private: System::Void cajaN_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
+	}
+	private: System::Void botonGauss_Click(System::Object^  sender, System::EventArgs^  e) {
+		leer();
+		comprobarBotones();
+		ssel sistema(m, a, z);
+		listaResultados->Items->Add("Metodo de Gauss");
+		try {
+			sistema.Gauss();
+			for (int i = 0; i < m; i++) {
+				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+			}
+		}
+		catch(FormatException ^e){}
+	}
+	private: System::Void botonGJ_Click(System::Object^  sender, System::EventArgs^  e) {
+		leer();
+		comprobarBotones();
+		ssel sistema(m, a, z);
+		listaResultados->Items->Add("Metodo de Gauss-Jordan");
+		try {
+			sistema.GaussJordan();
+			for (int i = 0; i < m; i++) {
+				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag())+ "i");
+			}
+		}
+		catch(FormatException^ e){}
+	}
+	private: System::Void botonJacobi_Click(System::Object^  sender, System::EventArgs^  e) {
+		leer();
+		comprobarBotones();
+		ssel sistema(m, a, z);
+		listaResultados->Items->Add("Metodo de Jacobi");
+		try {
+			sistema.Jacobi(Convert::ToDouble(cajaError->Text), Convert::ToInt32(cajaIteraciones->Text));
+			for (int i = 0; i < m; i++) {
+				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+			}
+		}
+		catch (FormatException^ e) {}
+	}
+	public:void leer(void) {
+		comprobarBotones();
 		double lec, r, im;
 		String^ s;
 		String^ real;
@@ -349,46 +477,43 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			matriz2->Columns->Add("Matriz2", s);
 		}
 		for (int i = 1; i <= m; i++) matriz2->Rows->Add();
-		
+
 		for (int i = 0; i < m; i++) {				//Imprime los valores en la segunda matriz
 			for (int j = 0; j < n; j++) {
 				matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(Convert::ToString(a[i][j].real()) + " + " + Convert::ToString(a[i][j].imag()) + "i");
 			}
 		}
 	}
-	private: System::Void botonLimpiar_Click(System::Object^  sender, System::EventArgs^  e) {
-		cajaN->Clear();
-		matriz->Columns->Clear();
-		matriz->Rows->Clear();
-		listaResultados->Items->Clear();
-		matriz2->Rows->Clear();
-		matriz2->Columns->Clear();
+	private: System::Void cajaError_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 	}
-	private: System::Void cajaN_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		if (cajaN->Text != "") botonMatriz->Enabled = true;
-		else botonMatriz->Enabled = false;
-	}
-	private: System::Void botonGauss_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void botonGS_Click(System::Object^  sender, System::EventArgs^  e) {
+		leer();
+		comprobarBotones();
 		ssel sistema(m, a, z);
-		listaResultados->Items->Add("Metodo de Gauss");
+		listaResultados->Items->Add("Metodo de Gauss-Seidel");
 		try {
-			sistema.Gauss();
+			sistema.GaussSeidel(Convert::ToDouble(cajaError->Text));
 			for (int i = 0; i < m; i++) {
 				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
 			}
 		}
-		catch(FormatException ^e){}
+		catch (FormatException^ e) {}
 	}
-	private: System::Void botonGJ_Click(System::Object^  sender, System::EventArgs^  e) {
-		ssel sistema(m, a, z);
-		listaResultados->Items->Add("Metodo de Gauss-Jordan");
-		try {
-			sistema.GaussJordan();
-			for (int i = 0; i < m; i++) {
-				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag())+ "i");
-			}
+	public: void comprobarBotones(void) {
+		if (cajaError->Text != "" && cajaIteraciones->Text != "") {
+			botonJacobi->Enabled = true;
+			botonGS->Enabled = true;
 		}
-		catch(FormatException^ e){}
+		else {
+			botonJacobi->Enabled = false;
+			botonGS->Enabled = false;
+		}
+		if (cajaN->Text != "") botonMatriz->Enabled = true;
+		else botonMatriz->Enabled = false;
+	}
+	private: System::Void cajaIteraciones_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 	}
 };
 }
