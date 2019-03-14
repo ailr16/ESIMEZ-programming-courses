@@ -148,7 +148,7 @@ class ssel {
 			std::complex<double> aux, aux2;
 			int indiceAux;
 
-			//Recorrido hacia la izquierda
+			//Recorrido hacia la derecha
 			if (seleccion == 0) {
 				for (int k = 1; k <= m; k++) {
 					indiceAux = 0;
@@ -168,25 +168,9 @@ class ssel {
 					}
 				}
 			}
-			//Recorrido hacia la derecha
+			//Recorrido hacia la izquierda
 			else if (seleccion == 1) {
-				for (int k = 0; k < m; k++) {
-					indiceAux = 0;
-					aux.real(a[0][k].real());
-					aux.imag(a[0][k].imag());
-					for (int i = 0; i < m; i++) {
-						if (magnitudComplejo(a[i][k]) > magnitudComplejo(aux)) {				//1. Encontrar maximo de ultima columna (de la matriz cuadrada)
-							aux = a[i][k];
-							indiceAux = i;
-						}
-					}
-
-					for (int i = 0; i < n; i++) {				//2. Cambiar ultima fila por fila encontrada en el paso anterior
-						aux2 = a[k][i];
-						a[k][i] = a[indiceAux][i];
-						a[indiceAux][i] = aux2;
-					}
-				}
+				
 			}
 		}
 };

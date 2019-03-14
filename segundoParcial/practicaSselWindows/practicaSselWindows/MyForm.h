@@ -68,6 +68,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::TextBox^  cajaIteraciones;
 	private: System::Windows::Forms::Button^  botonOrdenar;
+	private: System::Windows::Forms::Button^  botonInfo;
 
 	private:
 		/// <summary>
@@ -104,6 +105,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->matriz2 = (gcnew System::Windows::Forms::DataGridView());
 			this->listaResultados = (gcnew System::Windows::Forms::ListBox());
+			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -293,6 +295,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->botonInfo);
 			this->groupBox3->Controls->Add(this->label3);
 			this->groupBox3->Controls->Add(this->label2);
 			this->groupBox3->Controls->Add(this->matriz2);
@@ -342,6 +345,16 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->listaResultados->Name = L"listaResultados";
 			this->listaResultados->Size = System::Drawing::Size(266, 212);
 			this->listaResultados->TabIndex = 0;
+			// 
+			// botonInfo
+			// 
+			this->botonInfo->Location = System::Drawing::Point(444, 19);
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->Size = System::Drawing::Size(75, 23);
+			this->botonInfo->TabIndex = 4;
+			this->botonInfo->Text = L"Info";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
 			// 
 			// MyForm
 			// 
@@ -437,7 +450,6 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		catch(FormatException^ e){}
 	}
 	private: System::Void botonJacobi_Click(System::Object^  sender, System::EventArgs^  e) {
-		leer();
 		comprobarBotones();
 		ssel sistema(m, a, z);
 		listaResultados->Items->Add("Metodo de Jacobi");
@@ -510,7 +522,6 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		comprobarBotones();
 	}
 	private: System::Void botonGS_Click(System::Object^  sender, System::EventArgs^  e) {
-		leer();
 		comprobarBotones();
 		ssel sistema(m, a, z);
 		listaResultados->Items->Add("Metodo de Gauss-Seidel");
@@ -541,8 +552,11 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		comprobarBotones();
 		leer();
 		ssel sistema(m, a, z);
-		sistema.ordenar(1);
+		sistema.ordenar(0);
 		imprimirMatriz();
+	}
+	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
+		System::Diagnostics::Process::Start("lozanoRamirez.exe");
 	}
 };
 }
