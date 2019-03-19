@@ -25,6 +25,9 @@ class ssel {
 				a[i] = new T[n];
 			}
 		}
+		void modificaMatriz(double** b) {
+			this->a = b;
+		}
 		void leeMat(void) {
 			for (int i = 0; i < m; i++) {
 				for (int j = 0; j < n; j++) {
@@ -43,7 +46,7 @@ class ssel {
 		}
 		void impMatResultados(void) {
 			for (int i = 0; i < m; i++) {
-				cout << "z[" << i+1 << "] = " << z[i] << endl;
+				cout << "x[" << i+1 << "] = " << z[i] << endl;
 			}
 		}
 		void Gauss() {
@@ -94,8 +97,5 @@ class ssel {
 			for (int i = 0; i < m; i++) {
 				z[i] = a[i][n-1];
 			}
-		}
-		void Jacobi(int mi, double Er) {
-
 		}
 };
