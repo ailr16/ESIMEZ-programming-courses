@@ -1,5 +1,6 @@
 #include <complex>
 #include <msclr\marshal_cppstd.h>
+#include <iostream>
 
 #pragma once
 
