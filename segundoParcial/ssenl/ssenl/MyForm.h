@@ -1,7 +1,7 @@
 #include <complex>
 #include <msclr\marshal_cppstd.h>
 #include <iostream>
-
+#include "ssenl.h"
 #pragma once
 
 namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
@@ -22,9 +22,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: agregar código de constructor aquí
-			//
+
 		}
 
 	protected:
@@ -44,14 +42,15 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::Button^  botonMatriz;
 	private: System::Windows::Forms::TextBox^  cajaN;
 	public:	int n, m;
-			std::complex<double> **a;
-			std::complex<double> *z;
+			double **a;
+			double *z;
 			std::string **matStr;
 	private: System::Windows::Forms::DataGridView^  matriz;
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::Button^  botonLee;
 	private: System::Windows::Forms::GroupBox^  groupBox3;
 	private: System::Windows::Forms::DataGridView^  matriz2;
+	private: System::Windows::Forms::Button^  botonEvaluar;
 	public:
 
 
@@ -78,6 +77,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonLee = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->matriz2 = (gcnew System::Windows::Forms::DataGridView());
+			this->botonEvaluar = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -138,6 +138,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->botonEvaluar);
 			this->groupBox2->Controls->Add(this->botonLee);
 			this->groupBox2->Location = System::Drawing::Point(355, 13);
 			this->groupBox2->Name = L"groupBox2";
@@ -178,6 +179,16 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->matriz2->Size = System::Drawing::Size(240, 196);
 			this->matriz2->TabIndex = 0;
 			// 
+			// botonEvaluar
+			// 
+			this->botonEvaluar->Location = System::Drawing::Point(7, 50);
+			this->botonEvaluar->Name = L"botonEvaluar";
+			this->botonEvaluar->Size = System::Drawing::Size(212, 23);
+			this->botonEvaluar->TabIndex = 1;
+			this->botonEvaluar->Text = L"Evaluar funciones";
+			this->botonEvaluar->UseVisualStyleBackColor = true;
+			this->botonEvaluar->Click += gcnew System::EventHandler(this, &MyForm::botonEvaluar_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -203,10 +214,10 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			m = Convert::ToInt32(cajaN->Text);
 			n = m + 1;
 
-			z = new std::complex<double>[m];
-			a = new std::complex<double>*[m];
+			z = new double[m];
+			a = new double*[m];
 			matStr = new std::string*[m];
-			for (int i = 0; i < m; i++)		a[i] = new std::complex<double>[n];
+			for (int i = 0; i < m; i++)		a[i] = new double[n];
 			for (int i = 0; i < m; i++)		matStr[i] = new std::string[n];
 
 			matriz->Columns->Clear();
@@ -255,10 +266,20 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 		}
 		for (int i = 1; i <= m; i++) matriz2->Rows->Add();
 
-		for (int i = 0; i < m; i++) {				//Imprime los valores en la segunda matriz
+		/*for (int i = 0; i < m; i++) {				//Imprime los valores en la segunda matriz
 			for (int j = 0; j < n; j++) {
 				st = gcnew String(matStr[i][j].c_str());
 				matriz2->Rows[i]->Cells[j]->Value = st;
+			}
+		}*/
+	}
+	private: System::Void botonEvaluar_Click(System::Object^  sender, System::EventArgs^  e) {
+		ssenlClase sistema(m, z);
+		sistema.genera(a, matStr);
+
+		for (int i = 0; i < m; i++) {				//Imprime los valores en la segunda matriz
+			for (int j = 0; j < n; j++) {
+				matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(a[i][j]);
 			}
 		}
 	}
