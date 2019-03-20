@@ -142,6 +142,7 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ssel.h" />
     <ClInclude Include="ssenl.h" />
   </ItemGroup>
   <ItemGroup>
