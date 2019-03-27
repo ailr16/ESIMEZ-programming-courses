@@ -69,6 +69,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 	private: System::Windows::Forms::TextBox^  cajaIteraciones;
 	private: System::Windows::Forms::Button^  botonOrdenar;
 	private: System::Windows::Forms::Button^  botonInfo;
+	private: System::Windows::Forms::Label^  label6;
 
 	private:
 		/// <summary>
@@ -83,6 +84,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->cajaIteraciones = (gcnew System::Windows::Forms::TextBox());
@@ -101,11 +103,12 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
 			this->botonLee = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->matriz2 = (gcnew System::Windows::Forms::DataGridView());
 			this->listaResultados = (gcnew System::Windows::Forms::ListBox());
-			this->botonInfo = (gcnew System::Windows::Forms::Button());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -115,6 +118,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->cajaIteraciones);
 			this->groupBox1->Controls->Add(this->label4);
@@ -169,7 +173,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(75, 271);
+			this->label1->Location = System::Drawing::Point(75, 276);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(117, 13);
 			this->label1->TabIndex = 3;
@@ -177,7 +181,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// cajaN
 			// 
-			this->cajaN->Location = System::Drawing::Point(198, 268);
+			this->cajaN->Location = System::Drawing::Point(198, 273);
 			this->cajaN->Name = L"cajaN";
 			this->cajaN->Size = System::Drawing::Size(66, 20);
 			this->cajaN->TabIndex = 0;
@@ -186,7 +190,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// botonMatriz
 			// 
-			this->botonMatriz->Location = System::Drawing::Point(270, 258);
+			this->botonMatriz->Location = System::Drawing::Point(270, 263);
 			this->botonMatriz->Name = L"botonMatriz";
 			this->botonMatriz->Size = System::Drawing::Size(75, 38);
 			this->botonMatriz->TabIndex = 1;
@@ -201,10 +205,10 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->matriz->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->matriz->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->matriz->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->matriz->Location = System::Drawing::Point(7, 20);
+			this->matriz->Location = System::Drawing::Point(6, 73);
 			this->matriz->Name = L"matriz";
 			this->matriz->RowHeadersWidth = 24;
-			this->matriz->Size = System::Drawing::Size(400, 234);
+			this->matriz->Size = System::Drawing::Size(400, 184);
 			this->matriz->TabIndex = 2;
 			// 
 			// groupBox2
@@ -307,6 +311,16 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
 			// 
+			// botonInfo
+			// 
+			this->botonInfo->Location = System::Drawing::Point(444, 19);
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->Size = System::Drawing::Size(75, 23);
+			this->botonInfo->TabIndex = 4;
+			this->botonInfo->Text = L"Info";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
+			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
@@ -346,15 +360,16 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->listaResultados->Size = System::Drawing::Size(266, 212);
 			this->listaResultados->TabIndex = 0;
 			// 
-			// botonInfo
+			// label6
 			// 
-			this->botonInfo->Location = System::Drawing::Point(444, 19);
-			this->botonInfo->Name = L"botonInfo";
-			this->botonInfo->Size = System::Drawing::Size(75, 23);
-			this->botonInfo->TabIndex = 4;
-			this->botonInfo->Text = L"Info";
-			this->botonInfo->UseVisualStyleBackColor = true;
-			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(6, 18);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(354, 48);
+			this->label6->TabIndex = 8;
+			this->label6->Text = resources->GetString(L"label6.Text");
 			// 
 			// MyForm
 			// 
@@ -367,7 +382,7 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";
-			this->Text = L"Solucionador de Sistemas de Ecuaciones Lineales";
+			this->Text = L"Solucionador de Sistemas de Ecuaciones Lineales (con numeros complejos)";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->EndInit();
@@ -431,7 +446,9 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		try {
 			sistema.Gauss();
 			for (int i = 0; i < m; i++) {
-				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+				if (z[i].imag() > 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+				if (z[i].imag() == 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()));
+				if (z[i].imag() < 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " " + Convert::ToString(z[i].imag()) + "i");
 			}
 		}
 		catch(FormatException ^e){}
@@ -444,7 +461,9 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		try {
 			sistema.GaussJordan();
 			for (int i = 0; i < m; i++) {
-				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag())+ "i");
+				if (z[i].imag() > 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+				if (z[i].imag() == 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()));
+				if (z[i].imag() < 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " " + Convert::ToString(z[i].imag()) + "i");
 			}
 		}
 		catch(FormatException^ e){}
@@ -456,7 +475,9 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		try {
 			sistema.Jacobi(Convert::ToDouble(cajaError->Text), Convert::ToInt32(cajaIteraciones->Text));
 			for (int i = 0; i < m; i++) {
-				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+				if (z[i].imag() > 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+				if (z[i].imag() == 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()));
+				if (z[i].imag() < 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " " + Convert::ToString(z[i].imag()) + "i");
 			}
 		}
 		catch (FormatException^ e) {}
@@ -507,7 +528,13 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 
 		for (int i = 0; i < m; i++) {				//Imprime los valores en la segunda matriz
 			for (int j = 0; j < n; j++) {
-				matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(Convert::ToString(a[i][j].real()) + " + " + Convert::ToString(a[i][j].imag()) + "i");
+				if (a[i][j].real() == 0) {
+					if (a[i][j].imag() < 0) matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(Convert::ToString(a[i][j].imag()) + "i");
+					else if(a[i][j].imag()>0)matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(Convert::ToString(a[i][j].imag()) + "i");
+				}
+				if (a[i][j].imag() > 0)	matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(Convert::ToString(a[i][j].real()) + " + " + Convert::ToString(a[i][j].imag()) + "i");
+				else if(a[i][j].imag() == 0)  matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(Convert::ToString(a[i][j].real()));
+				else if(a[i][j].imag() < 0) matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(Convert::ToString(a[i][j].real()) + Convert::ToString(a[i][j].imag()) + "i");
 			}
 		}
 	}
@@ -528,7 +555,9 @@ namespace practicaSselWindows {				//Cambiar CLRWindowsForms por nombre del proy
 		try {
 			sistema.GaussSeidel(Convert::ToDouble(cajaError->Text));
 			for (int i = 0; i < m; i++) {
-				listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+				if (z[i].imag() > 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " + " + Convert::ToString(z[i].imag()) + "i");
+				if (z[i].imag() == 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()));
+				if (z[i].imag() < 0) listaResultados->Items->Add("Z" + i + "= " + Convert::ToString(z[i].real()) + " " + Convert::ToString(z[i].imag()) + "i");
 			}
 		}
 		catch (FormatException^ e) {}

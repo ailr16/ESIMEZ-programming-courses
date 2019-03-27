@@ -1,5 +1,6 @@
 #include <math.h>
 #include "ssel.h"
+#include "GraficadorFx.h"
 #pragma once
 
 namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proyecto
@@ -58,7 +59,11 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 			double **Vt;
 			double **S;
 			double **St;
+			String^ polinomio;
 	private: System::Windows::Forms::Button^  botonMC;
+	private: System::Windows::Forms::Button^  botonGraficar;
+	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::Button^  botonInfo;
 	public:
 
 	private:
@@ -82,14 +87,18 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->cajaPuntos = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->botonGraficar = (gcnew System::Windows::Forms::Button());
+			this->botonMC = (gcnew System::Windows::Forms::Button());
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
-			this->botonMC = (gcnew System::Windows::Forms::Button());
+			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox1
@@ -166,6 +175,8 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->botonInfo);
+			this->groupBox2->Controls->Add(this->botonGraficar);
 			this->groupBox2->Controls->Add(this->botonMC);
 			this->groupBox2->Controls->Add(this->botonLimpiar);
 			this->groupBox2->Location = System::Drawing::Point(269, 13);
@@ -174,6 +185,26 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
+			// 
+			// botonGraficar
+			// 
+			this->botonGraficar->Location = System::Drawing::Point(7, 269);
+			this->botonGraficar->Name = L"botonGraficar";
+			this->botonGraficar->Size = System::Drawing::Size(187, 23);
+			this->botonGraficar->TabIndex = 2;
+			this->botonGraficar->Text = L"Graficar";
+			this->botonGraficar->UseVisualStyleBackColor = true;
+			this->botonGraficar->Click += gcnew System::EventHandler(this, &MyForm::botonGraficar_Click);
+			// 
+			// botonMC
+			// 
+			this->botonMC->Location = System::Drawing::Point(7, 23);
+			this->botonMC->Name = L"botonMC";
+			this->botonMC->Size = System::Drawing::Size(187, 23);
+			this->botonMC->TabIndex = 1;
+			this->botonMC->Text = L"Minimos cuadrados";
+			this->botonMC->UseVisualStyleBackColor = true;
+			this->botonMC->Click += gcnew System::EventHandler(this, &MyForm::botonMC_Click);
 			// 
 			// botonLimpiar
 			// 
@@ -187,37 +218,47 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->pictureBox1);
 			this->groupBox3->Controls->Add(this->listBox1);
 			this->groupBox3->Location = System::Drawing::Point(476, 13);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(355, 336);
+			this->groupBox3->Size = System::Drawing::Size(725, 336);
 			this->groupBox3->TabIndex = 2;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Location = System::Drawing::Point(356, 20);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(363, 306);
+			this->pictureBox1->TabIndex = 1;
+			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pictureBox1_Paint);
 			// 
 			// listBox1
 			// 
 			this->listBox1->FormattingEnabled = true;
 			this->listBox1->Location = System::Drawing::Point(7, 23);
 			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(342, 225);
+			this->listBox1->Size = System::Drawing::Size(342, 303);
 			this->listBox1->TabIndex = 0;
 			// 
-			// botonMC
+			// botonInfo
 			// 
-			this->botonMC->Location = System::Drawing::Point(7, 23);
-			this->botonMC->Name = L"botonMC";
-			this->botonMC->Size = System::Drawing::Size(187, 23);
-			this->botonMC->TabIndex = 1;
-			this->botonMC->Text = L"Minimos cuadrados";
-			this->botonMC->UseVisualStyleBackColor = true;
-			this->botonMC->Click += gcnew System::EventHandler(this, &MyForm::botonMC_Click);
+			this->botonInfo->Location = System::Drawing::Point(58, 240);
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->Size = System::Drawing::Size(75, 23);
+			this->botonInfo->TabIndex = 3;
+			this->botonInfo->Text = L"Info";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(843, 361);
+			this->ClientSize = System::Drawing::Size(1213, 361);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
@@ -228,6 +269,7 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox3->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -259,9 +301,13 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 		catch (FormatException ^e) {}
 	}
 	private: System::Void botonLimpiar_Click(System::Object^  sender, System::EventArgs^  e) {
+		Graphics^ g;
+		g = pictureBox1->CreateGraphics();
+
 		dataGridView1->Columns->Clear();
 		dataGridView1->Rows->Clear();
 		listBox1->Items->Clear();
+		g->Clear(System::Drawing::Color::White);
 	}
 	private: System::Void botonLeer_Click(System::Object^  sender, System::EventArgs^  e) {
 		for (int i = 0; i < n; i++) {
@@ -280,19 +326,19 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 			for (int j = 0; j < n; j++) s = s + V[i][j] + "\t";
 			listBox1->Items->Add(s);
 		}
-		listBox1->Items->Add("Matriz Vt:");
+		/*listBox1->Items->Add("Matriz Vt:");				//Imprime matriz Vt
 		for (int i = 0; i < n; i++) {
 			s = "";
 			for (int j = 0; j < m; j++) s = s + Vt[i][j] + "\t";
 			listBox1->Items->Add(s);
-		}
-		listBox1->Items->Add("Matriz S:");
+		}*/
+		/*listBox1->Items->Add("Matriz S:");				//Imprime matriz S
 		for (int i = 0; i < m; i++) {
 			s = "";
 			for (int j = 0; j < m; j++) s = s + S[i][j] + "\t";
 			listBox1->Items->Add(s);
-		}
-		generaSt(S, St, x, y);
+		}*/
+		generaSt(S, St, x, y);							//Imprime matriz St
 		listBox1->Items->Add("Matriz St:");
 		for (int i = 0; i < m; i++) {
 			s = "";
@@ -344,10 +390,66 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 		ssel sistema(m);
 		sistema.modificaMatriz(St,z);
 		sistema.GaussJordan();
-		listBox1->Items->Add("Resultados");
+		listBox1->Items->Add("Polinomio:");
+		polinomio = "";
 		for (int i = 0; i < m; i++) {
-			listBox1->Items->Add(z[i]);
+			if(i != m - 1)
+				polinomio = polinomio + z[i] + "*x^" + i + "+";
+			else
+				polinomio = polinomio + z[i] + "*x^" + i;
 		}
+		listBox1->Items->Add("f(x)=" + polinomio);
+	}
+	private: System::Void botonGraficar_Click(System::Object^  sender, System::EventArgs^  e) {
+		Graphics^ g;
+		g = pictureBox1->CreateGraphics();
+		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
+		Pen^ plumaAzul = gcnew Pen(Color::DarkBlue, 1.0f);
+		Pen^ plumaGris = gcnew Pen(Color::Gray, 1.0f);
+		g->Clear(System::Drawing::Color::White);
+
+		int cf = pictureBox1->Width;
+		int ff = pictureBox1->Height;
+		int ci = 1;
+
+		try {
+				n = cf - ci;
+				GraficadorFx obj(n);
+				//Busca x mas grande entre los puntos
+				double xmx = x[0];
+				for (int i = 0; i < m; i++) if(xmx < x[i])	xmx = x[i];
+				double xf = xmx;
+				xmx = x[0];
+				for (int i = 0; i < m; i++) if (x[i] < xmx)	xmx = x[i];
+				double xi = xmx;
+
+				obj.GraficaXY(xi, xf, cf, ff, polinomio);
+				int j = 1;
+				for (int k = 0; k < n - 1; k++) {
+					g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
+					j++;
+				}
+
+				if ((obj.Fun(xi)*obj.Fun(xf) < 0) || (obj.yi <= 0 && obj.yf >= 0)) {
+					obj.y0 = 0;
+					obj.f0 = obj.Fil(obj.y0);
+					g->DrawLine(plumaNegra, 0, obj.f0, cf, obj.f0);
+				}
+				if (xi <= 0 && xf >= 0) {
+					obj.x0 = 0;
+					obj.c0 = obj.Col(obj.x0);
+					g->DrawLine(plumaNegra, obj.c0, 0, obj.c0, ff);
+				}
+		}
+		catch (FormatException^ e) {}
+	}
+
+	private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+		Graphics^ g = e->Graphics;
+		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
+	}
+	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
+		System::Diagnostics::Process::Start("lozanoRamirez.exe");
 	}
 };
 }

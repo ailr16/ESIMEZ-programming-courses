@@ -76,6 +76,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::Button^  botonInfo;
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::Label^  label7;
+	private: System::Windows::Forms::Label^  label9;
 
 	public:
 
@@ -114,11 +115,12 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonEvaluar = (gcnew System::Windows::Forms::Button());
 			this->botonLee = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->botonInfo = (gcnew System::Windows::Forms::Button());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->listaResultados = (gcnew System::Windows::Forms::ListBox());
 			this->matriz2 = (gcnew System::Windows::Forms::DataGridView());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->botonInfo = (gcnew System::Windows::Forms::Button());
+			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -128,6 +130,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label9);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->cajaIteraciones);
 			this->groupBox1->Controls->Add(this->ecasvac);
@@ -145,7 +148,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox1->Controls->Add(this->matriz);
 			this->groupBox1->Location = System::Drawing::Point(13, 13);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(408, 303);
+			this->groupBox1->Size = System::Drawing::Size(408, 335);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
@@ -289,7 +292,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox2->Controls->Add(this->botonLee);
 			this->groupBox2->Location = System::Drawing::Point(427, 13);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(153, 303);
+			this->groupBox2->Size = System::Drawing::Size(153, 335);
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
@@ -323,10 +326,38 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox3->Controls->Add(this->matriz2);
 			this->groupBox3->Location = System::Drawing::Point(587, 13);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(474, 303);
+			this->groupBox3->Size = System::Drawing::Size(474, 335);
 			this->groupBox3->TabIndex = 2;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
+			// 
+			// botonInfo
+			// 
+			this->botonInfo->Location = System::Drawing::Point(374, 19);
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->Size = System::Drawing::Size(75, 23);
+			this->botonInfo->TabIndex = 4;
+			this->botonInfo->Text = L"Info";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(265, 57);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(60, 13);
+			this->label8->TabIndex = 3;
+			this->label8->Text = L"Resultados";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(8, 57);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(84, 13);
+			this->label7->TabIndex = 2;
+			this->label7->Text = L"Matriz ingresada";
 			// 
 			// listaResultados
 			// 
@@ -348,33 +379,14 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->matriz2->Size = System::Drawing::Size(240, 196);
 			this->matriz2->TabIndex = 0;
 			// 
-			// label7
+			// label9
 			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(8, 57);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(84, 13);
-			this->label7->TabIndex = 2;
-			this->label7->Text = L"Matriz ingresada";
-			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(265, 57);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(60, 13);
-			this->label8->TabIndex = 3;
-			this->label8->Text = L"Resultados";
-			// 
-			// botonInfo
-			// 
-			this->botonInfo->Location = System::Drawing::Point(374, 19);
-			this->botonInfo->Name = L"botonInfo";
-			this->botonInfo->Size = System::Drawing::Size(75, 23);
-			this->botonInfo->TabIndex = 4;
-			this->botonInfo->Text = L"Info";
-			this->botonInfo->UseVisualStyleBackColor = true;
-			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(18, 298);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(242, 26);
+			this->label9->TabIndex = 15;
+			this->label9->Text = L"Ingresar en cada celda una función f(x,y) o f(x,y,z)\r\nsegun sea el caso";
 			// 
 			// MyForm
 			// 
@@ -385,7 +397,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Solucionador de Sistemas de Ecuaciones No Lineales";
+			this->Text = L"Solucion de Sistemas de Ecuaciones No Lineales (Con Lundin)";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->EndInit();
