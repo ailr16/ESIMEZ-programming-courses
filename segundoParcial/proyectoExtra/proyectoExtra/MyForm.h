@@ -3,10 +3,16 @@
 #include "GraficadorFx.h"
 #include <fstream>
 #include <iostream>
+#include <msclr\marshal_cppstd.h>
 
 using namespace std;
 #pragma once
 
+double desviacionEstandarP(double *y, int n);
+double funcion(System::String^ f, double x);
+double desviacionEstandarA(double *y, double*x, int n, int m, System::String^ polinomio);
+
+using info::lundin::math::ExpressionParser;
 namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
@@ -63,15 +69,17 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			double **Vt;
 			double **S;
 			double **St;
-			String^ polinomio;
+			System::String^ polinomio;
 	private: System::Windows::Forms::Button^  botonMC;
 	private: System::Windows::Forms::Button^  botonGraficar;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::Button^  botonInfo;
-	private: System::Windows::Forms::TextBox^  textBox1;
+	private: System::Windows::Forms::TextBox^  cajaArchivo;
+
 	private: System::Windows::Forms::Button^  leeArchivo;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label5;
 	public:
 
 	private:
@@ -95,6 +103,11 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->cajaPuntos = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->leeArchivo = (gcnew System::Windows::Forms::Button());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->cajaArchivo = (gcnew System::Windows::Forms::TextBox());
 			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->botonGraficar = (gcnew System::Windows::Forms::Button());
 			this->botonMC = (gcnew System::Windows::Forms::Button());
@@ -102,10 +115,6 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->leeArchivo = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -135,6 +144,7 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->cajaGrado->Size = System::Drawing::Size(100, 20);
 			this->cajaGrado->TabIndex = 1;
 			this->cajaGrado->Text = L"2";
+			this->cajaGrado->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaGrado_TextChanged);
 			// 
 			// label2
 			// 
@@ -187,10 +197,11 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->label5);
 			this->groupBox2->Controls->Add(this->leeArchivo);
 			this->groupBox2->Controls->Add(this->label4);
 			this->groupBox2->Controls->Add(this->label3);
-			this->groupBox2->Controls->Add(this->textBox1);
+			this->groupBox2->Controls->Add(this->cajaArchivo);
 			this->groupBox2->Controls->Add(this->botonInfo);
 			this->groupBox2->Controls->Add(this->botonGraficar);
 			this->groupBox2->Controls->Add(this->botonMC);
@@ -201,6 +212,51 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox2->TabIndex = 1;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(31, 184);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(132, 39);
+			this->label5->TabIndex = 8;
+			this->label5->Text = L"Para informacion detallada\r\noprima el boton Info\r\n(se abrirá un archivo PDF)";
+			// 
+			// leeArchivo
+			// 
+			this->leeArchivo->Location = System::Drawing::Point(58, 120);
+			this->leeArchivo->Name = L"leeArchivo";
+			this->leeArchivo->Size = System::Drawing::Size(75, 23);
+			this->leeArchivo->TabIndex = 7;
+			this->leeArchivo->Text = L"Leer";
+			this->leeArchivo->UseVisualStyleBackColor = true;
+			this->leeArchivo->Click += gcnew System::EventHandler(this, &MyForm::leeArchivo_Click);
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(10, 91);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(61, 26);
+			this->label4->TabIndex = 6;
+			this->label4->Text = L"Nombre del\r\narchivo\r\n";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(10, 72);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(111, 13);
+			this->label3->TabIndex = 5;
+			this->label3->Text = L"Leer de archivo (CSV)";
+			// 
+			// cajaArchivo
+			// 
+			this->cajaArchivo->Location = System::Drawing::Point(77, 91);
+			this->cajaArchivo->Name = L"cajaArchivo";
+			this->cajaArchivo->Size = System::Drawing::Size(117, 20);
+			this->cajaArchivo->TabIndex = 4;
+			this->cajaArchivo->Text = L"capacitor1.csv";
 			// 
 			// botonInfo
 			// 
@@ -218,7 +274,7 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonGraficar->Name = L"botonGraficar";
 			this->botonGraficar->Size = System::Drawing::Size(187, 23);
 			this->botonGraficar->TabIndex = 2;
-			this->botonGraficar->Text = L"Graficar";
+			this->botonGraficar->Text = L"Graficar polinomio";
 			this->botonGraficar->UseVisualStyleBackColor = true;
 			this->botonGraficar->Click += gcnew System::EventHandler(this, &MyForm::botonGraficar_Click);
 			// 
@@ -270,41 +326,6 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->listBox1->Size = System::Drawing::Size(342, 303);
 			this->listBox1->TabIndex = 0;
 			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(77, 91);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(117, 20);
-			this->textBox1->TabIndex = 4;
-			this->textBox1->Text = L"capacitor1.csv";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(10, 72);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(111, 13);
-			this->label3->TabIndex = 5;
-			this->label3->Text = L"Leer de archivo (CSV)";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(10, 91);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(61, 26);
-			this->label4->TabIndex = 6;
-			this->label4->Text = L"Nombre del\r\narchivo\r\n";
-			// 
-			// leeArchivo
-			// 
-			this->leeArchivo->Location = System::Drawing::Point(58, 120);
-			this->leeArchivo->Name = L"leeArchivo";
-			this->leeArchivo->Size = System::Drawing::Size(75, 23);
-			this->leeArchivo->TabIndex = 7;
-			this->leeArchivo->Text = L"Leer";
-			this->leeArchivo->UseVisualStyleBackColor = true;
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -314,7 +335,7 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Tratamiento de puntos";
+			this->Text = L"Problemas de tratamiento de puntos";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -328,6 +349,7 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 #pragma endregion
 	private: System::Void cajaPuntos_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		try {
+			comprobarBotones();
 			dataGridView1->Columns->Clear();
 			dataGridView1->Rows->Clear();
 			dataGridView1->Columns->Add("Matriz", "x");
@@ -353,6 +375,7 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 		catch (FormatException ^e) {}
 	}
 	private: System::Void botonLimpiar_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		Graphics^ g;
 		g = pictureBox1->CreateGraphics();
 
@@ -362,6 +385,7 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 		g->Clear(System::Drawing::Color::White);
 	}
 	private: System::Void botonLeer_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		for (int i = 0; i < n; i++) {
 			x[i] = Convert::ToDouble(dataGridView1->Rows[i]->Cells[0]->Value);
 			y[i] = Convert::ToDouble(dataGridView1->Rows[i]->Cells[1]->Value);
@@ -370,7 +394,7 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 		for (int i = 0; i < n; i++) {
 			listBox1->Items->Add(x[i] + "\t" + y[i]);
 		}
-		String^ s;
+		System::String^ s;
 		generaVtS(S, V, Vt, x, y);
 		listBox1->Items->Add("Matriz V:");
 		for (int i = 0; i < m; i++) {
@@ -378,18 +402,6 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 			for (int j = 0; j < n; j++) s = s + V[i][j] + "\t";
 			listBox1->Items->Add(s);
 		}
-		/*listBox1->Items->Add("Matriz Vt:");				//Imprime matriz Vt
-		for (int i = 0; i < n; i++) {
-			s = "";
-			for (int j = 0; j < m; j++) s = s + Vt[i][j] + "\t";
-			listBox1->Items->Add(s);
-		}*/
-		/*listBox1->Items->Add("Matriz S:");				//Imprime matriz S
-		for (int i = 0; i < m; i++) {
-			s = "";
-			for (int j = 0; j < m; j++) s = s + S[i][j] + "\t";
-			listBox1->Items->Add(s);
-		}*/
 		generaSt(S, St, x, y);							//Imprime matriz St
 		listBox1->Items->Add("Matriz St:");
 		for (int i = 0; i < m; i++) {
@@ -439,6 +451,7 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 		}
 	}
 	private: System::Void botonMC_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		ssel sistema(m);
 		sistema.modificaMatriz(St, z);
 		sistema.GaussJordan();
@@ -451,8 +464,16 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 				polinomio = polinomio + z[i] + "*x^" + i;
 		}
 		listBox1->Items->Add("f(x)=" + polinomio);
+		double up, ua;
+		up = desviacionEstandarP(y, n);
+		ua = desviacionEstandarA(y, x, n, m, polinomio);
+		listBox1->Items->Add("Desviaciones estandar:");
+		listBox1->Items->Add("up= "+up);
+		listBox1->Items->Add("ua= " + ua);
+
 	}
 	private: System::Void botonGraficar_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		Graphics^ g;
 		g = pictureBox1->CreateGraphics();
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
@@ -497,11 +518,110 @@ namespace proyectoExtra {				//Cambiar CLRWindowsForms por nombre del proyecto
 	}
 
 	private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+		comprobarBotones();
 		Graphics^ g = e->Graphics;
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
 	}
 	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		System::Diagnostics::Process::Start("lozanoRamirez.exe");
+		System::Diagnostics::Process::Start("info.pdf");
 	}
-	};
+	private: System::Void leeArchivo_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
+		string nombreArchivo;
+		msclr::interop::marshal_context context;
+		nombreArchivo = context.marshal_as<std::string>(cajaArchivo->Text);
+		listBox1->Items->Clear();
+
+		double d;
+		char c;
+		string dato2;
+		int xd;
+
+		ifstream archivo_in;
+		archivo_in.open(nombreArchivo);
+			if (archivo_in.fail())	listBox1->Items->Add("Error al abrir el archivo");
+			else {
+				for(int i = 1; i<=7; i++)	archivo_in >> c;
+				archivo_in >> d;
+				listBox1->Items->Add("Numero de puntos= " + d);
+				xd = d;
+				for (int i = 1; i <= 6; i++)	archivo_in >> c;
+				archivo_in >> d;
+				listBox1->Items->Add("Grado del polinomio= " + d);
+				cajaGrado->Text = Convert::ToString(d);
+				cajaPuntos->Text = Convert::ToString(xd);
+				//Termina lectura de datos principales
+
+				for (int i = 0; i < n; i++) {
+					archivo_in >> d;
+					x[i] = d;
+						archivo_in >> c;
+					archivo_in >> d;
+					y[i] = d;
+				}
+
+
+				for (int i = 0; i < n; i++) dataGridView1->Rows[i]->Cells[0]->Value = Convert::ToString(x[i]);
+				for (int i = 0; i < n; i++) dataGridView1->Rows[i]->Cells[1]->Value = Convert::ToString(y[i]);
+				
+			}
+
+		archivo_in.close();
+	}
+private: System::Void cajaGrado_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	try {
+		comprobarBotones();
+		dataGridView1->Columns->Clear();
+		dataGridView1->Rows->Clear();
+		dataGridView1->Columns->Add("Matriz", "x");
+		dataGridView1->Columns->Add("Matriz", "y");
+		n = Convert::ToInt32(cajaPuntos->Text);
+		m = Convert::ToInt32(cajaGrado->Text) + 1;
+		delete x;	delete y;	delete V;	delete Vt;	delete S;	delete St;	delete z;
+		x = new double[n];
+		y = new double[n];
+		z = new double[m];
+		V = new double*[m];
+		Vt = new double*[n];
+		S = new double*[m];
+		St = new double*[m];
+
+		for (int i = 0; i < m; i++) V[i] = new double[n];
+		for (int i = 0; i < n; i++) Vt[i] = new double[m];
+		for (int i = 0; i < m; i++) S[i] = new double[m];
+		for (int i = 0; i < m; i++) St[i] = new double[m + 1];
+
+		for (int k = 0; k < n; k++) dataGridView1->Rows->Add();
+	}
+	catch (FormatException ^e) {}
+}
+		 public:void comprobarBotones(void) {
+			 botonGraficar->Enabled = true;
+		 }
+};
+}
+
+double desviacionEstandarP(double *y, int n) {
+	double res, p, s, s1;
+	s = 0;
+	for (int i = 0; i < n; i++)		s = s + y[i];
+	p = s / n;
+	s1 = 0;
+	for (int i = 0; i < n; i++)		s1 = s1 + pow(y[i] - p, 2);
+	res = sqrt(s1 / (n - 1));
+	return res;
+}
+double desviacionEstandarA(double *y, double*x, int n, int m, System::String^ polinomio) {
+	double res, s, s1;
+	s = 0;
+	for (int i = 0; i < n; i++)		s = s + pow(y[i] - funcion(polinomio, x[i]),2);
+	res = sqrt(s / (n - (m + 1)));
+	return res;
+}
+double funcion(System::String^ f, double x) {
+	ExpressionParser^ par = gcnew ExpressionParser();
+	par->Values->Add("x", x);
+	return par->Parse(f);
 }
