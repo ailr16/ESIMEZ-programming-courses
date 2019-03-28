@@ -5,12 +5,18 @@
 #include "ssel.h"
 #pragma once
 
-using info::lundin::math::ExpressionParser;
-double funcion(std::string fn, int numEc, double *b);
-void generarJF(std::string** matStr, double ** a, int numEc, double *b);
+void generaJf(void);
 void Newton(double Er, int ni, double *x, std::string**matStr, double **a, int numEc, double *b);
+double fun1(double x, double y);
+double fun2(double x, double y);
+double fun3(double x, double y);
+double fun4(double x, double y);
+double fun5(double x, double y);
+double fun6(double x, double y);
+double *b;
+double **a;
 
-namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
+namespace ssenl1 {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -48,10 +54,9 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 
 	public:	int n, m;
-			double **a;
+			//double **a;
 			double *z;
-			double *b;
-			std::string **matStr;
+			//double *b;
 	private: System::Windows::Forms::DataGridView^  matriz;
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::Button^  botonLee;
@@ -76,7 +81,8 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::Button^  botonInfo;
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::Label^  label7;
-	private: System::Windows::Forms::Label^  label9;
+	private: System::Windows::Forms::Label^  label10;
+
 
 	public:
 
@@ -96,7 +102,6 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->cajaIteraciones = (gcnew System::Windows::Forms::TextBox());
 			this->ecasvac = (gcnew System::Windows::Forms::Label());
@@ -121,6 +126,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->listaResultados = (gcnew System::Windows::Forms::ListBox());
 			this->matriz2 = (gcnew System::Windows::Forms::DataGridView());
+			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -130,7 +136,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->label9);
+			this->groupBox1->Controls->Add(this->label10);
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->cajaIteraciones);
 			this->groupBox1->Controls->Add(this->ecasvac);
@@ -152,15 +158,6 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
-			// 
-			// label9
-			// 
-			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(18, 298);
-			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(242, 26);
-			this->label9->TabIndex = 15;
-			this->label9->Text = L"Ingresar en cada celda una función f(x,y) o f(x,y,z)\r\nsegun sea el caso";
 			// 
 			// label6
 			// 
@@ -197,7 +194,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(297, 25);
+			this->label5->Location = System::Drawing::Point(320, 29);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(82, 13);
 			this->label5->TabIndex = 10;
@@ -254,7 +251,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// ec3
 			// 
 			this->ec3->AutoSize = true;
-			this->ec3->Location = System::Drawing::Point(166, 278);
+			this->ec3->Location = System::Drawing::Point(168, 261);
 			this->ec3->Name = L"ec3";
 			this->ec3->Size = System::Drawing::Size(31, 17);
 			this->ec3->TabIndex = 1;
@@ -265,7 +262,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// ec2
 			// 
 			this->ec2->AutoSize = true;
-			this->ec2->Location = System::Drawing::Point(166, 261);
+			this->ec2->Location = System::Drawing::Point(168, 244);
 			this->ec2->Name = L"ec2";
 			this->ec2->Size = System::Drawing::Size(31, 17);
 			this->ec2->TabIndex = 0;
@@ -277,7 +274,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(73, 263);
+			this->label1->Location = System::Drawing::Point(75, 246);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(62, 26);
 			this->label1->TabIndex = 3;
@@ -290,9 +287,9 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->matriz->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->matriz->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->matriz->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->matriz->Location = System::Drawing::Point(7, 20);
+			this->matriz->Location = System::Drawing::Point(9, 29);
 			this->matriz->Name = L"matriz";
-			this->matriz->Size = System::Drawing::Size(262, 238);
+			this->matriz->Size = System::Drawing::Size(262, 203);
 			this->matriz->TabIndex = 0;
 			// 
 			// groupBox2
@@ -388,6 +385,16 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->matriz2->Size = System::Drawing::Size(240, 196);
 			this->matriz2->TabIndex = 0;
 			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(6, 292);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(289, 26);
+			this->label10->TabIndex = 16;
+			this->label10->Text = L"Ingrese las funciones (resultados de las derivadas parciales)\r\nevaluadas en los v"
+				L"alores iniciales.";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -397,7 +404,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Solucion de Sistemas de Ecuaciones No Lineales (Con Lundin)";
+			this->Text = L"Solucion de Sistemas de Ecuaciones No Lineales";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->matriz))->EndInit();
@@ -414,16 +421,10 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 		compruebaDatos();
 	}
 	public:void leer(void) {
-		double lec, r, im;
-		String^ s;
-		String^ st;
-
-		msclr::interop::marshal_context context;
 
 		for (int i = 0; i < m; i++) {				//Lee matriz y la guarda en un arreglo
 			for (int j = 0; j < n; j++) {
-				s = Convert::ToString(matriz->Rows[i]->Cells[j]->Value);
-				matStr[i][j] = context.marshal_as<std::string>(s);
+				a[i][j] = Convert::ToDouble(matriz->Rows[i]->Cells[j]->Value);
 			}
 		}
 
@@ -442,24 +443,33 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 		for (int i = 0; i < m; i++) {				//Imprime los valores en la segunda matriz
 			for (int j = 0; j < n; j++) {
-				st = gcnew String(matStr[i][j].c_str());
-				matriz2->Rows[i]->Cells[j]->Value = st;
+				matriz2->Rows[i]->Cells[j]->Value = Convert::ToString(a[i][j]);
 			}
 		}
 	}
 	private: System::Void botonEvaluar_Click(System::Object^  sender, System::EventArgs^  e) {
-		ssenlClase sistema(m, z);
-		
+		ssenlClase sistema(2, z);
+
 		if (ec2->Checked) {
 			if (caja1->Text != "" && caja2->Text != "") {
 				b[0] = Convert::ToDouble(caja1->Text);
 				b[1] = Convert::ToDouble(caja2->Text);
 			}
 
-			Newton(Convert::ToDouble(cajaError->Text), Convert::ToDouble(cajaIteraciones->Text), z, matStr, a, 2, b);
+			ssel<double> sistema(m);
+
+			for (int k = 1; k <= Convert::ToInt32(cajaIteraciones->Text); k++) {
+				generaJf();
+				sistema.modificaMatriz(a);
+				sistema.GaussJordan();
+				z = sistema.regresaMatrizResultados();
+				for (int i = 0; i < 2; i++) {
+					b[i] = b[i] + z[i];
+				}
+			}
 
 			for (int i = 0; i < m; i++) {
-				listaResultados->Items->Add("x" + i + "= " + Convert::ToString(z[i]));
+				listaResultados->Items->Add("x" + i + "= " + Convert::ToString(b[i]));
 			}
 		}
 		else if (ec3->Checked) {
@@ -468,14 +478,13 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 				b[1] = Convert::ToDouble(caja2->Text);
 				b[2] = Convert::ToDouble(caja3->Text);
 			}
-			Newton(Convert::ToDouble(cajaError->Text), Convert::ToDouble(cajaIteraciones->Text), z, matStr, a, 3, b);
 
 			for (int i = 0; i < m; i++) {
 				listaResultados->Items->Add("x" + i + "= " + Convert::ToString(z[i]));
 			}
 		}
 	}
-	private:void compruebaDatos(void){
+	private:void compruebaDatos(void) {
 		if (ec2->Checked) {
 			caja1->Enabled = true;
 			caja2->Enabled = true;
@@ -497,9 +506,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 				z = new double[m];
 				a = new double*[m];
 				b = new double[m];
-				matStr = new std::string*[m];
 				for (int i = 0; i < m; i++)		a[i] = new double[n];
-				for (int i = 0; i < m; i++)		matStr[i] = new std::string[n];
 
 				matriz->Columns->Clear();
 				matriz->Rows->Clear();
@@ -521,9 +528,7 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 				z = new double[m];
 				a = new double*[m];
-				matStr = new std::string*[m];
 				for (int i = 0; i < m; i++)		a[i] = new double[n];
-				for (int i = 0; i < m; i++)		matStr[i] = new std::string[n];
 
 				matriz->Columns->Clear();
 				matriz->Rows->Clear();
@@ -545,73 +550,31 @@ namespace ssenl {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
 		System::Diagnostics::Process::Start("lozanoRamirez.exe");
 	}
-};
+	};
 }
-double funcion(std::string fn, int numEc, double *b) {
-	String^ st;
-	ExpressionParser^ par = gcnew ExpressionParser();
-	if (numEc == 2) {
-		try {
-			par->Values->Add("x", b[0]);
-			par->Values->Add("y", b[1]);
-			st = gcnew String(fn.c_str());
-			return par->Parse(st);
-		}
-		catch(FormatException^e){}
-	}
-	if (numEc == 3) {
-		try {
-			par->Values->Add("x", b[0]);
-			par->Values->Add("y", b[1]);
-			par->Values->Add("z", b[2]);
-			st = gcnew String(fn.c_str());
-			return par->Parse(st);
-		}
-		catch(FormatException^e){}
-	}
+double fun1(double x, double y) {
+	return exp(x);
 }
-void generarJF(std::string** matStr, double ** a, int numEc, double *b) {
-	int m = numEc;
-	int n = m + 1;
-	if (numEc == 2) {
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				a[i][j] = funcion(matStr[i][j], 2, b);
-			}
-		}
-	}
-	else if (numEc == 3){
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				a[i][j] = funcion(matStr[i][j], 3, b);
-			}
-		}
-	}
+double fun2(double x, double y) {
+	return -1;
 }
-void Newton(double Er, int ni, double *x, std::string**matStr, double **a, int numEc,  double *b) {
-	int bn;
-	ssel<double> sistema(numEc);
-	double * q;
-	q = new double[numEc];
-	double * h;
-	h = new double[numEc];
-
-	for (int i = 0; i < numEc; i++) {
-		q[i] = b[i];
-	}
-
-	bn = 0;
-	for (int k = 1; k <= ni; k++) {
-		generarJF(matStr, a, numEc, b);
-		sistema.modificaMatriz(a);
-		sistema.GaussJordan();
-		h = sistema.regresaMatrizResultados();
-		for (int i = 0; i < numEc; i++) {
-			x[i] = q[i] + h[i];
-			if (x[i] - q[i] < Er) {
-				b++;
-			}
-		}
-		if (bn == numEc) {}
-	}
+double fun3(double x, double y) {
+	return -exp(x) + y;
+}
+double fun4(double x, double y) {
+	return 2 * x;
+}
+double fun5(double x, double y) {
+	return 2 * y;
+}
+double fun6(double x, double y) {
+	return (-pow(x, 2) - pow(y, 2) + 4);
+}
+void generaJf(void) {
+	a[0][0] = fun1(b[0], b[1]);
+	a[0][1] = fun2(b[0], b[1]);
+	a[0][2] = fun3(b[0], b[1]);
+	a[1][0] = fun4(b[0], b[1]);
+	a[1][1] = fun5(b[0], b[1]);
+	a[1][2] = fun6(b[0], b[1]);
 }

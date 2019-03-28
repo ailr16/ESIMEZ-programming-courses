@@ -96,7 +96,6 @@ void generaJf() {
 	a[1][0] = fun4(b[0], b[1]);
 	a[1][1] = fun5(b[0], b[1]);
 	a[1][2] = fun6(b[0], b[1]);
-
 }
 void Newton(double Er, int ni, double *x, double **a, int numEc, double *b) {
 	int bn;
