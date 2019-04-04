@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1554162855 source:c:\users\angel\documents\github\analisisnumerico\tercerparcial\multiplicarpolinomios\main.cpp
+	<iostream>
+	"TERMINOA.H"
+
+1554162883 c:\users\angel\documents\github\analisisnumerico\tercerparcial\multiplicarpolinomios\terminoa.h
+	<iostream>
+

@@ -1,6 +1,7 @@
 #include <math.h>
 #include "ssel.h"
 #include "GraficadorFx.h"
+#include "tratamientoPuntos.h"
 #pragma once
 
 namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proyecto
@@ -318,85 +319,44 @@ namespace tratamientoDePuntos {				//Cambiar CLRWindowsForms por nombre del proy
 		for (int i = 0; i < n; i++) {
 			listBox1->Items->Add(x[i] + "\t" + y[i]);
 		}
+	}
+	private: System::Void botonMC_Click(System::Object^  sender, System::EventArgs^  e) {
 		String^ s;
-		generaVtS(S, V, Vt, x, y);
+		tratamientoPuntos tP1(n);
+		tP1.minimosCuadrados(m, x, y, S, V, Vt, St,z);
 		listBox1->Items->Add("Matriz V:");
 		for (int i = 0; i < m; i++) {
 			s = "";
 			for (int j = 0; j < n; j++) s = s + V[i][j] + "\t";
 			listBox1->Items->Add(s);
 		}
-		/*listBox1->Items->Add("Matriz Vt:");				//Imprime matriz Vt
-		for (int i = 0; i < n; i++) {
-			s = "";
-			for (int j = 0; j < m; j++) s = s + Vt[i][j] + "\t";
-			listBox1->Items->Add(s);
-		}*/
-		/*listBox1->Items->Add("Matriz S:");				//Imprime matriz S
-		for (int i = 0; i < m; i++) {
-			s = "";
-			for (int j = 0; j < m; j++) s = s + S[i][j] + "\t";
-			listBox1->Items->Add(s);
-		}*/
-		generaSt(S, St, x, y);							//Imprime matriz St
+
 		listBox1->Items->Add("Matriz St:");
 		for (int i = 0; i < m; i++) {
 			s = "";
-			for (int j = 0; j < m+1; j++) s = s + St[i][j] + "\t";
+			for (int j = 0; j < m + 1; j++) s = s + St[i][j] + "\t";
 			listBox1->Items->Add(s);
 		}
-	}
-	public:void generaVtS(double**S, double**V, double**Vt, double*x, double*y) {
-		for (int i = 0; i < m; i++) {			//Genera V
-			for (int j = 0; j < n; j++) {
-				V[i][j] = pow(x[j], i);
-			}
-		}
-		//Genera V transpuesta
-		for (int i = 0; i < n; i++) {			//Genera V
-			for (int j = 0; j < m; j++) {
-				Vt[i][j] = V[j][i];
-			}
-		}
-		//Multiplica V por Vt
-		producto(V, Vt, S);
-	}
-	public: void producto(double **A, double**B, double **C) {		//A*B=C
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < m; j++) {
-				C[i][j] = 0;
-				for (int k = 0; k < n; k++) {
-					C[i][j] += A[i][k] * B[k][j];
-				}
-			}
-		}
-	}
-	public: void generaSt(double **A, double **B, double*x, double *y) {		//B mat aumentada
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < m; j++) {
-				B[i][j] = A[i][j];
-			}
-		}
-		double t;
-		for (int i = 0; i < m; i++) {
-			t = 0;
-			for (int j = 0; j < n; j++) {
-				t += y[j] * pow(x[j], i);
-			}
-			B[i][m] = t;
-		}
-	}
-	private: System::Void botonMC_Click(System::Object^  sender, System::EventArgs^  e) {
-		ssel sistema(m);
-		sistema.modificaMatriz(St,z);
-		sistema.GaussJordan();
+
 		listBox1->Items->Add("Polinomio:");
 		polinomio = "";
 		for (int i = 0; i < m; i++) {
-			if(i != m - 1)
-				polinomio = polinomio + z[i] + "*x^" + i + "+";
-			else
-				polinomio = polinomio + z[i] + "*x^" + i;
+			if (i != m - 1) {
+				if (z[i] == 0) {
+					polinomio = polinomio;
+				}
+				else {
+					polinomio = polinomio + z[i] + "*x^" + i + "+";
+				}
+			}
+			else {
+				if (z[i] == 0) {
+					polinomio = polinomio;
+				}
+				else {
+					polinomio = polinomio + z[i] + "*x^" + i;
+				}
+			}
 		}
 		listBox1->Items->Add("f(x)=" + polinomio);
 	}
