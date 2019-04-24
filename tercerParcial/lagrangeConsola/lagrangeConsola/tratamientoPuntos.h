@@ -34,7 +34,7 @@ class tratamientoPuntos{
 					<< "y[" << i << "]= " << y[i] << std::endl;
 			}
 		}
-		void Lagrange(double xx, double &sum, std::string &pol) {
+		void LagrangeDOS(double xx, double &sum, std::string &pol) {
 			double product, product1;
 			double dif;
 			pol = "";
@@ -52,10 +52,16 @@ class tratamientoPuntos{
 						product1 = product1 * (1 / (x[i] - x[j]));
 					}
 				}
-				pol1 = pol1 + "*" + std::to_string(product1);
+				pol1 = pol1 + "*(" + std::to_string(product1) + ")";
 				std::cout << pol1 << std::endl;
 				sum = sum + product;
-				pol = pol + pol1 + " + ";
+				
+				if (i == n - 1) {
+					pol = pol + pol1;
+				}
+				else {
+					pol = pol + pol1 + " + ";
+				}
 			}
 		}
 };
