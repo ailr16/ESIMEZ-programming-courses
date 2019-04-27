@@ -2,25 +2,22 @@
 #include <iostream>
 #include "tratamientoPuntos.h"
 
-
-int main()
-{
+int main(){
 	int n;
 	double interpolar;
 	std::cout << "Numero de puntos: ";
 	std::cin >> n;
-	double fxx;
+	double fx, s;
 	std::string p;
 	std::cout << "Punto a interpolar: ";
 	std::cin >> interpolar;
 
 	tratamientoPuntos tP1(n);
 	tP1.pidePuntos();
-	tP1.imprimePuntos();
-	tP1.LagrangeDOS(interpolar, fxx,p);
-	std::cout << "Interpolacion en f(" << interpolar << ") = " << fxx;
-	std::cout << std::endl << "Polinomio:" << std::endl << "f(x)= " << p << std::endl;
+	fx = 0;
+	tP1.diferenciasFinitasDOS(interpolar, fx, p);
+	std::cout << "Interpolacion en f(" << interpolar << ") = " << fx << std::endl;
+	//std::cout << std::endl << "Polinomio:" << std::endl << "f(x)= " << p << std::endl;
 
 	system("pause");
-
 }
