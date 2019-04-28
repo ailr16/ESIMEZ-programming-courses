@@ -2,7 +2,8 @@
 #include <iostream>
 #include <sstream>
 
-//using namespace System;
+using namespace System;
+
 class tratamientoPuntos{
 	private:
 		int n;
@@ -63,7 +64,7 @@ class tratamientoPuntos{
 				pol = pol + pol1;
 			}
 		}
-		/*System::String^ LagrangeCLR(double xx, double &sum) {
+		System::String^ LagrangeCLR(double xx, double &sum) {
 			double product, product1;
 			double dif;
 			System::String^ pol = "";
@@ -90,7 +91,7 @@ class tratamientoPuntos{
 				pol = pol + pol1;
 			}
 			return pol;
-		}*/
+		}
 		void diferenciasDivididasDOS(double xd, double &fd, std::string &pol) {
 			fd = 0;
 			double p, p1;
@@ -122,7 +123,7 @@ class tratamientoPuntos{
 				pol = pol + pol2;
 			}
 		}
-		/*System::String^ diferenciasDivididasCLR(double xd, double &fd) {
+		System::String^ diferenciasDivididasCLR(double xd, double &fd) {
 			fd = 0;
 			double p, p1;
 			System::String^ pol = "";
@@ -153,7 +154,7 @@ class tratamientoPuntos{
 				pol = pol + pol2;
 			}
 			return pol;
-		}*/
+		}
 		void diferenciasFinitasDOS(double xd, double &fx, std::string &pol) {
 			fx = 0;
 			pol = "";
