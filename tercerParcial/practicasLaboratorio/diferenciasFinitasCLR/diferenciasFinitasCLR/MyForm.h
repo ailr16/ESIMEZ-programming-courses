@@ -1,15 +1,12 @@
-#pragma once
-
-#include <msclr/marshal_cppstd.h>
 #include <math.h>
 #include <iostream>
-#include <fstream>
 #include "GraficadorFx.h"
 #include "tratamientoPuntos.h"
 #include <string>
 
-using info::lundin::math::ExpressionParser;
-namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proyecto
+#pragma once
+
+namespace diferenciasFinitasCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -74,12 +71,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 	private: System::Windows::Forms::TextBox^  cajaInterpolar;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
-	private: System::Windows::Forms::Label^  label3;
-	private: System::Windows::Forms::Button^  botonLeeArchivo;
-	private: System::Windows::Forms::TextBox^  cajaArchivo;
-	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::Button^  botonGenerar;
-
 	public:
 
 	private:
@@ -103,10 +94,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->cajaPuntos = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->botonLeeArchivo = (gcnew System::Windows::Forms::Button());
-			this->cajaArchivo = (gcnew System::Windows::Forms::TextBox());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->botonGraficar = (gcnew System::Windows::Forms::Button());
@@ -114,7 +101,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
-			this->botonGenerar = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -143,7 +129,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->cajaInterpolar->Name = L"cajaInterpolar";
 			this->cajaInterpolar->Size = System::Drawing::Size(100, 20);
 			this->cajaInterpolar->TabIndex = 4;
-			this->cajaInterpolar->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaInterpolar_TextChanged);
 			// 
 			// label2
 			// 
@@ -196,11 +181,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->Controls->Add(this->botonGenerar);
-			this->groupBox2->Controls->Add(this->botonLeeArchivo);
-			this->groupBox2->Controls->Add(this->cajaArchivo);
-			this->groupBox2->Controls->Add(this->label4);
-			this->groupBox2->Controls->Add(this->label3);
 			this->groupBox2->Controls->Add(this->button1);
 			this->groupBox2->Controls->Add(this->botonInfo);
 			this->groupBox2->Controls->Add(this->botonGraficar);
@@ -212,49 +192,13 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
 			// 
-			// botonLeeArchivo
-			// 
-			this->botonLeeArchivo->Location = System::Drawing::Point(10, 139);
-			this->botonLeeArchivo->Name = L"botonLeeArchivo";
-			this->botonLeeArchivo->Size = System::Drawing::Size(184, 23);
-			this->botonLeeArchivo->TabIndex = 8;
-			this->botonLeeArchivo->Text = L"Lee de archivo";
-			this->botonLeeArchivo->UseVisualStyleBackColor = true;
-			this->botonLeeArchivo->Click += gcnew System::EventHandler(this, &MyForm::botonLeeArchivo_Click);
-			// 
-			// cajaArchivo
-			// 
-			this->cajaArchivo->Location = System::Drawing::Point(75, 113);
-			this->cajaArchivo->Name = L"cajaArchivo";
-			this->cajaArchivo->Size = System::Drawing::Size(119, 20);
-			this->cajaArchivo->TabIndex = 7;
-			this->cajaArchivo->Text = L"archivoT.txt";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(7, 109);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(61, 26);
-			this->label4->TabIndex = 6;
-			this->label4->Text = L"Nombre del\r\narchivo";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(7, 92);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(98, 13);
-			this->label3->TabIndex = 5;
-			this->label3->Text = L"Leer desde archivo";
-			// 
 			// button1
 			// 
 			this->button1->Location = System::Drawing::Point(7, 50);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(187, 23);
+			this->button1->Size = System::Drawing::Size(187, 29);
 			this->button1->TabIndex = 4;
-			this->button1->Text = L"Metodo de Lagrange";
+			this->button1->Text = L"Metodo de Diferencias Divididas";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -316,16 +260,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->listBox1->Size = System::Drawing::Size(414, 303);
 			this->listBox1->TabIndex = 0;
 			// 
-			// botonGenerar
-			// 
-			this->botonGenerar->Location = System::Drawing::Point(10, 204);
-			this->botonGenerar->Name = L"botonGenerar";
-			this->botonGenerar->Size = System::Drawing::Size(184, 23);
-			this->botonGenerar->TabIndex = 9;
-			this->botonGenerar->Text = L"Asistente Generador de archivo";
-			this->botonGenerar->UseVisualStyleBackColor = true;
-			this->botonGenerar->Click += gcnew System::EventHandler(this, &MyForm::botonGenerar_Click);
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -335,12 +269,11 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Polinomio de Lagrange (con lectura desde Archivo)";
+			this->Text = L"Tratamiento de puntos";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox2->ResumeLayout(false);
-			this->groupBox2->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
@@ -348,7 +281,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 		}
 #pragma endregion
 	private: System::Void cajaPuntos_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		verificaBotones();
 		try {
 			dataGridView1->Columns->Clear();
 			dataGridView1->Rows->Clear();
@@ -374,7 +306,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 		catch (FormatException ^e) {}
 	}
 	private: System::Void botonLimpiar_Click(System::Object^  sender, System::EventArgs^  e) {
-		verificaBotones();
 		Graphics^ g;
 		g = pictureBox1->CreateGraphics();
 
@@ -384,7 +315,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 		g->Clear(System::Drawing::Color::White);
 	}
 	private: System::Void botonLeer_Click(System::Object^  sender, System::EventArgs^  e) {
-		verificaBotones();
 		delete x;	delete y;
 		x = new double[n];
 		y = new double[n];
@@ -399,7 +329,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 		}
 	}
 	private: System::Void botonGraficar_Click(System::Object^  sender, System::EventArgs^  e) {
-		verificaBotones();
 		Graphics^ g;
 		g = pictureBox1->CreateGraphics();
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
@@ -422,7 +351,7 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			for (int i = 0; i < m; i++) if (x[i] < xmx)	xmx = x[i];
 			double xi = xmx;
 
-			obj.GraficaXY(-2, 2, cf, ff, polinomio);
+			obj.GraficaXY(x[0] + 0.0001, x[n - 1] - 0.0001, cf, ff, polinomio);
 			int j = 1;
 			for (int k = 0; k < n - 1; k++) {
 				g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
@@ -444,17 +373,15 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 	}
 
 	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
-		verificaBotones();
 		System::Diagnostics::Process::Start("lozanoRamirez.exe");
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		verificaBotones();
 		double resultadoInterpolacion;
 		std::string pol;
 		tratamientoPuntos tp(n);
 		tp.modificaArregloX(x);
 		tp.modificaArregloY(y);
-		polinomio = tp.LagrangeCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
+		polinomio = tp.diferenciasFinitasCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
 		listBox1->Items->Add("Interpolacion: f(" + cajaInterpolar->Text + ")=   " + resultadoInterpolacion);
 		listBox1->Items->Add("Polinomio: f(x)=  " + polinomio);
 	}
@@ -462,63 +389,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 		Graphics^ g = e->Graphics;
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
 	}
-	private: System::Void botonLeeArchivo_Click(System::Object^  sender, System::EventArgs^  e) {
-		verificaBotones();
-		std::string nombreArchivo;
-		msclr::interop::marshal_context context;
-		nombreArchivo = context.marshal_as<std::string>(cajaArchivo->Text);
-		listBox1->Items->Clear();
-
-		double d;
-		char c;
-		std::string dato2;
-		int xd;
-
-		std::ifstream archivo_in;
-		archivo_in.open(nombreArchivo);
-		if (archivo_in.fail())	listBox1->Items->Add("Error al abrir el archivo");
-		else {
-			for (int i = 1; i <= 7; i++)	archivo_in >> c;
-			archivo_in >> d;
-			listBox1->Items->Add("Numero de puntos= " + d);
-			xd = d;
-			cajaPuntos->Text = Convert::ToString(xd);
-			//Termina lectura de datos principales
-
-			delete x;	delete y;
-			x = new double[n];
-			y = new double[n];
-
-			for (int i = 0; i < n; i++) {
-				archivo_in >> d;
-				x[i] = d;
-				archivo_in >> c;
-				archivo_in >> d;
-				y[i] = d;
-			}
-
-
-			for (int i = 0; i < n; i++) dataGridView1->Rows[i]->Cells[0]->Value = Convert::ToString(x[i]);
-			for (int i = 0; i < n; i++) dataGridView1->Rows[i]->Cells[1]->Value = Convert::ToString(y[i]);
-
-		}
-		archivo_in.close();
-	}
-	void verificaBotones(void) {
-		if (cajaInterpolar->Text != "") {
-			button1->Enabled = true;
-			botonGraficar->Enabled = true;
-		}
-		else {
-			button1->Enabled = false;
-			botonGraficar->Enabled = false;
-		}
-	}
-	private: System::Void cajaInterpolar_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		verificaBotones();
-	}
-	private: System::Void botonGenerar_Click(System::Object^  sender, System::EventArgs^  e) {
-		System::Diagnostics::Process::Start("generadorDeArchivo.exe");
-	}
-};
+	};
 }
+

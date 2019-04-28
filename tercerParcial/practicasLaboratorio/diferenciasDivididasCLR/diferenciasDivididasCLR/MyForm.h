@@ -129,6 +129,7 @@ namespace diferenciasDivididasCLR {				//Cambiar CLRWindowsForms por nombre del 
 			this->cajaInterpolar->Name = L"cajaInterpolar";
 			this->cajaInterpolar->Size = System::Drawing::Size(100, 20);
 			this->cajaInterpolar->TabIndex = 4;
+			this->cajaInterpolar->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaInterpolar_TextChanged);
 			// 
 			// label2
 			// 
@@ -269,7 +270,7 @@ namespace diferenciasDivididasCLR {				//Cambiar CLRWindowsForms por nombre del 
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Tratamiento de puntos";
+			this->Text = L"Diferencias Divididas";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -281,6 +282,7 @@ namespace diferenciasDivididasCLR {				//Cambiar CLRWindowsForms por nombre del 
 		}
 #pragma endregion
 	private: System::Void cajaPuntos_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		try {
 			dataGridView1->Columns->Clear();
 			dataGridView1->Rows->Clear();
@@ -306,6 +308,7 @@ namespace diferenciasDivididasCLR {				//Cambiar CLRWindowsForms por nombre del 
 		catch (FormatException ^e) {}
 	}
 	private: System::Void botonLimpiar_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		Graphics^ g;
 		g = pictureBox1->CreateGraphics();
 
@@ -315,6 +318,7 @@ namespace diferenciasDivididasCLR {				//Cambiar CLRWindowsForms por nombre del 
 		g->Clear(System::Drawing::Color::White);
 	}
 	private: System::Void botonLeer_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		delete x;	delete y;
 		x = new double[n];
 		y = new double[n];
@@ -329,6 +333,7 @@ namespace diferenciasDivididasCLR {				//Cambiar CLRWindowsForms por nombre del 
 		}
 	}
 	private: System::Void botonGraficar_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		Graphics^ g;
 		g = pictureBox1->CreateGraphics();
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
@@ -373,9 +378,11 @@ namespace diferenciasDivididasCLR {				//Cambiar CLRWindowsForms por nombre del 
 	}
 
 	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		System::Diagnostics::Process::Start("lozanoRamirez.exe");
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 		double resultadoInterpolacion;
 		std::string pol;
 		tratamientoPuntos tp(n);
@@ -389,6 +396,19 @@ namespace diferenciasDivididasCLR {				//Cambiar CLRWindowsForms por nombre del 
 		Graphics^ g = e->Graphics;
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
 	}
-	};
+	private: System::Void cajaInterpolar_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
+	}
+	void comprobarBotones(void) {
+		if (cajaInterpolar->Text != "") {
+			button1->Enabled = true;
+			botonGraficar->Enabled = true;
+		}
+		else {
+			button1->Enabled = !true;
+			botonGraficar->Enabled = !true;
+		}
+	}
+};
 }
 

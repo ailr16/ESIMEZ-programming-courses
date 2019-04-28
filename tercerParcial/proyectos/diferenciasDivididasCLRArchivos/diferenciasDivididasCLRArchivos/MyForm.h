@@ -335,7 +335,7 @@ namespace diferenciasDivididasCLRArchivos {				//Cambiar CLRWindowsForms por nom
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Tratamiento de puntos";
+			this->Text = L"Diferencias Divididas (con lectura desde Archivo)";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();

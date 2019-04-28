@@ -9,7 +9,7 @@
 #include <string>
 
 using info::lundin::math::ExpressionParser;
-namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proyecto
+namespace diferenciasFinitasCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -103,6 +103,7 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->cajaPuntos = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->botonGenerar = (gcnew System::Windows::Forms::Button());
 			this->botonLeeArchivo = (gcnew System::Windows::Forms::Button());
 			this->cajaArchivo = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -114,7 +115,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
-			this->botonGenerar = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -212,6 +212,16 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
 			// 
+			// botonGenerar
+			// 
+			this->botonGenerar->Location = System::Drawing::Point(10, 204);
+			this->botonGenerar->Name = L"botonGenerar";
+			this->botonGenerar->Size = System::Drawing::Size(184, 23);
+			this->botonGenerar->TabIndex = 9;
+			this->botonGenerar->Text = L"Asistente Generador de archivo";
+			this->botonGenerar->UseVisualStyleBackColor = true;
+			this->botonGenerar->Click += gcnew System::EventHandler(this, &MyForm::botonGenerar_Click);
+			// 
 			// botonLeeArchivo
 			// 
 			this->botonLeeArchivo->Location = System::Drawing::Point(10, 139);
@@ -254,7 +264,7 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(187, 23);
 			this->button1->TabIndex = 4;
-			this->button1->Text = L"Metodo de Lagrange";
+			this->button1->Text = L"Metodo de Diferencias Finitas";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -316,16 +326,6 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->listBox1->Size = System::Drawing::Size(414, 303);
 			this->listBox1->TabIndex = 0;
 			// 
-			// botonGenerar
-			// 
-			this->botonGenerar->Location = System::Drawing::Point(10, 204);
-			this->botonGenerar->Name = L"botonGenerar";
-			this->botonGenerar->Size = System::Drawing::Size(184, 23);
-			this->botonGenerar->TabIndex = 9;
-			this->botonGenerar->Text = L"Asistente Generador de archivo";
-			this->botonGenerar->UseVisualStyleBackColor = true;
-			this->botonGenerar->Click += gcnew System::EventHandler(this, &MyForm::botonGenerar_Click);
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -335,7 +335,7 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Polinomio de Lagrange (con lectura desde Archivo)";
+			this->Text = L"Diferencias Finitas (con lectura desde archivo)";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -454,7 +454,7 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 		tratamientoPuntos tp(n);
 		tp.modificaArregloX(x);
 		tp.modificaArregloY(y);
-		polinomio = tp.LagrangeCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
+		polinomio = tp.diferenciasFinitasCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
 		listBox1->Items->Add("Interpolacion: f(" + cajaInterpolar->Text + ")=   " + resultadoInterpolacion);
 		listBox1->Items->Add("Polinomio: f(x)=  " + polinomio);
 	}
@@ -504,21 +504,21 @@ namespace LagrangeCLRArchivos {				//Cambiar CLRWindowsForms por nombre del proy
 		}
 		archivo_in.close();
 	}
-	void verificaBotones(void) {
-		if (cajaInterpolar->Text != "") {
-			button1->Enabled = true;
-			botonGraficar->Enabled = true;
-		}
-		else {
-			button1->Enabled = false;
-			botonGraficar->Enabled = false;
-		}
-	}
+			 void verificaBotones(void) {
+				 if (cajaInterpolar->Text != "") {
+					 button1->Enabled = true;
+					 botonGraficar->Enabled = true;
+				 }
+				 else {
+					 button1->Enabled = false;
+					 botonGraficar->Enabled = false;
+				 }
+			 }
 	private: System::Void cajaInterpolar_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 		verificaBotones();
 	}
 	private: System::Void botonGenerar_Click(System::Object^  sender, System::EventArgs^  e) {
 		System::Diagnostics::Process::Start("generadorDeArchivo.exe");
 	}
-};
+	};
 }
