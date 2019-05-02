@@ -20,10 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{53369495-b116-4c9b-aa18-6f3ffd503d1d}</ProjectGuid>
+    <ProjectGuid>{4785ef8c-b6da-4058-a302-0913e261a9bb}</ProjectGuid>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>diferenciasFinitasCLR</RootNamespace>
+    <RootNamespace>diferenciasDivididasCLRGrafica</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

@@ -1,12 +1,11 @@
 #include <math.h>
 #include <iostream>
-#include "GraficadorFx.h"
-#include "tratamientoPuntos.h"
+#include "Derivada.h"
 #include <string>
 
 #pragma once
 
-namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
+namespace derivadaCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -68,8 +67,8 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	private: System::Windows::Forms::Button^  botonInfo;
 	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::TextBox^  cajaInterpolar;
-	private: System::Windows::Forms::Label^  label2;
+
+
 
 	public:
 
@@ -87,8 +86,6 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->cajaInterpolar = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->botonLeer = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -107,8 +104,6 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->cajaInterpolar);
-			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->botonLeer);
 			this->groupBox1->Controls->Add(this->dataGridView1);
 			this->groupBox1->Controls->Add(this->label1);
@@ -119,23 +114,6 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
-			// 
-			// cajaInterpolar
-			// 
-			this->cajaInterpolar->Location = System::Drawing::Point(117, 50);
-			this->cajaInterpolar->Name = L"cajaInterpolar";
-			this->cajaInterpolar->Size = System::Drawing::Size(100, 20);
-			this->cajaInterpolar->TabIndex = 4;
-			this->cajaInterpolar->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaInterpolar_TextChanged);
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(20, 54);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(86, 13);
-			this->label2->TabIndex = 3;
-			this->label2->Text = L"Valor a interpolar";
 			// 
 			// botonLeer
 			// 
@@ -154,9 +132,9 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(6, 73);
+			this->dataGridView1->Location = System::Drawing::Point(6, 50);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(237, 220);
+			this->dataGridView1->Size = System::Drawing::Size(237, 243);
 			this->dataGridView1->TabIndex = 2;
 			// 
 			// label1
@@ -191,17 +169,17 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(7, 50);
+			this->button1->Location = System::Drawing::Point(6, 73);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(187, 38);
+			this->button1->Size = System::Drawing::Size(187, 42);
 			this->button1->TabIndex = 4;
-			this->button1->Text = L"Metodo de Lagrange";
+			this->button1->Text = L"Derivada";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// botonInfo
 			// 
-			this->botonInfo->Location = System::Drawing::Point(62, 270);
+			this->botonInfo->Location = System::Drawing::Point(64, 270);
 			this->botonInfo->Name = L"botonInfo";
 			this->botonInfo->Size = System::Drawing::Size(75, 23);
 			this->botonInfo->TabIndex = 3;
@@ -222,9 +200,9 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// groupBox3
 			// 
 			this->groupBox3->Controls->Add(this->listBox1);
-			this->groupBox3->Location = System::Drawing::Point(475, 13);
+			this->groupBox3->Location = System::Drawing::Point(476, 13);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(444, 336);
+			this->groupBox3->Size = System::Drawing::Size(433, 336);
 			this->groupBox3->TabIndex = 2;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
@@ -235,19 +213,19 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->listBox1->HorizontalScrollbar = true;
 			this->listBox1->Location = System::Drawing::Point(7, 23);
 			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(425, 303);
+			this->listBox1->Size = System::Drawing::Size(414, 303);
 			this->listBox1->TabIndex = 0;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(931, 361);
+			this->ClientSize = System::Drawing::Size(920, 361);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Polinomio de Lagrange";
+			this->Text = L"Diferencias Finitas";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -258,7 +236,6 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 		}
 #pragma endregion
 	private: System::Void cajaPuntos_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		comprobarBotones();
 		try {
 			dataGridView1->Columns->Clear();
 			dataGridView1->Rows->Clear();
@@ -284,14 +261,11 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 		catch (FormatException ^e) {}
 	}
 	private: System::Void botonLimpiar_Click(System::Object^  sender, System::EventArgs^  e) {
-		comprobarBotones();
-
 		dataGridView1->Columns->Clear();
 		dataGridView1->Rows->Clear();
 		listBox1->Items->Clear();
 	}
 	private: System::Void botonLeer_Click(System::Object^  sender, System::EventArgs^  e) {
-		comprobarBotones();
 		delete x;	delete y;
 		x = new double[n];
 		y = new double[n];
@@ -305,37 +279,21 @@ namespace lagrangeCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			listBox1->Items->Add(x[i] + "\t" + y[i]);
 		}
 	}
-	
 	private: System::Void botonInfo_Click(System::Object^  sender, System::EventArgs^  e) {
-		comprobarBotones();
 		System::Diagnostics::Process::Start("lozanoRamirez.exe");
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		comprobarBotones();
-		double resultadoInterpolacion;
+		double resultadoDerivada;
 		std::string pol;
-		tratamientoPuntos tp(n);
-		tp.modificaArregloX(x);
-		tp.modificaArregloY(y);
-		polinomio = tp.LagrangeCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
-		listBox1->Items->Add("Interpolacion: f(" + cajaInterpolar->Text + ")=   " + resultadoInterpolacion);
-		listBox1->Items->Add("Polinomio: f(x)=  " + polinomio);
+		Derivadas d1(n);
+		d1.modificaArregloX(x);
+		d1.modificaArregloY(y);
+		resultadoDerivada = d1.derivadaCLR();
+		polinomio = d1.rectaTangenteCLR();
+		listBox1->Items->Add("Derivada:   f'(" + x[0] + ")=   " + resultadoDerivada);
+		listBox1->Items->Add("Ecuacion de la recta tangente: y(x)=  " + polinomio);
 	}
-	private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
-		comprobarBotones();
-		Graphics^ g = e->Graphics;
-		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
-	}
-	void comprobarBotones(void) {
-		if (cajaInterpolar->Text != "") {			
-			button1->Enabled = true;
-		}
-		else {
-			button1->Enabled = !true;
-		}
-	}
-	private: System::Void cajaInterpolar_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-		comprobarBotones();
-	}
-};
+
+	};
 }
+
