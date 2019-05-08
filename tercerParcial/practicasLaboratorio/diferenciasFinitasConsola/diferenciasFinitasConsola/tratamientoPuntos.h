@@ -158,6 +158,7 @@ class tratamientoPuntos{
 			fx = 0;
 			pol = "";
 			std::string pol1 = "";
+			std::string ss = "";
 			double s, h;
 			double sum = 0, p;
 			G = new double*[n + 1];
@@ -176,6 +177,10 @@ class tratamientoPuntos{
 				std::cout << std::endl;
 			}
 
+			if(x[0] > 0)	ss = "((x-" + std::to_string(x[0]) + ")/" + std::to_string(h) + ")";
+			else if (x[0] < 0)	ss = "((x+" + std::to_string(fabs(x[0])) + ")/" + std::to_string(h) + ")";
+			else if(x[0] == 0)	ss = "(x/" + std::to_string(h) + ")";
+
 			fx = y[0];
 			pol = std::to_string(y[0]);
 			for (int j = 1; j < n; j++) {
@@ -183,18 +188,8 @@ class tratamientoPuntos{
 				pol1 = "";
 				for (int i = 1; i <= j; i++) {
 					p = p * (s - (i - 1));
-					if (x[0] > 0) {
-						if (i - 1 != 0)   pol1 = pol1 + "((x - " + std::to_string(x[0]) + "/" + std::to_string(h) + ")" + "-" + std::to_string(i - 1) + ")";
-						else   pol1 = pol1 + "((x - " + std::to_string(x[0]) + "/" + std::to_string(h) + ")" + ")";
-					}
-					else if (x[0] < 0) {
-						if (i - 1 != 0)   pol1 = pol1 + "((x + " + std::to_string(fabs(x[0])) + "/" + std::to_string(h) + ")" + "-" + std::to_string(i - 1) + ")";
-						else   pol1 = pol1 + "((x + " + std::to_string(fabs(x[0])) + "/" + std::to_string(h) + ")" + ")";
-					}
-					else if (x[0] == 0) {
-						if (i - 1 != 0)	pol1 = pol1 + "((x /" + std::to_string(h) + ")" + "-" + std::to_string(i - 1) + ")";
-						else   pol1 = pol1 + "((x /" + std::to_string(h) + ")" + ")";
-					}
+					if(i-1 > 0)	pol1 = pol1 + "(" + "s" + "-" + std::to_string(i - 1) + ")";
+					else if (i - 1 == 0)	pol1 = pol1 + "(" + "s"  + ")";
 				}
 
 				fx = fx + p * (G[0][j] / factorial(j));
@@ -202,6 +197,7 @@ class tratamientoPuntos{
 				else if (G[0][j] < 0)	pol = pol + "-" + std::to_string(fabs(G[0][j]) / factorial(j)) + "*" + pol1;
 				else if (G[0][j] == 0)	pol = pol;
 			}
+			std::cout << "s=" << ss << std::endl;
 		}
 		double factorial(int a) {
 			double res = 1;

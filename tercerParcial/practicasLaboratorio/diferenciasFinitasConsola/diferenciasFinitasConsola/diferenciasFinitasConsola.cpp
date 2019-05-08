@@ -29,7 +29,7 @@ int main(){
 	fx = 0;
 	tP1.diferenciasFinitasDOS(interpolar, fx, p);
 	std::cout << "Interpolacion en f(" << interpolar << ") = " << fx << std::endl;
-	std::cout << std::endl << "Polinomio:" << std::endl << "f(x)= " << p << std::endl;
+	std::cout << std::endl << "Polinomio:" << std::endl << "f(s)= " << p << std::endl;
 
 	system("pause");
 }

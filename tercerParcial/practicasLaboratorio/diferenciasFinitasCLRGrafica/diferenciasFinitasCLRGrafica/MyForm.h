@@ -255,6 +255,7 @@ namespace diferenciasFinitasCLRGrafica {				//Cambiar CLRWindowsForms por nombre
 			// listBox1
 			// 
 			this->listBox1->FormattingEnabled = true;
+			this->listBox1->HorizontalScrollbar = true;
 			this->listBox1->Location = System::Drawing::Point(7, 23);
 			this->listBox1->Name = L"listBox1";
 			this->listBox1->Size = System::Drawing::Size(414, 303);
@@ -341,8 +342,8 @@ namespace diferenciasFinitasCLRGrafica {				//Cambiar CLRWindowsForms por nombre
 		int ci = 1;
 
 		try {
-			n = cf - ci;
-			GraficadorFx obj(n);
+			m = cf - ci;
+			GraficadorFx obj(m);
 			//Busca x mas grande entre los puntos
 			double xmx = x[0];
 			for (int i = 0; i < m; i++) if (xmx < x[i])	xmx = x[i];
@@ -353,7 +354,7 @@ namespace diferenciasFinitasCLRGrafica {				//Cambiar CLRWindowsForms por nombre
 
 			obj.GraficaXY(x[0] + 0.0001, x[n - 1] - 0.0001, cf, ff, polinomio);
 			int j = 1;
-			for (int k = 0; k < n - 1; k++) {
+			for (int k = 0; k < m - 1; k++) {
 				g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
 				j++;
 			}

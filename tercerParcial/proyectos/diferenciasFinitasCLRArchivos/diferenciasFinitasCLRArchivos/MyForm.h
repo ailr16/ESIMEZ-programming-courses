@@ -412,19 +412,16 @@ namespace diferenciasFinitasCLRArchivos {				//Cambiar CLRWindowsForms por nombr
 		int ci = 1;
 
 		try {
-			n = cf - ci;
-			GraficadorFx obj(n);
+			m = cf - ci;
+			GraficadorFx obj(m);
 			//Busca x mas grande entre los puntos
-			double xmx = x[0];
-			for (int i = 0; i < m; i++) if (xmx < x[i])	xmx = x[i];
-			double xf = xmx;
-			xmx = x[0];
-			for (int i = 0; i < m; i++) if (x[i] < xmx)	xmx = x[i];
-			double xi = xmx;
+			
+			double xf = x[n-1] - 0.00001;
+			double xi = x[0] + 0.00001;
 
-			obj.GraficaXY(-2, 2, cf, ff, polinomio);
+			obj.GraficaXY(xi, xf, cf, ff, polinomio);
 			int j = 1;
-			for (int k = 0; k < n - 1; k++) {
+			for (int k = 0; k < m - 1; k++) {
 				g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
 				j++;
 			}

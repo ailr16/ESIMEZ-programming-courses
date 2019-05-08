@@ -325,19 +325,20 @@ namespace derivadaCLRGraficador {				//Cambiar CLRWindowsForms por nombre del pr
 		int ci = 1;
 
 		try {
-			ng = cf - ci;
-			GraficadorFx obj(ng);
-			double xf = x[n]-0.01;
-			double xi = x[0]+0.01;
+			m = cf - ci;
+			GraficadorFx obj(m);
+
+			double xf = x[n - 1] - 0.0001;
+			double xi = x[0] + 0.0001;
 
 			obj.GraficaXY(xi, xf, cf, ff, polinomio, ecuacionRecta);
 			int j = 1;
-			for (int k = 0; k < ng - 1; k++) {
+			for (int k = 0; k < m - 1; k++) {
 				g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
 				j++;
 			}
 			j = 1;
-			for (int k = 0; k < ng - 1; k++) {
+			for (int k = 0; k < m - 1; k++) {
 				g->DrawLine(plumaRoja, obj.C2[k], obj.F2[k], obj.C2[j], obj.F2[j]);
 				j++;
 			}
