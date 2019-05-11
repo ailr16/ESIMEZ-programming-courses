@@ -290,19 +290,6 @@ namespace diferenciasDivididasCLRGrafica {				//Cambiar CLRWindowsForms por nomb
 			dataGridView1->Columns->Add("Matriz", "x");
 			dataGridView1->Columns->Add("Matriz", "y");
 			n = Convert::ToInt32(cajaPuntos->Text);
-			//delete x;	delete y;	delete V;	delete Vt;	delete S;	delete St;	delete z;
-			//x = new double[n];
-			//y = new double[n];
-			//z = new double[m];
-			//V = new double*[m];
-			//Vt = new double*[n];
-			//S = new double*[m];
-			//St = new double*[m];
-
-			//for (int i = 0; i < m; i++) V[i] = new double[n];
-			//for (int i = 0; i < n; i++) Vt[i] = new double[m];
-			//for (int i = 0; i < m; i++) S[i] = new double[m];
-			//for (int i = 0; i < m; i++) St[i] = new double[m + 1];
 
 			for (int k = 0; k < n; k++) dataGridView1->Rows->Add();
 		}
@@ -347,19 +334,14 @@ namespace diferenciasDivididasCLRGrafica {				//Cambiar CLRWindowsForms por nomb
 		int ci = 1;
 
 		try {
-			n = cf - ci;
-			GraficadorFx obj(n);
-			//Busca x mas grande entre los puntos
-			double xmx = x[0];
-			for (int i = 0; i < m; i++) if (xmx < x[i])	xmx = x[i];
-			double xf = xmx;
-			xmx = x[0];
-			for (int i = 0; i < m; i++) if (x[i] < xmx)	xmx = x[i];
-			double xi = xmx;
+			m = cf - ci;
+			GraficadorFx obj(m);
+			double xf = x[n-1] + 1.5;
+			double xi = x[0] - 1.5;
 
-			obj.GraficaXY(x[0] + 0.0001, x[n - 1] - 0.0001, cf, ff, polinomio);
+			obj.GraficaXY(xi, xf, cf, ff, polinomio);
 			int j = 1;
-			for (int k = 0; k < n - 1; k++) {
+			for (int k = 0; k < m - 1; k++) {
 				g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
 				j++;
 			}

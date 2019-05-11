@@ -1,4 +1,4 @@
-#include "Integral.h"
+ï»¿#include "Integral.h"
 
 #pragma once
 
@@ -21,7 +21,7 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 		{
 			InitializeComponent();
 			//
-			//TODO: agregar código de constructor aquí
+			//TODO: agregar cÃ³digo de constructor aquÃ­
 			//
 			ind = 0;
 			comprobarBotones();
@@ -30,7 +30,7 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	protected:
 		/// <summary>
-		/// Limpiar los recursos que se estén usando.
+		/// Limpiar los recursos que se estÃ©n usando.
 		/// </summary>
 		~MyForm()
 		{
@@ -63,17 +63,19 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::GroupBox^  groupBox3;
 	private: System::Windows::Forms::ListBox^  listBox1;
 	private: System::Windows::Forms::Button^  botonLimpiar;
+	private: System::Windows::Forms::Label^  label7;
+	private: System::Windows::Forms::Label^  label6;
 
 	private:
 		/// <summary>
-		/// Variable del diseñador necesaria.
+		/// Variable del diseÃ±ador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Método necesario para admitir el Diseñador. No se puede modificar
-		/// el contenido de este método con el editor de código.
+		/// MÃ©todo necesario para admitir el DiseÃ±ador. No se puede modificar
+		/// el contenido de este mÃ©todo con el editor de cÃ³digo.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -93,6 +95,8 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -100,6 +104,8 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label7);
+			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->cajaN);
 			this->groupBox1->Controls->Add(this->label4);
@@ -128,7 +134,7 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// cajaN
 			// 
-			this->cajaN->Location = System::Drawing::Point(55, 190);
+			this->cajaN->Location = System::Drawing::Point(49, 190);
 			this->cajaN->Name = L"cajaN";
 			this->cajaN->Size = System::Drawing::Size(100, 20);
 			this->cajaN->TabIndex = 7;
@@ -138,7 +144,7 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(36, 193);
+			this->label4->Location = System::Drawing::Point(30, 193);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(13, 13);
 			this->label4->TabIndex = 6;
@@ -147,7 +153,7 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(4, 101);
+			this->label3->Location = System::Drawing::Point(75, 117);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(45, 13);
 			this->label3->TabIndex = 5;
@@ -155,24 +161,24 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// cajaXb
 			// 
-			this->cajaXb->Location = System::Drawing::Point(55, 164);
+			this->cajaXb->Location = System::Drawing::Point(19, 97);
 			this->cajaXb->Name = L"cajaXb";
-			this->cajaXb->Size = System::Drawing::Size(100, 20);
+			this->cajaXb->Size = System::Drawing::Size(25, 20);
 			this->cajaXb->TabIndex = 4;
 			this->cajaXb->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaXb_TextChanged);
 			// 
 			// cajaXa
 			// 
-			this->cajaXa->Location = System::Drawing::Point(55, 138);
+			this->cajaXa->Location = System::Drawing::Point(17, 164);
 			this->cajaXa->Name = L"cajaXa";
-			this->cajaXa->Size = System::Drawing::Size(100, 20);
+			this->cajaXa->Size = System::Drawing::Size(25, 20);
 			this->cajaXa->TabIndex = 3;
 			this->cajaXa->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaXa_TextChanged);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(31, 167);
+			this->label2->Location = System::Drawing::Point(2, 100);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(18, 13);
 			this->label2->TabIndex = 2;
@@ -181,7 +187,7 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(31, 141);
+			this->label1->Location = System::Drawing::Point(-1, 167);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(18, 13);
 			this->label1->TabIndex = 1;
@@ -191,7 +197,7 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"x^2", L"x^3", L"sin(x)", L"cos(x)", L"e^x" });
-			this->comboBox1->Location = System::Drawing::Point(55, 98);
+			this->comboBox1->Location = System::Drawing::Point(45, 134);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(115, 21);
 			this->comboBox1->TabIndex = 0;
@@ -257,6 +263,27 @@ namespace SimpsonCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->listBox1->Name = L"listBox1";
 			this->listBox1->Size = System::Drawing::Size(255, 251);
 			this->listBox1->TabIndex = 0;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->BackColor = System::Drawing::Color::Transparent;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(17, 117);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(28, 42);
+			this->label6->TabIndex = 9;
+			this->label6->Text = L"âˆ«";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(161, 137);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(18, 13);
+			this->label7->TabIndex = 10;
+			this->label7->Text = L"dx";
 			// 
 			// MyForm
 			// 

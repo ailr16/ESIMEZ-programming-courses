@@ -328,8 +328,8 @@ namespace derivadaCLRGraficador {				//Cambiar CLRWindowsForms por nombre del pr
 			m = cf - ci;
 			GraficadorFx obj(m);
 
-			double xf = x[n - 1] - 0.0001;
-			double xi = x[0] + 0.0001;
+			double xf = x[n - 1] + 1.5;
+			double xi = x[0] - 1.5;
 
 			obj.GraficaXY(xi, xf, cf, ff, polinomio, ecuacionRecta);
 			int j = 1;

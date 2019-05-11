@@ -21,5 +21,7 @@ int main() {
 	
 	x0 = 0; xn = 1, n = 4;
 	Integral A;
-	std::cout << std::endl << "Resultado= " << A.trapecio(x0, xn, n) << std::endl;
+	std::cout << std::endl << "Resultado= " << A.trapecio(x0, xn, n) << std::endl << std::endl;
+
+	system("pause");
 }

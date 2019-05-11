@@ -1,4 +1,4 @@
-#include "Integral.h"
+ï»¿#include "Integral.h"
 
 #pragma once
 
@@ -21,7 +21,7 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 		{
 			InitializeComponent();
 			//
-			//TODO: agregar código de constructor aquí
+			//TODO: agregar cÃ³digo de constructor aquÃ­
 			//
 			ind = 0;
 			comprobarBotones();
@@ -30,7 +30,7 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	protected:
 		/// <summary>
-		/// Limpiar los recursos que se estén usando.
+		/// Limpiar los recursos que se estÃ©n usando.
 		/// </summary>
 		~MyForm()
 		{
@@ -63,21 +63,23 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::GroupBox^  groupBox3;
 	private: System::Windows::Forms::ListBox^  listBox1;
 	private: System::Windows::Forms::Button^  botonLimpiar;
+	private: System::Windows::Forms::Label^  label6;
 
 	private:
 		/// <summary>
-		/// Variable del diseñador necesaria.
+		/// Variable del diseÃ±ador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Método necesario para admitir el Diseñador. No se puede modificar
-		/// el contenido de este método con el editor de código.
+		/// MÃ©todo necesario para admitir el DiseÃ±ador. No se puede modificar
+		/// el contenido de este mÃ©todo con el editor de cÃ³digo.
 		/// </summary>
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->cajaN = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -91,8 +93,8 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
+			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -100,6 +102,7 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->cajaN);
 			this->groupBox1->Controls->Add(this->label4);
@@ -116,6 +119,17 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(16, 118);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(28, 42);
+			this->label6->TabIndex = 9;
+			this->label6->Text = L"âˆ«";
+			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
@@ -131,7 +145,7 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->cajaN->Location = System::Drawing::Point(55, 190);
 			this->cajaN->Name = L"cajaN";
 			this->cajaN->Size = System::Drawing::Size(100, 20);
-			this->cajaN->TabIndex = 7;
+			this->cajaN->TabIndex = 3;
 			this->cajaN->Text = L"512";
 			this->cajaN->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaN_TextChanged);
 			// 
@@ -147,32 +161,32 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(4, 101);
+			this->label3->Location = System::Drawing::Point(159, 137);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(45, 13);
+			this->label3->Size = System::Drawing::Size(18, 13);
 			this->label3->TabIndex = 5;
-			this->label3->Text = L"Funcion";
+			this->label3->Text = L"dx";
 			// 
 			// cajaXb
 			// 
-			this->cajaXb->Location = System::Drawing::Point(55, 164);
+			this->cajaXb->Location = System::Drawing::Point(17, 98);
 			this->cajaXb->Name = L"cajaXb";
-			this->cajaXb->Size = System::Drawing::Size(100, 20);
-			this->cajaXb->TabIndex = 4;
+			this->cajaXb->Size = System::Drawing::Size(36, 20);
+			this->cajaXb->TabIndex = 1;
 			this->cajaXb->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaXb_TextChanged);
 			// 
 			// cajaXa
 			// 
-			this->cajaXa->Location = System::Drawing::Point(55, 138);
+			this->cajaXa->Location = System::Drawing::Point(16, 163);
 			this->cajaXa->Name = L"cajaXa";
-			this->cajaXa->Size = System::Drawing::Size(100, 20);
-			this->cajaXa->TabIndex = 3;
+			this->cajaXa->Size = System::Drawing::Size(36, 20);
+			this->cajaXa->TabIndex = 0;
 			this->cajaXa->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaXa_TextChanged);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(31, 167);
+			this->label2->Location = System::Drawing::Point(1, 99);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(18, 13);
 			this->label2->TabIndex = 2;
@@ -181,7 +195,7 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(31, 141);
+			this->label1->Location = System::Drawing::Point(1, 166);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(18, 13);
 			this->label1->TabIndex = 1;
@@ -191,10 +205,10 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"x^2", L"x^3", L"sin(x)", L"cos(x)", L"e^x" });
-			this->comboBox1->Location = System::Drawing::Point(55, 98);
+			this->comboBox1->Location = System::Drawing::Point(44, 134);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(115, 21);
-			this->comboBox1->TabIndex = 0;
+			this->comboBox1->TabIndex = 2;
 			this->comboBox1->Text = L"Seleccionar funcion";
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::comboBox1_SelectedIndexChanged);
 			// 
@@ -203,7 +217,7 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonIntegrar->Location = System::Drawing::Point(20, 20);
 			this->botonIntegrar->Name = L"botonIntegrar";
 			this->botonIntegrar->Size = System::Drawing::Size(146, 23);
-			this->botonIntegrar->TabIndex = 0;
+			this->botonIntegrar->TabIndex = 4;
 			this->botonIntegrar->Text = L"Integrar (trapecio)";
 			this->botonIntegrar->UseVisualStyleBackColor = true;
 			this->botonIntegrar->Click += gcnew System::EventHandler(this, &MyForm::botonIntegrar_Click);
@@ -224,7 +238,7 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->button2->Location = System::Drawing::Point(20, 50);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(146, 23);
-			this->button2->TabIndex = 1;
+			this->button2->TabIndex = 5;
 			this->button2->Text = L"Info";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
@@ -240,6 +254,16 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
 			// 
+			// botonLimpiar
+			// 
+			this->botonLimpiar->Location = System::Drawing::Point(52, 277);
+			this->botonLimpiar->Name = L"botonLimpiar";
+			this->botonLimpiar->Size = System::Drawing::Size(146, 23);
+			this->botonLimpiar->TabIndex = 6;
+			this->botonLimpiar->Text = L"Limpiar";
+			this->botonLimpiar->UseVisualStyleBackColor = true;
+			this->botonLimpiar->Click += gcnew System::EventHandler(this, &MyForm::botonLimpiar_Click);
+			// 
 			// listBox1
 			// 
 			this->listBox1->FormattingEnabled = true;
@@ -247,16 +271,6 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->listBox1->Name = L"listBox1";
 			this->listBox1->Size = System::Drawing::Size(255, 251);
 			this->listBox1->TabIndex = 0;
-			// 
-			// botonLimpiar
-			// 
-			this->botonLimpiar->Location = System::Drawing::Point(52, 277);
-			this->botonLimpiar->Name = L"botonLimpiar";
-			this->botonLimpiar->Size = System::Drawing::Size(146, 23);
-			this->botonLimpiar->TabIndex = 2;
-			this->botonLimpiar->Text = L"Limpiar";
-			this->botonLimpiar->UseVisualStyleBackColor = true;
-			this->botonLimpiar->Click += gcnew System::EventHandler(this, &MyForm::botonLimpiar_Click);
 			// 
 			// MyForm
 			// 
@@ -267,7 +281,7 @@ namespace trapecioCLR {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Integral. Tarpecio";
+			this->Text = L"Integral. Trapecio";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);

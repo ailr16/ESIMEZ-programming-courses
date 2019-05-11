@@ -4,7 +4,7 @@
 #pragma once
 using info::lundin::math::ExpressionParser;
 
-namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del proyecto
+namespace SimpsonGraficaLundin {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -84,6 +84,7 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->cajaFuncion = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->cajaN = (gcnew System::Windows::Forms::TextBox());
@@ -100,7 +101,6 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -126,12 +126,23 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(27, 116);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(28, 42);
+			this->label6->TabIndex = 10;
+			this->label6->Text = L"∫";
+			// 
 			// cajaFuncion
 			// 
-			this->cajaFuncion->Location = System::Drawing::Point(60, 132);
+			this->cajaFuncion->Location = System::Drawing::Point(55, 131);
 			this->cajaFuncion->Name = L"cajaFuncion";
 			this->cajaFuncion->Size = System::Drawing::Size(88, 20);
-			this->cajaFuncion->TabIndex = 2;
+			this->cajaFuncion->TabIndex = 3;
 			this->cajaFuncion->Text = L"Escriba funcion";
 			this->cajaFuncion->Click += gcnew System::EventHandler(this, &MyForm::cajaFuncion_Click);
 			// 
@@ -142,22 +153,22 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(164, 65);
 			this->label5->TabIndex = 8;
-			this->label5->Text = L"Instrucciones:\r\n1. Escriba una funcion.\r\n2. Ingrese xa (valor minimo de x).\r\n3. I"
-				L"ngrese xb (valor maximo de x).\r\n4. Ingrese n.";
+			this->label5->Text = L"Instrucciones:\r\n1. Escriba una funcion f(x).\r\n2. Ingrese xa (valor minimo de x).\r"
+				L"\n3. Ingrese xb (valor maximo de x).\r\n4. Ingrese n.";
 			// 
 			// cajaN
 			// 
-			this->cajaN->Location = System::Drawing::Point(59, 190);
+			this->cajaN->Location = System::Drawing::Point(67, 190);
 			this->cajaN->Name = L"cajaN";
-			this->cajaN->Size = System::Drawing::Size(56, 20);
-			this->cajaN->TabIndex = 3;
+			this->cajaN->Size = System::Drawing::Size(50, 20);
+			this->cajaN->TabIndex = 4;
 			this->cajaN->Text = L"512";
 			this->cajaN->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaN_TextChanged);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(40, 193);
+			this->label4->Location = System::Drawing::Point(48, 193);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(13, 13);
 			this->label4->TabIndex = 6;
@@ -166,7 +177,7 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(152, 135);
+			this->label3->Location = System::Drawing::Point(145, 134);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(18, 13);
 			this->label3->TabIndex = 5;
@@ -174,34 +185,33 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			// 
 			// cajaXb
 			// 
-			this->cajaXb->Location = System::Drawing::Point(26, 96);
+			this->cajaXb->Location = System::Drawing::Point(23, 96);
 			this->cajaXb->Name = L"cajaXb";
 			this->cajaXb->Size = System::Drawing::Size(36, 20);
-			this->cajaXb->TabIndex = 1;
+			this->cajaXb->TabIndex = 2;
 			this->cajaXb->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaXb_TextChanged);
 			// 
 			// cajaXa
 			// 
-			this->cajaXa->Location = System::Drawing::Point(26, 163);
+			this->cajaXa->Location = System::Drawing::Point(23, 161);
 			this->cajaXa->Name = L"cajaXa";
 			this->cajaXa->Size = System::Drawing::Size(36, 20);
-			this->cajaXa->TabIndex = 0;
+			this->cajaXa->TabIndex = 1;
 			this->cajaXa->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaXa_TextChanged);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(7, 99);
+			this->label2->Location = System::Drawing::Point(4, 99);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(18, 13);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"xb";
-			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(6, 166);
+			this->label1->Location = System::Drawing::Point(4, 164);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(18, 13);
 			this->label1->TabIndex = 1;
@@ -212,8 +222,8 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			this->botonIntegrar->Location = System::Drawing::Point(20, 20);
 			this->botonIntegrar->Name = L"botonIntegrar";
 			this->botonIntegrar->Size = System::Drawing::Size(146, 23);
-			this->botonIntegrar->TabIndex = 4;
-			this->botonIntegrar->Text = L"Integrar (trapecio)";
+			this->botonIntegrar->TabIndex = 5;
+			this->botonIntegrar->Text = L"Integrar (Simpson)";
 			this->botonIntegrar->UseVisualStyleBackColor = true;
 			this->botonIntegrar->Click += gcnew System::EventHandler(this, &MyForm::botonIntegrar_Click);
 			// 
@@ -233,7 +243,7 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			this->button2->Location = System::Drawing::Point(20, 50);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(146, 23);
-			this->button2->TabIndex = 5;
+			this->button2->TabIndex = 6;
 			this->button2->Text = L"Info";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
@@ -264,7 +274,7 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			this->botonLimpiar->Location = System::Drawing::Point(52, 277);
 			this->botonLimpiar->Name = L"botonLimpiar";
 			this->botonLimpiar->Size = System::Drawing::Size(146, 23);
-			this->botonLimpiar->TabIndex = 6;
+			this->botonLimpiar->TabIndex = 2;
 			this->botonLimpiar->Text = L"Limpiar";
 			this->botonLimpiar->UseVisualStyleBackColor = true;
 			this->botonLimpiar->Click += gcnew System::EventHandler(this, &MyForm::botonLimpiar_Click);
@@ -278,17 +288,6 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			this->listBox1->Size = System::Drawing::Size(255, 251);
 			this->listBox1->TabIndex = 0;
 			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(30, 116);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(28, 42);
-			this->label6->TabIndex = 10;
-			this->label6->Text = L"∫";
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -298,7 +297,7 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Integral. Trapecio";
+			this->Text = L"Integral. Simpson";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -354,7 +353,8 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 		}
 
 		listBox1->Items->Add(
-			A.trapecio(Convert::ToDouble(cajaXa->Text), Convert::ToDouble(cajaXb->Text), Convert::ToDouble(cajaN->Text), cajaFuncion->Text)
+			"integral(" + cajaFuncion->Text + ", " + cajaXa->Text + ", " + cajaXb->Text + ")= " +
+			A.Simpson(Convert::ToDouble(cajaXa->Text), Convert::ToDouble(cajaXb->Text), Convert::ToDouble(cajaN->Text), cajaFuncion->Text)
 		);
 	}
 	public: void comprobarBotones(void) {
@@ -387,11 +387,9 @@ namespace trapecioCLRGraficLundin {				//Cambiar CLRWindowsForms por nombre del 
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
 	}
 	private: System::Void cajaFuncion_Click(System::Object^  sender, System::EventArgs^  e) {
-		if(ind == 0)	cajaFuncion->Clear();
+		if (ind == 0)	cajaFuncion->Clear();
 		else;
 		ind++;
 	}
-private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
-}
 };
 }
