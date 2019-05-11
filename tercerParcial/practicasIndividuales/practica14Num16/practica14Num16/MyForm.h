@@ -71,6 +71,7 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::TextBox^  cajaInterpolar;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::Label^  label3;
 	public:
 
 	private:
@@ -101,6 +102,7 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -110,6 +112,7 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->cajaInterpolar);
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->botonLeer);
@@ -125,7 +128,7 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// cajaInterpolar
 			// 
-			this->cajaInterpolar->Location = System::Drawing::Point(117, 50);
+			this->cajaInterpolar->Location = System::Drawing::Point(117, 109);
 			this->cajaInterpolar->Name = L"cajaInterpolar";
 			this->cajaInterpolar->Size = System::Drawing::Size(100, 20);
 			this->cajaInterpolar->TabIndex = 4;
@@ -134,7 +137,7 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(20, 54);
+			this->label2->Location = System::Drawing::Point(20, 113);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(86, 13);
 			this->label2->TabIndex = 3;
@@ -142,7 +145,7 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// botonLeer
 			// 
-			this->botonLeer->Location = System::Drawing::Point(82, 299);
+			this->botonLeer->Location = System::Drawing::Point(81, 307);
 			this->botonLeer->Name = L"botonLeer";
 			this->botonLeer->Size = System::Drawing::Size(75, 23);
 			this->botonLeer->TabIndex = 2;
@@ -157,15 +160,15 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
 			this->dataGridView1->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::AllCells;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(6, 73);
+			this->dataGridView1->Location = System::Drawing::Point(6, 132);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(237, 220);
+			this->dataGridView1->Size = System::Drawing::Size(237, 169);
 			this->dataGridView1->TabIndex = 2;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(17, 27);
+			this->label1->Location = System::Drawing::Point(17, 86);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(94, 13);
 			this->label1->TabIndex = 1;
@@ -173,7 +176,7 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// 
 			// cajaPuntos
 			// 
-			this->cajaPuntos->Location = System::Drawing::Point(117, 24);
+			this->cajaPuntos->Location = System::Drawing::Point(117, 83);
 			this->cajaPuntos->Name = L"cajaPuntos";
 			this->cajaPuntos->Size = System::Drawing::Size(100, 20);
 			this->cajaPuntos->TabIndex = 0;
@@ -261,6 +264,16 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->listBox1->Size = System::Drawing::Size(414, 303);
 			this->listBox1->TabIndex = 0;
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(-3, 16);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(264, 65);
+			this->label3->TabIndex = 5;
+			this->label3->Text = L"Instrucciones:\r\n1. Proponer n numero de puntos\r\n2. Proponer un valor a interpolar"
+				L"\r\n3. Ingresar puntos.\r\n4. Leer puntos, aplicar metodo de Lagrange y Graficar.\r\n";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -270,7 +283,7 @@ namespace practica14Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Practica 14 (Lagrange con calculo de error)";
+			this->Text = L"Practica 14 (Lagrange)";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
