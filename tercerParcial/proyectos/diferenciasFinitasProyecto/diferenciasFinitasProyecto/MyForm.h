@@ -9,7 +9,7 @@
 #include <string>
 
 using info::lundin::math::ExpressionParser;
-namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
+namespace diferenciasFinitasProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -74,6 +74,7 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::ListBox^  listBox1;
 	private: System::Windows::Forms::GroupBox^  groupBox2;
+
 	private: System::Windows::Forms::Button^  botonLeeArchivo;
 	private: System::Windows::Forms::TextBox^  cajaArchivo;
 	private: System::Windows::Forms::Label^  label4;
@@ -91,6 +92,26 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 	private: System::Windows::Forms::TextBox^  cajaPuntos;
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -163,7 +184,7 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->tabControl1->Location = System::Drawing::Point(13, 13);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(1283, 373);
+			this->tabControl1->Size = System::Drawing::Size(1286, 382);
 			this->tabControl1->TabIndex = 0;
 			// 
 			// tabPage1
@@ -174,7 +195,7 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(1275, 347);
+			this->tabPage1->Size = System::Drawing::Size(1278, 356);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Problema";
 			// 
@@ -187,18 +208,18 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(1275, 347);
+			this->tabPage2->Size = System::Drawing::Size(1278, 356);
 			this->tabPage2->TabIndex = 1;
-			this->tabPage2->Text = L"Solucion";
+			this->tabPage2->Text = L"Solucion (metodo)";
 			// 
 			// groupBox3
 			// 
 			this->groupBox3->Controls->Add(this->pictureBox1);
 			this->groupBox3->Controls->Add(this->listBox1);
-			this->groupBox3->Location = System::Drawing::Point(468, 5);
+			this->groupBox3->Location = System::Drawing::Point(473, 10);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(796, 336);
-			this->groupBox3->TabIndex = 8;
+			this->groupBox3->TabIndex = 5;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
 			// 
@@ -229,10 +250,10 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->groupBox2->Controls->Add(this->botonInfo);
 			this->groupBox2->Controls->Add(this->botonGraficar);
 			this->groupBox2->Controls->Add(this->botonLimpiar);
-			this->groupBox2->Location = System::Drawing::Point(261, 5);
+			this->groupBox2->Location = System::Drawing::Point(266, 10);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(200, 336);
-			this->groupBox2->TabIndex = 7;
+			this->groupBox2->TabIndex = 4;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Proceso";
 			// 
@@ -252,7 +273,8 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->cajaArchivo->Name = L"cajaArchivo";
 			this->cajaArchivo->Size = System::Drawing::Size(119, 20);
 			this->cajaArchivo->TabIndex = 7;
-			this->cajaArchivo->Text = L"capacitores.csv";
+			this->cajaArchivo->Text = L"perdidasDePotencia.csv";
+			this->cajaArchivo->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaArchivo_TextChanged);
 			// 
 			// label4
 			// 
@@ -278,7 +300,7 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(187, 23);
 			this->button1->TabIndex = 4;
-			this->button1->Text = L"Metodo de Lagrange";
+			this->button1->Text = L"Metodo de Diferencias Finitas";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -320,10 +342,10 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->groupBox1->Controls->Add(this->dataGridView1);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->cajaPuntos);
-			this->groupBox1->Location = System::Drawing::Point(5, 5);
+			this->groupBox1->Location = System::Drawing::Point(10, 10);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(249, 336);
-			this->groupBox1->TabIndex = 6;
+			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
 			// 
@@ -333,7 +355,6 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->cajaInterpolar->Name = L"cajaInterpolar";
 			this->cajaInterpolar->Size = System::Drawing::Size(100, 20);
 			this->cajaInterpolar->TabIndex = 4;
-			this->cajaInterpolar->Text = L"0.1111";
 			this->cajaInterpolar->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaInterpolar_TextChanged);
 			// 
 			// label2
@@ -388,19 +409,21 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(23, 7);
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(7, 6);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(665, 312);
+			this->label5->Size = System::Drawing::Size(712, 345);
 			this->label5->TabIndex = 0;
 			this->label5->Text = resources->GetString(L"label5.Text");
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(873, 21);
+			this->pictureBox2->Location = System::Drawing::Point(755, 40);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(303, 308);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->Size = System::Drawing::Size(500, 280);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 1;
 			this->pictureBox2->TabStop = false;
 			// 
@@ -408,11 +431,11 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1308, 398);
+			this->ClientSize = System::Drawing::Size(1311, 407);
 			this->Controls->Add(this->tabControl1);
 			this->Name = L"MyForm";
-			this->Text = L"Polinomio de Lagrange Proyecto. Determinacion de la longitud de un capacitor cili"
-				L"ndrico";
+			this->Text = L"Diferencias Finitas Proyecto: Perdidas de potencia en funcion de distancia en un "
+				L"radioenlace de microondas.";
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
@@ -494,19 +517,16 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 		int ci = 1;
 
 		try {
-			n = cf - ci;
-			GraficadorFx obj(n);
+			m = cf - ci;
+			GraficadorFx obj(m);
 			//Busca x mas grande entre los puntos
-			double xmx = x[0];
-			for (int i = 0; i < m; i++) if (xmx < x[i])	xmx = x[i];
-			double xf = xmx;
-			xmx = x[0];
-			for (int i = 0; i < m; i++) if (x[i] < xmx)	xmx = x[i];
-			double xi = xmx;
 
-			obj.GraficaXY(-2, 2, cf, ff, polinomio);
+			double xf = x[n - 1] - 0.00001;
+			double xi = x[0] + 0.00001;
+
+			obj.GraficaXY(xi, xf, cf, ff, polinomio);
 			int j = 1;
-			for (int k = 0; k < n - 1; k++) {
+			for (int k = 0; k < m - 1; k++) {
 				g->DrawLine(plumaAzul, obj.C[k], obj.F[k], obj.C[j], obj.F[j]);
 				j++;
 			}
@@ -536,7 +556,7 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 		tratamientoPuntos tp(n);
 		tp.modificaArregloX(x);
 		tp.modificaArregloY(y);
-		polinomio = tp.LagrangeCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
+		polinomio = tp.diferenciasFinitasCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
 		listBox1->Items->Add("Interpolacion: f(" + cajaInterpolar->Text + ")=   " + resultadoInterpolacion);
 		listBox1->Items->Add("Polinomio: f(x)=  " + polinomio);
 	}
@@ -601,6 +621,8 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 	}
 	private: System::Void botonGenerar_Click(System::Object^  sender, System::EventArgs^  e) {
 		System::Diagnostics::Process::Start("generadorDeArchivo.exe");
+	}
+	private: System::Void cajaArchivo_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
 };
 }

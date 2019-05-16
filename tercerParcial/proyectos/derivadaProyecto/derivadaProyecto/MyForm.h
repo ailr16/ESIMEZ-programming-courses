@@ -515,8 +515,8 @@ namespace derivadaProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			m = cf - ci;
 			GraficadorFx obj(m);
 
-			double xf = x[n - 1] - 0.0001;
-			double xi = x[0] + 0.0001;
+			double xf = x[n - 1] +0.04;
+			double xi = x[0] - 0.04;
 
 			obj.GraficaXY(xi, xf, cf, ff, polinomio, ecuacionRecta);
 			int j = 1;

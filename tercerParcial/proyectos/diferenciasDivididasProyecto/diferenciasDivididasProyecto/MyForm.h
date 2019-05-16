@@ -9,7 +9,7 @@
 #include <string>
 
 using info::lundin::math::ExpressionParser;
-namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
+namespace diferenciasDivididasProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -73,6 +73,13 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 	private: System::Windows::Forms::GroupBox^  groupBox3;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::ListBox^  listBox1;
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::TextBox^  cajaInterpolar;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Button^  botonLeer;
+	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::TextBox^  cajaPuntos;
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::Button^  botonLeeArchivo;
 	private: System::Windows::Forms::TextBox^  cajaArchivo;
@@ -82,15 +89,8 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 	private: System::Windows::Forms::Button^  botonInfo;
 	private: System::Windows::Forms::Button^  botonGraficar;
 	private: System::Windows::Forms::Button^  botonLimpiar;
-	private: System::Windows::Forms::GroupBox^  groupBox1;
-	private: System::Windows::Forms::TextBox^  cajaInterpolar;
-	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Button^  botonLeer;
-	private: System::Windows::Forms::DataGridView^  dataGridView1;
-	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::TextBox^  cajaPuntos;
-	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
+	private: System::Windows::Forms::Label^  label5;
 
 
 
@@ -127,6 +127,13 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->cajaInterpolar = (gcnew System::Windows::Forms::TextBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->botonLeer = (gcnew System::Windows::Forms::Button());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->cajaPuntos = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->botonLeeArchivo = (gcnew System::Windows::Forms::Button());
 			this->cajaArchivo = (gcnew System::Windows::Forms::TextBox());
@@ -136,13 +143,6 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->botonInfo = (gcnew System::Windows::Forms::Button());
 			this->botonGraficar = (gcnew System::Windows::Forms::Button());
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->cajaInterpolar = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->botonLeer = (gcnew System::Windows::Forms::Button());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->cajaPuntos = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->tabControl1->SuspendLayout();
@@ -150,9 +150,9 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->tabPage2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			this->groupBox2->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -163,7 +163,7 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->tabControl1->Location = System::Drawing::Point(13, 13);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(1283, 373);
+			this->tabControl1->Size = System::Drawing::Size(1295, 383);
 			this->tabControl1->TabIndex = 0;
 			// 
 			// tabPage1
@@ -174,7 +174,7 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->tabPage1->Location = System::Drawing::Point(4, 22);
 			this->tabPage1->Name = L"tabPage1";
 			this->tabPage1->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage1->Size = System::Drawing::Size(1275, 347);
+			this->tabPage1->Size = System::Drawing::Size(1287, 357);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Problema";
 			// 
@@ -182,12 +182,12 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			// 
 			this->tabPage2->BackColor = System::Drawing::Color::WhiteSmoke;
 			this->tabPage2->Controls->Add(this->groupBox3);
-			this->tabPage2->Controls->Add(this->groupBox2);
 			this->tabPage2->Controls->Add(this->groupBox1);
+			this->tabPage2->Controls->Add(this->groupBox2);
 			this->tabPage2->Location = System::Drawing::Point(4, 22);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage2->Size = System::Drawing::Size(1275, 347);
+			this->tabPage2->Size = System::Drawing::Size(1287, 357);
 			this->tabPage2->TabIndex = 1;
 			this->tabPage2->Text = L"Solucion";
 			// 
@@ -195,10 +195,10 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			// 
 			this->groupBox3->Controls->Add(this->pictureBox1);
 			this->groupBox3->Controls->Add(this->listBox1);
-			this->groupBox3->Location = System::Drawing::Point(468, 5);
+			this->groupBox3->Location = System::Drawing::Point(477, 10);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(796, 336);
-			this->groupBox3->TabIndex = 8;
+			this->groupBox3->TabIndex = 5;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Salida";
 			// 
@@ -213,104 +213,10 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			// listBox1
 			// 
 			this->listBox1->FormattingEnabled = true;
-			this->listBox1->HorizontalScrollbar = true;
 			this->listBox1->Location = System::Drawing::Point(7, 23);
 			this->listBox1->Name = L"listBox1";
 			this->listBox1->Size = System::Drawing::Size(414, 303);
 			this->listBox1->TabIndex = 0;
-			// 
-			// groupBox2
-			// 
-			this->groupBox2->Controls->Add(this->botonLeeArchivo);
-			this->groupBox2->Controls->Add(this->cajaArchivo);
-			this->groupBox2->Controls->Add(this->label4);
-			this->groupBox2->Controls->Add(this->label3);
-			this->groupBox2->Controls->Add(this->button1);
-			this->groupBox2->Controls->Add(this->botonInfo);
-			this->groupBox2->Controls->Add(this->botonGraficar);
-			this->groupBox2->Controls->Add(this->botonLimpiar);
-			this->groupBox2->Location = System::Drawing::Point(261, 5);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(200, 336);
-			this->groupBox2->TabIndex = 7;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Proceso";
-			// 
-			// botonLeeArchivo
-			// 
-			this->botonLeeArchivo->Location = System::Drawing::Point(10, 139);
-			this->botonLeeArchivo->Name = L"botonLeeArchivo";
-			this->botonLeeArchivo->Size = System::Drawing::Size(184, 23);
-			this->botonLeeArchivo->TabIndex = 8;
-			this->botonLeeArchivo->Text = L"Lee de archivo";
-			this->botonLeeArchivo->UseVisualStyleBackColor = true;
-			this->botonLeeArchivo->Click += gcnew System::EventHandler(this, &MyForm::botonLeeArchivo_Click);
-			// 
-			// cajaArchivo
-			// 
-			this->cajaArchivo->Location = System::Drawing::Point(75, 113);
-			this->cajaArchivo->Name = L"cajaArchivo";
-			this->cajaArchivo->Size = System::Drawing::Size(119, 20);
-			this->cajaArchivo->TabIndex = 7;
-			this->cajaArchivo->Text = L"capacitores.csv";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(7, 109);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(61, 26);
-			this->label4->TabIndex = 6;
-			this->label4->Text = L"Nombre del\r\narchivo";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(7, 92);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(98, 13);
-			this->label3->TabIndex = 5;
-			this->label3->Text = L"Leer desde archivo";
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(7, 50);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(187, 23);
-			this->button1->TabIndex = 4;
-			this->button1->Text = L"Metodo de Lagrange";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			// 
-			// botonInfo
-			// 
-			this->botonInfo->Location = System::Drawing::Point(58, 240);
-			this->botonInfo->Name = L"botonInfo";
-			this->botonInfo->Size = System::Drawing::Size(75, 23);
-			this->botonInfo->TabIndex = 3;
-			this->botonInfo->Text = L"Info";
-			this->botonInfo->UseVisualStyleBackColor = true;
-			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
-			// 
-			// botonGraficar
-			// 
-			this->botonGraficar->Location = System::Drawing::Point(7, 269);
-			this->botonGraficar->Name = L"botonGraficar";
-			this->botonGraficar->Size = System::Drawing::Size(187, 23);
-			this->botonGraficar->TabIndex = 2;
-			this->botonGraficar->Text = L"Graficar";
-			this->botonGraficar->UseVisualStyleBackColor = true;
-			this->botonGraficar->Click += gcnew System::EventHandler(this, &MyForm::botonGraficar_Click);
-			// 
-			// botonLimpiar
-			// 
-			this->botonLimpiar->Location = System::Drawing::Point(7, 299);
-			this->botonLimpiar->Name = L"botonLimpiar";
-			this->botonLimpiar->Size = System::Drawing::Size(187, 31);
-			this->botonLimpiar->TabIndex = 0;
-			this->botonLimpiar->Text = L"Limpiar";
-			this->botonLimpiar->UseVisualStyleBackColor = true;
-			this->botonLimpiar->Click += gcnew System::EventHandler(this, &MyForm::botonLimpiar_Click);
 			// 
 			// groupBox1
 			// 
@@ -320,10 +226,10 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->groupBox1->Controls->Add(this->dataGridView1);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->cajaPuntos);
-			this->groupBox1->Location = System::Drawing::Point(5, 5);
+			this->groupBox1->Location = System::Drawing::Point(14, 10);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(249, 336);
-			this->groupBox1->TabIndex = 6;
+			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
 			// 
@@ -333,7 +239,6 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->cajaInterpolar->Name = L"cajaInterpolar";
 			this->cajaInterpolar->Size = System::Drawing::Size(100, 20);
 			this->cajaInterpolar->TabIndex = 4;
-			this->cajaInterpolar->Text = L"0.1111";
 			this->cajaInterpolar->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaInterpolar_TextChanged);
 			// 
 			// label2
@@ -385,22 +290,117 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			this->cajaPuntos->Text = L"0";
 			this->cajaPuntos->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaPuntos_TextChanged);
 			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->botonLeeArchivo);
+			this->groupBox2->Controls->Add(this->cajaArchivo);
+			this->groupBox2->Controls->Add(this->label4);
+			this->groupBox2->Controls->Add(this->label3);
+			this->groupBox2->Controls->Add(this->button1);
+			this->groupBox2->Controls->Add(this->botonInfo);
+			this->groupBox2->Controls->Add(this->botonGraficar);
+			this->groupBox2->Controls->Add(this->botonLimpiar);
+			this->groupBox2->Location = System::Drawing::Point(270, 10);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(200, 336);
+			this->groupBox2->TabIndex = 4;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Proceso";
+			// 
+			// botonLeeArchivo
+			// 
+			this->botonLeeArchivo->Location = System::Drawing::Point(10, 139);
+			this->botonLeeArchivo->Name = L"botonLeeArchivo";
+			this->botonLeeArchivo->Size = System::Drawing::Size(184, 23);
+			this->botonLeeArchivo->TabIndex = 8;
+			this->botonLeeArchivo->Text = L"Lee de archivo";
+			this->botonLeeArchivo->UseVisualStyleBackColor = true;
+			this->botonLeeArchivo->Click += gcnew System::EventHandler(this, &MyForm::botonLeeArchivo_Click);
+			// 
+			// cajaArchivo
+			// 
+			this->cajaArchivo->Location = System::Drawing::Point(75, 113);
+			this->cajaArchivo->Name = L"cajaArchivo";
+			this->cajaArchivo->Size = System::Drawing::Size(119, 20);
+			this->cajaArchivo->TabIndex = 7;
+			this->cajaArchivo->Text = L"adquisicionDatos";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(7, 109);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(61, 26);
+			this->label4->TabIndex = 6;
+			this->label4->Text = L"Nombre del\r\narchivo";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(7, 92);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(98, 13);
+			this->label3->TabIndex = 5;
+			this->label3->Text = L"Leer desde archivo";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(7, 50);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(187, 23);
+			this->button1->TabIndex = 4;
+			this->button1->Text = L"Metodo de Diferencias Divididas";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// botonInfo
+			// 
+			this->botonInfo->Location = System::Drawing::Point(58, 240);
+			this->botonInfo->Name = L"botonInfo";
+			this->botonInfo->Size = System::Drawing::Size(75, 23);
+			this->botonInfo->TabIndex = 3;
+			this->botonInfo->Text = L"Info";
+			this->botonInfo->UseVisualStyleBackColor = true;
+			this->botonInfo->Click += gcnew System::EventHandler(this, &MyForm::botonInfo_Click);
+			// 
+			// botonGraficar
+			// 
+			this->botonGraficar->Location = System::Drawing::Point(7, 269);
+			this->botonGraficar->Name = L"botonGraficar";
+			this->botonGraficar->Size = System::Drawing::Size(187, 23);
+			this->botonGraficar->TabIndex = 2;
+			this->botonGraficar->Text = L"Graficar";
+			this->botonGraficar->UseVisualStyleBackColor = true;
+			this->botonGraficar->Click += gcnew System::EventHandler(this, &MyForm::botonGraficar_Click);
+			// 
+			// botonLimpiar
+			// 
+			this->botonLimpiar->Location = System::Drawing::Point(7, 299);
+			this->botonLimpiar->Name = L"botonLimpiar";
+			this->botonLimpiar->Size = System::Drawing::Size(187, 31);
+			this->botonLimpiar->TabIndex = 0;
+			this->botonLimpiar->Text = L"Limpiar";
+			this->botonLimpiar->UseVisualStyleBackColor = true;
+			this->botonLimpiar->Click += gcnew System::EventHandler(this, &MyForm::botonLimpiar_Click);
+			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(23, 7);
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(14, 7);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(665, 312);
+			this->label5->Size = System::Drawing::Size(607, 330);
 			this->label5->TabIndex = 0;
 			this->label5->Text = resources->GetString(L"label5.Text");
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(873, 21);
+			this->pictureBox2->Location = System::Drawing::Point(773, 27);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(303, 308);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->Size = System::Drawing::Size(464, 293);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 1;
 			this->pictureBox2->TabStop = false;
 			// 
@@ -408,22 +408,21 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1308, 398);
+			this->ClientSize = System::Drawing::Size(1320, 401);
 			this->Controls->Add(this->tabControl1);
 			this->Name = L"MyForm";
-			this->Text = L"Polinomio de Lagrange Proyecto. Determinacion de la longitud de un capacitor cili"
-				L"ndrico";
+			this->Text = L"Diferencias Divididas Proyecto: Sistema de Adquisicion de Datos DAQ";
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->tabPage1->PerformLayout();
 			this->tabPage2->ResumeLayout(false);
 			this->groupBox3->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			this->groupBox2->ResumeLayout(false);
-			this->groupBox2->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 
@@ -437,20 +436,6 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 			dataGridView1->Columns->Add("Matriz", "x");
 			dataGridView1->Columns->Add("Matriz", "y");
 			n = Convert::ToInt32(cajaPuntos->Text);
-			//delete x;	delete y;	delete V;	delete Vt;	delete S;	delete St;	delete z;
-			//x = new double[n];
-			//y = new double[n];
-			//z = new double[m];
-			//V = new double*[m];
-			//Vt = new double*[n];
-			//S = new double*[m];
-			//St = new double*[m];
-
-			//for (int i = 0; i < m; i++) V[i] = new double[n];
-			//for (int i = 0; i < n; i++) Vt[i] = new double[m];
-			//for (int i = 0; i < m; i++) S[i] = new double[m];
-			//for (int i = 0; i < m; i++) St[i] = new double[m + 1];
-
 			for (int k = 0; k < n; k++) dataGridView1->Rows->Add();
 		}
 		catch (FormatException ^e) {}
@@ -536,7 +521,7 @@ namespace LagrangeProyecto {				//Cambiar CLRWindowsForms por nombre del proyect
 		tratamientoPuntos tp(n);
 		tp.modificaArregloX(x);
 		tp.modificaArregloY(y);
-		polinomio = tp.LagrangeCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
+		polinomio = tp.diferenciasDivididasCLR(Convert::ToDouble(cajaInterpolar->Text), resultadoInterpolacion);
 		listBox1->Items->Add("Interpolacion: f(" + cajaInterpolar->Text + ")=   " + resultadoInterpolacion);
 		listBox1->Items->Add("Polinomio: f(x)=  " + polinomio);
 	}
