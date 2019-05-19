@@ -20,10 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{9f979e49-a1df-4010-a488-2a9259f1fa8b}</ProjectGuid>
+    <ProjectGuid>{379f1e87-5540-4f42-81fc-8e420929e012}</ProjectGuid>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>examen3</RootNamespace>
+    <RootNamespace>SimpsonProyecto</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,8 +139,6 @@
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Derivada.h" />
-    <ClInclude Include="EDO.h" />
     <ClInclude Include="GraficadorFx.h" />
     <ClInclude Include="Integral.h" />
     <ClInclude Include="MyForm.h">
