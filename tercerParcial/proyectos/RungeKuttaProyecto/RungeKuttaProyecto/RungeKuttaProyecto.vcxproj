@@ -20,10 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{8ca6a4fb-bad4-4dd5-b404-d9e553aadff4}</ProjectGuid>
+    <ProjectGuid>{ebd16f8e-6e86-4736-a655-b5315c1b6631}</ProjectGuid>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>examenDerivada</RootNamespace>
+    <RootNamespace>RungeKuttaProyecto</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -140,7 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Derivada.h" />
+    <ClInclude Include="EDO.h" />
     <ClInclude Include="GraficadorFx.h" />
+    <ClInclude Include="Integral.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

@@ -328,7 +328,6 @@ namespace practica18Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 		cajaXa->Clear();
 		cajaXb->Clear();
 		cajaN->Clear();
-		cajaFuncion->Clear();
 		listBox1->Items->Clear();
 	}
 	private: System::Void cajaFuncion_Click(System::Object^  sender, System::EventArgs^  e) {

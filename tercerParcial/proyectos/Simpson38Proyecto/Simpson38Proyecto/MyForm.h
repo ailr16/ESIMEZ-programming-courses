@@ -4,7 +4,7 @@
 #include "tratamientoPuntos.h"
 #pragma once
 
-namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
+namespace Simpson38Proyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -25,7 +25,6 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			//
 			//TODO: agregar código de constructor aquí
 			//
-			ind = 0;
 		}
 
 	protected:
@@ -40,10 +39,11 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			}
 		}
 
+	public: int ind = 0;
 	protected:
 
-	public: int ind;
-	private: System::Windows::Forms::Button^  button1;
+
+
 
 
 
@@ -69,13 +69,18 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 	private: System::Windows::Forms::PictureBox^  pictureBox4;
 	private: System::Windows::Forms::PictureBox^  pictureBox5;
 	private: System::Windows::Forms::Label^  label9;
-	private: System::Windows::Forms::Button^  button2;
+
 	private: System::Windows::Forms::Label^  label8;
 	private: System::Windows::Forms::Label^  label7;
-	private: System::Windows::Forms::PictureBox^  pictureBox2;
+
 	private: System::Windows::Forms::GroupBox^  groupBox2;
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Button^  botonIntegrar;
+	private: System::Windows::Forms::Label^  label10;
+	private: System::Windows::Forms::PictureBox^  pictureBox2;
+	private: System::Windows::Forms::Label^  label11;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Label^  label12;
 
 	private:
 		/// <summary>
@@ -91,7 +96,6 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->botonLimpiar = (gcnew System::Windows::Forms::Button());
@@ -113,31 +117,25 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->botonIntegrar = (gcnew System::Windows::Forms::Button());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->groupBox2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(523, 375);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(111, 23);
-			this->button1->TabIndex = 22;
-			this->button1->Text = L"Series de Fourier";
-			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// groupBox3
 			// 
@@ -244,6 +242,7 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->cajaFuncion->Size = System::Drawing::Size(88, 20);
 			this->cajaFuncion->TabIndex = 3;
 			this->cajaFuncion->Text = resources->GetString(L"cajaFuncion.Text");
+			this->cajaFuncion->TextChanged += gcnew System::EventHandler(this, &MyForm::cajaFuncion_TextChanged);
 			// 
 			// cajaN
 			// 
@@ -308,7 +307,7 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// pictureBox3
 			// 
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(13, 316);
+			this->pictureBox3->Location = System::Drawing::Point(12, 323);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(240, 155);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -328,7 +327,7 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			// pictureBox5
 			// 
 			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(267, 316);
+			this->pictureBox5->Location = System::Drawing::Point(267, 326);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(166, 155);
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -340,47 +339,24 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->label9->AutoSize = true;
 			this->label9->Location = System::Drawing::Point(739, 323);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(377, 143);
+			this->label9->Size = System::Drawing::Size(0, 13);
 			this->label9->TabIndex = 30;
-			this->label9->Text = resources->GetString(L"label9.Text");
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(526, 370);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(111, 23);
-			this->button2->TabIndex = 29;
-			this->button2->Text = L"Series de Fourier";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
 			this->label8->Location = System::Drawing::Point(468, 328);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(256, 104);
+			this->label8->Size = System::Drawing::Size(0, 13);
 			this->label8->TabIndex = 28;
-			this->label8->Text = resources->GetString(L"label8.Text");
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Location = System::Drawing::Point(9, 9);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(259, 299);
+			this->label7->Size = System::Drawing::Size(0, 13);
 			this->label7->TabIndex = 27;
-			this->label7->Text = resources->GetString(L"label7.Text");
-			// 
-			// pictureBox2
-			// 
-			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(15, 133);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(240, 150);
-			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBox2->TabIndex = 31;
-			this->pictureBox2->TabStop = false;
 			// 
 			// groupBox2
 			// 
@@ -413,21 +389,70 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonIntegrar->UseVisualStyleBackColor = true;
 			this->botonIntegrar->Click += gcnew System::EventHandler(this, &MyForm::botonIntegrar_Click);
 			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(3, 13);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(259, 299);
+			this->label10->TabIndex = 33;
+			this->label10->Text = resources->GetString(L"label10.Text");
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(11, 136);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(240, 144);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox2->TabIndex = 34;
+			this->pictureBox2->TabStop = false;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(448, 328);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(256, 104);
+			this->label11->TabIndex = 35;
+			this->label11->Text = resources->GetString(L"label11.Text");
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(508, 375);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(111, 23);
+			this->button2->TabIndex = 36;
+			this->button2->Text = L"Series de Fourier";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(720, 338);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(377, 143);
+			this->label12->TabIndex = 37;
+			this->label12->Text = resources->GetString(L"label12.Text");
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1242, 496);
-			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->label9);
+			this->ClientSize = System::Drawing::Size(1157, 496);
+			this->Controls->Add(this->label12);
 			this->Controls->Add(this->button2);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->pictureBox2);
+			this->Controls->Add(this->label10);
+			this->Controls->Add(this->groupBox2);
+			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->pictureBox5);
 			this->Controls->Add(this->pictureBox4);
 			this->Controls->Add(this->pictureBox3);
-			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
@@ -439,8 +464,8 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->groupBox2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -487,15 +512,16 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 			obj.c0 = obj.Col(obj.x0);
 			g->DrawLine(plumaNegra, obj.c0, 0, obj.c0, ff);
 		}
+
 		double inductor;
 		if (ind == 0)	inductor = Convert::ToDouble(cajaInductor->Text)*pow(10, -3);
 		else if (ind == 1)	inductor = Convert::ToDouble(cajaInductor->Text)*pow(10, -6);
 		else if (ind == 2)	inductor = Convert::ToDouble(cajaInductor->Text)*pow(10, -9);
-		
+
 		listBox1->Items->Add("Valor del Inductor: " + inductor);
 		listBox1->Items->Add(
 			"i(" + cajaXb->Text + ")= " +
-			(1/inductor)*A.Simpson(Convert::ToDouble(cajaXa->Text), Convert::ToDouble(cajaXb->Text), Convert::ToDouble(cajaN->Text), cajaFuncion->Text)
+			(1 / inductor)*A.Simpson38(Convert::ToDouble(cajaXa->Text), Convert::ToDouble(cajaXb->Text), Convert::ToDouble(cajaN->Text), cajaFuncion->Text)
 		);
 	}
 	public: void comprobarBotones(void) {
@@ -528,16 +554,20 @@ namespace SimpsonProyecto {				//Cambiar CLRWindowsForms por nombre del proyecto
 		Pen^ plumaNegra = gcnew Pen(Color::Black, 1.0f);
 	}
 	private: System::Void cajaFuncion_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
 	}
-private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	comprobarBotones();
-	System::Diagnostics::Process::Start("lozanoRamirez.exe");
-}
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		comprobarBotones();
+		System::Diagnostics::Process::Start("lozanoRamirez.exe");
+	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		System::Diagnostics::Process::Start("seriesFourier.txt");
 	}
-	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-		ind = comboBox1->SelectedIndex;
-	}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+	ind = comboBox1->SelectedIndex;
+}
+private: System::Void cajaFuncion_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	comprobarBotones();
+}
 };
 }

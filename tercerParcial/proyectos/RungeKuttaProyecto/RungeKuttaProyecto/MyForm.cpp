@@ -6,6 +6,6 @@ using namespace System::Windows::Forms;
 void Main(void) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	examenDerivada::MyForm form;			//Cambiar "CLRWindowsForms por el nombre del proyecto"
+	RungeKuttaProyecto::MyForm form;			//Cambiar "CLRWindowsForms por el nombre del proyecto"
 	Application::Run(%form);
 }

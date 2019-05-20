@@ -227,6 +227,7 @@ private: System::Windows::Forms::Label^  label35;
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->botonIntegrar = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label33 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->cajaInductor = (gcnew System::Windows::Forms::TextBox());
@@ -250,6 +251,7 @@ private: System::Windows::Forms::Label^  label35;
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
+			this->label34 = (gcnew System::Windows::Forms::Label());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
@@ -298,6 +300,7 @@ private: System::Windows::Forms::Label^  label35;
 			this->info4 = (gcnew System::Windows::Forms::Button());
 			this->botonResolver4 = (gcnew System::Windows::Forms::Button());
 			this->groupBox12 = (gcnew System::Windows::Forms::GroupBox());
+			this->label35 = (gcnew System::Windows::Forms::Label());
 			this->cajaFuncion4 = (gcnew System::Windows::Forms::TextBox());
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->cajaE0 = (gcnew System::Windows::Forms::TextBox());
@@ -314,9 +317,6 @@ private: System::Windows::Forms::Label^  label35;
 			this->label31 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox10 = (gcnew System::Windows::Forms::PictureBox());
 			this->label22 = (gcnew System::Windows::Forms::Label());
-			this->label33 = (gcnew System::Windows::Forms::Label());
-			this->label34 = (gcnew System::Windows::Forms::Label());
-			this->label35 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
@@ -553,6 +553,15 @@ private: System::Windows::Forms::Label^  label35;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Entrada";
 			// 
+			// label33
+			// 
+			this->label33->AutoSize = true;
+			this->label33->Location = System::Drawing::Point(97, 16);
+			this->label33->Name = L"label33";
+			this->label33->Size = System::Drawing::Size(75, 26);
+			this->label33->TabIndex = 14;
+			this->label33->Text = L"*Ingrese como\r\nfuncion de x";
+			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
@@ -788,6 +797,15 @@ private: System::Windows::Forms::Label^  label35;
 			this->groupBox4->TabIndex = 7;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Entrada";
+			// 
+			// label34
+			// 
+			this->label34->AutoSize = true;
+			this->label34->Location = System::Drawing::Point(96, 16);
+			this->label34->Name = L"label34";
+			this->label34->Size = System::Drawing::Size(134, 13);
+			this->label34->TabIndex = 15;
+			this->label34->Text = L"*Ingrese como funcion de t";
 			// 
 			// comboBox2
 			// 
@@ -1150,12 +1168,12 @@ private: System::Windows::Forms::Label^  label35;
 			// label30
 			// 
 			this->label30->AutoSize = true;
-			this->label30->Location = System::Drawing::Point(666, 438);
+			this->label30->Location = System::Drawing::Point(662, 429);
 			this->label30->Name = L"label30";
-			this->label30->Size = System::Drawing::Size(162, 39);
+			this->label30->Size = System::Drawing::Size(182, 52);
 			this->label30->TabIndex = 11;
 			this->label30->Text = L"Estos resultados nos indican que\r\nhay que hacer un reajuste en las\r\nconstantes Kp"
-				L" y td.";
+				L" y td, así como en la\r\nganancia, que debe aproximarse a 0.";
 			// 
 			// pictureBox14
 			// 
@@ -1242,14 +1260,14 @@ private: System::Windows::Forms::Label^  label35;
 			this->groupBox11->Controls->Add(this->botonResolver4);
 			this->groupBox11->Location = System::Drawing::Point(662, 311);
 			this->groupBox11->Name = L"groupBox11";
-			this->groupBox11->Size = System::Drawing::Size(179, 120);
+			this->groupBox11->Size = System::Drawing::Size(179, 111);
 			this->groupBox11->TabIndex = 4;
 			this->groupBox11->TabStop = false;
 			this->groupBox11->Text = L"Proceso";
 			// 
 			// info4
 			// 
-			this->info4->Location = System::Drawing::Point(20, 91);
+			this->info4->Location = System::Drawing::Point(20, 81);
 			this->info4->Name = L"info4";
 			this->info4->Size = System::Drawing::Size(146, 23);
 			this->info4->TabIndex = 5;
@@ -1261,7 +1279,7 @@ private: System::Windows::Forms::Label^  label35;
 			// 
 			this->botonResolver4->Location = System::Drawing::Point(20, 20);
 			this->botonResolver4->Name = L"botonResolver4";
-			this->botonResolver4->Size = System::Drawing::Size(146, 65);
+			this->botonResolver4->Size = System::Drawing::Size(146, 55);
 			this->botonResolver4->TabIndex = 5;
 			this->botonResolver4->Text = L"Resolver";
 			this->botonResolver4->UseVisualStyleBackColor = true;
@@ -1290,6 +1308,15 @@ private: System::Windows::Forms::Label^  label35;
 			this->groupBox12->TabIndex = 3;
 			this->groupBox12->TabStop = false;
 			this->groupBox12->Text = L"Entrada";
+			// 
+			// label35
+			// 
+			this->label35->AutoSize = true;
+			this->label35->Location = System::Drawing::Point(34, 151);
+			this->label35->Name = L"label35";
+			this->label35->Size = System::Drawing::Size(134, 13);
+			this->label35->TabIndex = 16;
+			this->label35->Text = L"*Ingrese como funcion de t";
 			// 
 			// cajaFuncion4
 			// 
@@ -1443,33 +1470,6 @@ private: System::Windows::Forms::Label^  label35;
 			this->label22->Size = System::Drawing::Size(344, 481);
 			this->label22->TabIndex = 0;
 			this->label22->Text = resources->GetString(L"label22.Text");
-			// 
-			// label33
-			// 
-			this->label33->AutoSize = true;
-			this->label33->Location = System::Drawing::Point(97, 16);
-			this->label33->Name = L"label33";
-			this->label33->Size = System::Drawing::Size(75, 26);
-			this->label33->TabIndex = 14;
-			this->label33->Text = L"*Ingrese como\r\nfuncion de x";
-			// 
-			// label34
-			// 
-			this->label34->AutoSize = true;
-			this->label34->Location = System::Drawing::Point(96, 16);
-			this->label34->Name = L"label34";
-			this->label34->Size = System::Drawing::Size(134, 13);
-			this->label34->TabIndex = 15;
-			this->label34->Text = L"*Ingrese como funcion de t";
-			// 
-			// label35
-			// 
-			this->label35->AutoSize = true;
-			this->label35->Location = System::Drawing::Point(34, 151);
-			this->label35->Name = L"label35";
-			this->label35->Size = System::Drawing::Size(134, 13);
-			this->label35->TabIndex = 16;
-			this->label35->Text = L"*Ingrese como funcion de t";
 			// 
 			// MyForm
 			// 

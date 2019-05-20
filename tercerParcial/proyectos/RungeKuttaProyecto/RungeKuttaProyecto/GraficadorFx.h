@@ -99,6 +99,34 @@ class GraficadorFx {
 				F[k] = Fil(Y[k]);
 			}
 		}
+		void GraficaXY(double xi, double xf, int cf, int ff, System::String^ fn) {
+			this->xi = xi;
+			this->xf = xf;
+			this->cf = cf;
+			this->ff = ff;
+
+			double h;
+			h = (xf - xi) / n;
+
+			for (int k = 0; k < n; k++) {
+				x = xi + k * h;
+				y = FunX(x, fn);
+				X[k] = x;
+				Y[k] = y;
+			}
+
+			yi = 0;
+			yf = Y[0];
+			for (int k = 0; k < n; k++) {
+				if (Y[k] > yi) yi = Y[k];
+				if (Y[k] < yf) yf = Y[k];
+			}
+
+			for (int k = 0; k < n; k++) {
+				C[k] = Col(X[k]);
+				F[k] = Fil(Y[k]);
+			}
+		}
 		void GraficaXY(double xi, double xf, int cf, int ff, System::String^ fn, System::String^ fn2) {
 			this->xi = xi;
 			this->xf = xf;

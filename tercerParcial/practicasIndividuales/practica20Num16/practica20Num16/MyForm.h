@@ -2,7 +2,7 @@
 
 #pragma once
 
-namespace practica19Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
+namespace practica20Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -223,7 +223,7 @@ namespace practica19Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->botonIntegrar->Name = L"botonIntegrar";
 			this->botonIntegrar->Size = System::Drawing::Size(146, 23);
 			this->botonIntegrar->TabIndex = 4;
-			this->botonIntegrar->Text = L"Integrar (Simpson 1/3)";
+			this->botonIntegrar->Text = L"Integrar (Simpson 3/8)";
 			this->botonIntegrar->UseVisualStyleBackColor = true;
 			this->botonIntegrar->Click += gcnew System::EventHandler(this, &MyForm::botonIntegrar_Click);
 			// 
@@ -287,7 +287,7 @@ namespace practica19Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
-			this->Text = L"Practica 19. Integral por metodo de Simpson 1/3";
+			this->Text = L"Practica 20. Integral por metodo de Simpson 3/8";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -306,7 +306,7 @@ namespace practica19Num16 {				//Cambiar CLRWindowsForms por nombre del proyecto
 		Integral A;
 		listBox1->Items->Add(
 			"integral(" + cajaFuncion->Text + ", " + cajaXa->Text + ", " + cajaXb->Text + ")= " +
-			A.Simpson(Convert::ToDouble(cajaXa->Text), Convert::ToDouble(cajaXb->Text), Convert::ToDouble(cajaN->Text), cajaFuncion->Text)
+			A.Simpson38(Convert::ToDouble(cajaXa->Text), Convert::ToDouble(cajaXb->Text), Convert::ToDouble(cajaN->Text), cajaFuncion->Text)
 		);
 	}
 	public: void comprobarBotones(void) {
