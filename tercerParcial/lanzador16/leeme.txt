@@ -1,0 +1,2 @@
+Abrir carpeta Deug
+Ejecutar lanzador16.exe
