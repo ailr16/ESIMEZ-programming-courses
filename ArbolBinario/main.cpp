@@ -25,5 +25,3 @@ int main()
 
     return 0;
 }
-
-//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
