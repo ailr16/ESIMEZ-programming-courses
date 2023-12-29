@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1528466657 source:c:\users\computacion basica\desktop\classtempalate\main.cpp
+	<iostream>
+	"FraccionT.h"
+

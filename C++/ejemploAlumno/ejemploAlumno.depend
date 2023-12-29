@@ -1,0 +1,40 @@
+# depslib dependency file v1.0
+1527130234 source:c:\users\computacion basica\desktop\mibiblioteca\evento.cpp
+	"Evento.h"
+
+1527130234 c:\users\computacion basica\desktop\mibiblioteca\evento.h
+	<iostream>
+	"Fecha.h"
+	"Hora.h"
+
+1527130234 c:\users\computacion basica\desktop\mibiblioteca\fecha.h
+	<iostream>
+
+1527130234 c:\users\computacion basica\desktop\mibiblioteca\hora.h
+	<iostream>
+
+1527130234 source:c:\users\computacion basica\desktop\mibiblioteca\fecha.cpp
+	"Fecha.h"
+
+1527130234 source:c:\users\computacion basica\desktop\mibiblioteca\hora.cpp
+	"Hora.h"
+
+1527130234 source:c:\users\computacion basica\desktop\mibiblioteca\persona.cpp
+	"Persona.h"
+
+1527603239 c:\users\computacion basica\desktop\mibiblioteca\persona.h
+	<iostream>
+	"Evento.h"
+
+1527603646 source:c:\users\computacion basica\desktop\ejemploalumno\main.cpp
+	<iostream>
+	"Persona.h"
+	"Alumno.h"
+
+1527603646 c:\users\computacion basica\desktop\ejemploalumno\alumno.h
+	<iostream>
+	"Persona.h"
+
+1527603757 source:c:\users\computacion basica\desktop\ejemploalumno\alumno.cpp
+	"Alumno.h"
+
